@@ -1,12 +1,17 @@
 <?php
+// User types are either Sysop,Admin,TA,Student or Prof
+$USERTYPE = "Prof";
+
+
+
 
 // --------- COMMON WEBPAGE TOP ---------
-echo "<html>"
-echo "<head>"
-echo "</head>"
-echo "<body>"
+echo "<html>";
+echo "<head>";
+echo "</head>";
+echo "<body>";
 
-displayActive("header.txt",$_GET["Page"]);
+displayActive("header.txt",$_GET["Page"],$USERTYPE);
 
 // --------- ROUTING WEBPAGE BODY -----------
 if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
@@ -32,8 +37,8 @@ if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
 // --------- COMMON WEBPAGE BOTTOM ----------
 display("footer.txt");
 
-echo "<body>"
-echo "</html>"
+echo "<body>";
+echo "</html>";
 
 function display($path) {
   $file = fopen($path,"r");
@@ -44,21 +49,52 @@ function display($path) {
   fclose($file);
 }
 
-function displayActive($path,$target) {
+function displayActive($path,$target,$USERTYPE) {
+  $admin = "Admin";
+  $ta = "TA";
+  $student = "Student";
+  $prof = "Prof";
+  $sysop = "Sysop";
+
   $file = fopen($path,"r");
   if (sizeof($target)==0) {
     $target="Page=DashBoard";
   }
   else $target="Page=".$target;
 
+  if($USERTYPE == $admin){
+		$hideList = array(
+			0 => "SysopTasks"
+		);
+	}
+	else if($USERTYPE == $prof || $USERTYPE == $ta){
+		$hideList = array(
+			0 => "SysopTasks",
+			1 => "TAAdministration"
+		);
+	}
+	else if($USERTYPE == $student){
+		$hideList = array(
+			0 => "SysopTasks",
+			1 => "TAAdministration",
+			2 => "TAManagement"
+		);
+	}
+	else $hideList = array();
+
   while(!feof($file)) {
-    $line = fgets($file);
+		$line = fgets($file);
+		foreach ($hideList as $key => $value) {
+			if (strstr($line,$value)){
+	      $line=str_replace("class = \"Button\"","class = \"Button Hidden\"",$line);
+	    }
+		}
+		
     if (strstr($line,$target)){
-      $line=str_replace("class = \"inactive\"","class = \"active\"",$line);
+	$line=str_replace("\">","\"><b>",$line);
+        $line=str_replace("</","</b></",$line);
     }
-    else{
-      $line=str_replace("class = \"active\"","class = \"inactive\"",$line);
-    }
+
     echo $line;
   }
   fclose($file);

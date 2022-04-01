@@ -50,27 +50,24 @@ a:active { text-decoration: none; color: black;}
 }
 }
 
+.Hidden {
+  display: none;
+}
+
+
 </style>
     
 <head>
 
 <div class = "header">
 
-<div class = "Button" id="TAAdministration">
-TA Administration
-</div>
+<a class = "Button" id="TAAdministration" href="main.php?Page=Administration"> TA Administration </a>
 
-<div class = "Button" id="TAManagement">
-TA Management
-</div>
+<a class = "Button" id="TAManagement" href="main.php?Page=Management"> TA Management </a>
 
-<div class = "Button" id="RateaTA">
-Rate a TA
-</div>
+<a class = "Button" id="RateaTA" href="main.php?Page=Rate"> Rate a TA </a>
 
-<div class = "Button" id="SysopTasks">
-Sysop Tasks
-</div>
+<a class = "Button" id="SysopTasks" href="main.php?Page=Sysop"> Sysop Tasks </a>
 
 </div>
 
