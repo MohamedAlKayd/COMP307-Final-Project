@@ -50,13 +50,9 @@ a:active { text-decoration: none; color: black;}
 }
 }
 
-.Hidden {
-  display: none;
-}
-
 
 </style>
-    
+
 <head>
 
 <div class = "header">
