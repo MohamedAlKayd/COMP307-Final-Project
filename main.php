@@ -28,6 +28,7 @@ if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
 	// ERROR PAGE
 	echo "404: Invalid Page!";
 }
+
 // --------- COMMON WEBPAGE BOTTOM ----------
 display("footer.txt");
 

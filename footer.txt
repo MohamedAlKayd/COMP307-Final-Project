@@ -1,0 +1,31 @@
+<style>
+
+.footer{
+background-color: grey;
+position: fixed;
+width: 100%;
+height: 7.5%;
+bottom: 0;
+}
+
+.footerText{
+float:right;
+margin-top: 10px;
+margin-right: 25px;
+color: white;
+font-size: 20px;
+}
+
+</style>
+
+<footer>
+
+<div class = "footer">
+
+<div class = "footerText">
+COMP307 Project (c) 2022 | Motivated by Group Effort
+</div>
+
+</div>
+
+</footer>
