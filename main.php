@@ -83,15 +83,16 @@ function displayActive($path,$target,$USERTYPE) {
 	else $hideList = array();
 
   while(!feof($file)) {
-		$line = fgets($file);
-		foreach ($hideList as $key => $value) {
-			if (strstr($line,$value)){
-	      $line=str_replace("class = \"Button\"","class = \"Button Hidden\"",$line);
+	$line = fgets($file);
+	
+	foreach ($hideList as $key => $value) {
+		if (strstr($line,$value)){
+	     $line=str_replace("class = \"Button\"","class = \"Button Hidden\"",$line);
 	    }
-		}
+	}
 		
     if (strstr($line,$target)){
-	$line=str_replace("\">","\"><b>",$line);
+		$line=str_replace("\">","\"><b>",$line);
         $line=str_replace("</","</b></",$line);
     }
 
