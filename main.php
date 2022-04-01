@@ -63,7 +63,4 @@ function displayActive($path,$target) {
   fclose($file);
 }
 
-
-
-
 ?>

@@ -1,0 +1,77 @@
+<style>
+
+.header{
+background-color: #D3D3D3;
+width: 100%;
+height: 15%;
+font-size: 75px;
+}
+
+.Button{
+  float: right;
+  margin-right: 5px;
+  margin-top: 1%;
+  background-color: #D3D3D3;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+a:link { text-decoration: none; color: black; }
+a:visited { text-decoration: none; color: black;}
+a:hover { text-decoration: none; color: black;}
+a:active { text-decoration: none; color: black;}
+
+.Button:hover{
+    background: white;
+}
+
+.Button:hover{
+    background: white;
+}
+
+@media screen and (min-width:551px) and (max-width: 1000px){
+.Button{
+  font-size: 14px;
+  margin-right: 1px;
+  padding: 10px 20px;
+}
+}
+
+@media screen and (min-width:180px) and (max-width: 551px){
+    .Button{
+  font-size: 12px;
+  margin-right: 1px;
+  padding: 10px 20px;
+}
+}
+
+</style>
+    
+<head>
+
+<div class = "header">
+
+<div class = "Button" id="TAAdministration">
+TA Administration
+</div>
+
+<div class = "Button" id="TAManagement">
+TA Management
+</div>
+
+<div class = "Button" id="RateaTA">
+Rate a TA
+</div>
+
+<div class = "Button" id="SysopTasks">
+Sysop Tasks
+</div>
+
+</div>
+
+</head>
