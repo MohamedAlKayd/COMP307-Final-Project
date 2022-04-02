@@ -1,21 +1,42 @@
 <?php
+
 // User types are either Sysop,Admin,TA,Student or Prof
 
 $USERNAME = " ";
 $EMAIL = " ";
 $PWD = " ";
 $USERTYPE = " ";
+$clickedOnRegister="False";
+$clickedOnLogin="False";
 
+// REGISTER
 if(isset($_POST["formSubmit"])){
     $USERNAME = $_POST["uname"];
     $EMAIL = $_POST["email"];
     $PWD = $_POST["passwd"];
     $USERTYPE = $_POST["utype"];
+	$clickedOnRegister="True";
 }
+// LOGIN
 if(isset($_POST["formReg"])){
     $USERNAME = $_POST["uname"];
-    $PWD = $_POST["passwd"];    
+    $PWD = $_POST["passwd"];  
+	$clickedOnLogin="True";  
 }
+
+/*
+CSV File intialization
+*/
+
+if($clickedOnRegister=="True"){
+	$file_open = fopen("database.csv", "a+");
+}
+
+if($clickedOnLogin=="True"){
+$file_open = fopen("database.csv", "r");
+}
+
+
 // --------- COMMON WEBPAGE TOP ---------
 echo "<html>";
 echo "<head>";
