@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<head>
+    <title> Login and Registration Form </title>
+    <link rel="stylesheet" href="CSS/loginStyle.css">
+</head>
+
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form" action="main.php" method="post">
+                <input type="text" name="uname" placeholder="user name"></br>
+                </br>
+                <input type="text" name="email" placeholder="email id"></br>
+                </br>
+                <input type="text" name="passwd" placeholder="password" minlength="8"></br>
+                </br>
+                <p id="info"></p>
+                <!-- Select UserType from casacding dropdown list -->
+                <select name="utype">
+               <option value="" >--Please choose an option--</option>
+               <option value="Prof">Professor</option>
+               <option value="SysOP">System Operator</option>
+               <option value="Student">Student</option>
+               <option value="TA">Teaching Assistant</option>
+            </select>
+                <p id="utype"></p>
+                <input id="info, utype" type="submit" name="formSubmit" value="Register">
+                <button> create </button>
+                <p class="message"> Already registered? <a href="#"> Login </a>
+                </p>
+            </form>
+            <form class="login-form" action="main.php" method="post">
+                <input type="text" name="uname" placeholder="user name" required></br>
+                </br>
+                <input type="password" name="passwd" placeholder="password" minlength="8" required></br>
+                </br>
+                <input type="text" name="email" placeholder="email id" required></br>
+                </br>
+                <p id="info"></p>
+                <!-- Select UserType from casacding dropdown list -->
+                <select name="utype" style="box-sizing: border-box;" class="input" required>
+               <option value="" >--Please choose an option--</option>
+               <option value="Prof">Professor</option>
+               <option value="SysOP">System Operator</option>
+               <option value="Student">Student</option>
+               <option value="TA">Teaching Assistant</option>
+            </select>
+                <p id="utype"></p>
+                </br>
+                </br>
+                <button> login </button>
+                <!-- <input id="info, utype" name="formSubmit"> -->
+                <!-- <p class="message" id="reg"> Not registered? <a href="#"> Register </a></p>  -->
+
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(".message a").click(function() {
+            $("form").animate({
+                height: "toggle",
+                opacity: "toggle"
+            }, slow);
+        });
+    </script>
+</body>
+
+</html>
