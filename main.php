@@ -1,39 +1,52 @@
 <?php
 // User types are either Sysop,Admin,TA,Student or Prof
-$USERTYPE = "Prof";
 
+$USERNAME = " ";
+$EMAIL = " ";
+$PWD = " ";
+$USERTYPE = " ";
 
+if(isset($_POST["formSubmit"])){
+    $USERNAME = $_POST["uname"];
+    $EMAIL = $_POST["email"];
+    $PWD = $_POST["passwd"];
+    $USERTYPE = $_POST["utype"];
+}
+if(isset($_POST["formReg"])){
+    $USERNAME = $_POST["uname"];
+    $PWD = $_POST["passwd"];    
+}
 // --------- COMMON WEBPAGE TOP ---------
 echo "<html>";
 echo "<head>";
 echo "</head>";
 echo "<body>";
 
-displayActive("header.txt",$_GET["Page"],$USERTYPE);
+displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
 
 // --------- ROUTING WEBPAGE BODY -----------
 if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
 	// DashBoard
-	display("dashboard.txt");
+	display("matter/dashboard.txt");
 } else if ($_GET["Page"]=="Administration") {
 	// TA Administration
-	display("ta_administration.txt");
+	display("matter/ta_administration.txt");
 } else if ($_GET["Page"]=="Management") {
 	// TA Management
-	display("ta_management.txt");
+	display("matter/ta_management.txt");
 } else if ($_GET["Page"]=="Rate") {
 	// Rate a TA
-	display("rate_a_ta.txt");
+	display("matter/rate_a_ta.txt");
 } else if ($_GET["Page"]=="Sysop") {
 	// Sysop Tasks
-	display("sysop_task.txt");
+	display("matter/sysop_task.txt");
 } else {
 	// ERROR PAGE
 	echo "404: Invalid Page!";
 }
 
 // --------- COMMON WEBPAGE BOTTOM ----------
-display("footer.txt");
+display("matter/footer.txt");
 
 echo "<body>";
 echo "</html>";
