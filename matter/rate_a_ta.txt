@@ -1,0 +1,13 @@
+<style>
+.Course{
+    background-color: white;
+    font-color: black;
+}
+
+.TA{
+}
+
+.RateReviewButton{
+}
+
+</style>
