@@ -9,15 +9,15 @@
     <div class="login-page">
         <div class="form">
             <form class="register-form" action="main.php" method="post">
-                <input type="text" name="uname" placeholder="user name"></br>
+                <input type="text" name="uname" placeholder="user name" required></br>
                 </br>
-                <input type="text" name="email" placeholder="email id"></br>
+                <input type="text" name="email" placeholder="email id" required></br>
                 </br>
-                <input type="text" name="passwd" placeholder="password" minlength="8"></br>
+                <input type="text" name="passwd" placeholder="password" minlength="8" required></br>
                 </br>
                 <p id="info"></p>
                 <!-- Select UserType from casacding dropdown list -->
-                <select name="utype">
+                <select name="utype" style="box-sizing: border-box;" class="input" required>
                <option value="" >--Please choose an option--</option>
                <option value="Prof">Professor</option>
                <option value="SysOP">System Operator</option>
@@ -51,12 +51,12 @@
                 </br>
                 <button> login </button>
                 <!-- <input id="info, utype" name="formSubmit"> -->
-                <!-- <p class="message" id="reg"> Not registered? <a href="#"> Register </a></p>  -->
+                <p class="message" id="reg"> Not registered? <a href="#"> Register </a></p>
 
             </form>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
         $(".message a").click(function() {
             $("form").animate({
