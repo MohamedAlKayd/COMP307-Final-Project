@@ -135,4 +135,24 @@ function displayActive($path,$target,$USERTYPE) {
   fclose($file);
 }
 
+
+function userExists($username,$password,$USERTYPE) {
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT COUNT(*) FROM User u, " . $USERTYPE . " t
+		WHERE u.username == ? and u.password == ? and u.userid == t.userid");
+
+	$query->execute(array($username,$password));	
+
+	$row = $query->fetch();
+	$count = $row[0];
+
+	$pdo = null;
+	return $count == 1;
+	
+}
+
+
+	
+}
 ?>
