@@ -152,6 +152,39 @@ function userExists($username,$password,$USERTYPE) {
 	
 }
 
+function registerStudent($username,$password,$firstname,$lastname,$email,$studentid){
+	if(userExists($username,$password,"Student") or studentExists($studentid)){
+		echo "user Exist <br>";
+		return False;
+	}
+
+	$pdo = new PDO("sqlite:" . "Main.db");
+	
+	$maxuserid = $pdo->query("SELECT MAX(userid) FROM User");
+	$newuserid = $maxuserid->fetchColumn() + 1;
+	
+	$userquery = $pdo->prepare("INSERT INTO User (userid, username, password) VALUES (?,?,?)");
+	$err1 = $userquery->execute(array($newuserid, $username, $password));
+	$studentquery = $pdo->prepare("INSERT INTO Student (studentid, userid, firstname, lastName, email) VALUES (?,?,?,?,?)");
+	$err2 = $studentquery->execute(array($studentid, $newuserid, $firstname, $lastname, $email));
+	
+	$pdo = null;
+	return ($err1 == 1) and ($err1 == 1);
+}
+
+function studentExists($studentid){
+	$pdo = new PDO("sqlite:" . "Main.db");
+	
+	$pre = $pdo->prepare("SELECT Count(*) FROM Student Where studentid == ?");
+	$pre->execute(array($studentid));
+	
+	$row = $pre->fetch();
+	$count = $row[0];
+	
+	$pdo = null;
+	return $count == 1;
+}
+
 
 	
 }
