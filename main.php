@@ -191,13 +191,13 @@ function studentExists($studentid){
 
 //Used to save a new TA review in the database
 //returns true if the review was added
-function addTAreview($studentid, $TAid, $rating, $review){
+function addTAreview($courseid, $TAid, $rating, $review){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 	$maxreviewid = $pdo->query("SELECT MAX(reviewid) FROM TAreview");
 	$newreviewid = $maxreviewid->fetchColumn() + 1;
 
-	$query = $pdo->prepare("INSERT INTO TAreview (reviewid, taid, studentid, rating, review) VALUES (?,?,?,?,?)");
-	$err1 = $query->execute(array($newreviewid, $TAid, $studentid, $rating, $review));
+	$query = $pdo->prepare("INSERT INTO TAreview (reviewid, taid, courseid, rating, review) VALUES (?,?,?,?,?)");
+	$err1 = $query->execute(array($newreviewid, $TAid, $courseid, $rating, $review));
 	
 	$pdo = null;
 	return ($err1 == 1);

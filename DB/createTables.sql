@@ -54,16 +54,16 @@ CREATE TABLE Sysop(
 CREATE TABLE TAreview(
     reviewid INTEGER PRIMARY KEY NOT NULL,
     taid INTEGER NOT NULL,
-    studentid INTEGER NOT NULL,
+    courseid INTEGER NOT NULL,
     rating INTEGER NOT NULL,
     review TEXT,
     FOREIGN key (taid) references TA(taid),
-    FOREIGN key (studentid) references Student(studentid)
+    FOREIGN key (courseid) references Course(courseid)
 );
 
 CREATE TABLE Course(
     courseid INTEGER PRIMARY KEY NOT NULL,
-    term_month_year TEXT NOT NULL,
+    term_year TEXT NOT NULL,
     course_num TEXT NOT NULL, 
     course_name TEXT NOT NULL, 
     instructor_assigned_name TEXT NOT NULL
