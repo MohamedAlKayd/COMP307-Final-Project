@@ -28,14 +28,15 @@
                 <form action="main.php" class="login" method="post">
 
                     <div class="field">
-                        <input type="text" placeholder="Email Address" required>
+                        <input type="text" name="email" placeholder="Email Address" required>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Password" required>
+                        <input type="password" name="passwd" placeholder="Password" required>
                     </div>
                     <p id="info"></p>
 
                     <div class="field">
+
                         <select name="utype" class="input" required>
                  <option value="" >-- Please choose an option --</option>
                  <option value="Prof">Professor</option>
@@ -50,7 +51,7 @@
 
                     <div class="field btn">
                         <div class="btn-layer"></div>
-                        <input id="info, utype" type="submit" value="LOGIN">
+                        <input id="info, utype" name="login" type="submit" value="LOGIN">
                     </div>
                     <div class="signup-link">
                         Not a member? <a href="">  Signup now</a>
@@ -58,14 +59,15 @@
                 </form>
                 <form action="main.php" method="post" class="signup">
                     <div class="field">
-                        <input type="text" placeholder="Email Address" required>
+                        <input type="text" placeholder="User Name" name="uname" required>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Password" required>
+                        <input type="text" placeholder="Email Address" name="email" required>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Confirm password" required>
+                        <input type="password" placeholder="Password" name="passwd" required>
                     </div>
+
                     <div class="field">
                         <select name="utype" class="input" required>
                  <option value="" >-- Please choose an option --</option>
@@ -79,7 +81,7 @@
                     </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>
-                        <input id="info, utype" type="submit" value="SIGNUP">
+                        <input id="info, utype" name="signup" type="submit" value="SIGNUP">
                     </div>
                 </form>
             </div>

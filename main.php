@@ -10,7 +10,7 @@ $clickedOnRegister="False";
 $clickedOnLogin="False";
 
 // REGISTER
-if(isset($_POST["formSubmit"])){
+if(isset($_POST["signup"])){
     $USERNAME = $_POST["uname"];
     $EMAIL = $_POST["email"];
     $PWD = $_POST["passwd"];
@@ -18,9 +18,10 @@ if(isset($_POST["formSubmit"])){
 	$clickedOnRegister="True";
 }
 // LOGIN
-if(isset($_POST["formReg"])){
-    $USERNAME = $_POST["uname"];
-    $PWD = $_POST["passwd"];  
+if(isset($_POST["login"])){
+    $EMAIL = $_POST["email"];
+	$PWD = $_POST["passwd"]; 
+	$USERTYPE = $_POST["utype"]; 
 	$clickedOnLogin="True";  
 }
 
@@ -207,5 +208,5 @@ function addTAreview($studentid, $TAid, $rating, $review){
 
 
 	
-}
+
 ?>
