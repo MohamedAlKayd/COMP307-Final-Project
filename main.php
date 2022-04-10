@@ -204,6 +204,38 @@ function addTAreview($courseid, $TAid, $rating, $review){
 
 }
 
+//returns an array of rows (access each rows like this: foreach($arrray as $row){})
+//each row is a course taken by that student
+//each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name']
+function getCoursesForStudent($studentid){
+
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT c.courseid, c.term_year, c.course_num, c.course_name 
+		FROM TakingCourse tc, Course c 
+		WHERE tc.studentid == ? and tc.courseid == c.courseid;");
+	
+	$query->execute(array($studentid));
+	
+	return $query->fetchAll();
+}
+
+
+//returns an array of rows (access each rows like this: foreach($arrray as $row){})
+//each row is a TA associated with that course
+//each row is an array of this form $row = ['taid', 'firstname', 'lastname']
+function getTAforCourse($courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT ta.taid, ta.firstname, ta.lastname 
+		FROM TA ta, AssistingCourse ac
+		WHERE ta.taid == ac.taid and ac.courseid == ?");
+	$query->execute(array($courseid));
+
+	return $query->fetchAll();
+}
+
+
 
 
 	
