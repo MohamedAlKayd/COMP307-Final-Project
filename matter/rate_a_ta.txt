@@ -8,6 +8,56 @@
 }
 
 .RateReviewButton{
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  color: white;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.RateReviewButton:hover{
+      background: Aqua;
+      color: black;
+}
+.RequiredInformation{
+  background-color: Aqua;
+  border: none;
+  border-radius: 50%;
+  margin-top: 50px;
+  color: black;
+  padding: 25px 48px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+}
+.RequiredInformation:hover{
+      background: #4CAF50;
+      color: white;
 }
 
+a:link { text-decoration: none; color: black; }
+a:visited { text-decoration: none; color: black;}
+a:hover { text-decoration: none; color: black;}
+a:active { text-decoration: none; color: black;}
+
 </style>
+
+<body>
+<div class = "RateReviewButton"> Rate / Review TA by course <br>
+<div class = "RequiredInformation">
+Required Information:
+    <ul>
+    <li>Course</li>
+    <li>Term</li>
+    <li>Score Range</li>
+    <li>Comments</li>
+    </ul>
+</div>
+</div>
+
+</body>
