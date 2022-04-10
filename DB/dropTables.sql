@@ -1,3 +1,7 @@
+DROP TABLE TakingCourse;
+DROP TABLE AssistingCourse;
+DROP TABLE TeachingCourse;
+DROP TABLE Course;
 DROP TABLE Student;
 DROP TABLE TA;
 DROP TABLE Prof;

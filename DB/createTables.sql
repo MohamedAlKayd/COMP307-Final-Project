@@ -61,5 +61,38 @@ CREATE TABLE TAreview(
     FOREIGN key (studentid) references Student(studentid)
 );
 
+CREATE TABLE Course(
+    courseid INTEGER PRIMARY KEY NOT NULL,
+    term_month_year TEXT NOT NULL,
+    course_num TEXT NOT NULL, 
+    course_name TEXT NOT NULL, 
+    instructor_assigned_name TEXT NOT NULL
+);
+
+CREATE TABLE TakingCourse(
+    studentid INTEGER NOT NULL,
+    courseid INTEGER NOT NULL,
+    FOREIGN key (studentid) references Student(studentid),
+    FOREIGN key (courseid) references Course(courseid),
+    PRIMARY key (studentid,courseid)
+);
+
+CREATE TABLE AssistingCourse(
+    taid INTEGER NOT NULL,
+    courseid INTEGER NOT NULL,
+    FOREIGN key (taid) references TA(taid),
+    FOREIGN key (courseid) references Course(courseid),
+    PRIMARY key (taid,courseid)
+);
+
+CREATE TABLE TeachingCourse(
+    proffesorid INTEGER NOT NULL,
+    courseid INTEGER NOT NULL,
+    FOREIGN key (proffesorid) references Prof(studentid),
+    FOREIGN key (courseid) references Course(courseid),
+    PRIMARY key (proffesorid,courseid)
+);
+
+
 
 
