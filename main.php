@@ -158,7 +158,6 @@ function userExists($username,$password,$USERTYPE) {
 //returns true if the student was succesfully registered
 function registerStudent($username,$password,$firstname,$lastname,$email,$studentid){
 	if(userExists($username,$password,"Student") or studentExists($studentid)){
-		echo "user Exist <br>";
 		return False;
 	}
 
