@@ -51,5 +51,15 @@ CREATE TABLE Sysop(
     Foreign key (userid) references USER(userid)
 );
 
+CREATE TABLE TAreview(
+    reviewid INTEGER PRIMARY KEY NOT NULL,
+    taid INTEGER NOT NULL,
+    studentid INTEGER NOT NULL,
+    rating INTEGER NOT NULL,
+    review TEXT,
+    FOREIGN key (taid) references TA(taid),
+    FOREIGN key (studentid) references Student(studentid)
+);
+
 
 

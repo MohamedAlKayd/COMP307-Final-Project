@@ -20,3 +20,6 @@ INSERT  INTO Admin(adminid, userid, firstname, lastName, email) VALUES
 
 INSERT INTO Sysop(sysopid, userid, firstname, lastName, email) VALUES
     (777, 4, 'Anthony', 'Bouchard', 'anthony_b.hotmail.com');
+
+INSERT INTO TAreview(reviewid, taid, studentid, rating, review) VALUES 
+    (1, 111567887, 222666000, 5, 'Very helpful with homework.');

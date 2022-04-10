@@ -135,7 +135,8 @@ function displayActive($path,$target,$USERTYPE) {
   fclose($file);
 }
 
-
+//used at login
+//returns true if there exists a user with that username and password for that user type
 function userExists($username,$password,$USERTYPE) {
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
@@ -152,13 +153,15 @@ function userExists($username,$password,$USERTYPE) {
 	
 }
 
+//used to register new student user
+//returns true if the student was succesfully registered
 function registerStudent($username,$password,$firstname,$lastname,$email,$studentid){
 	if(userExists($username,$password,"Student") or studentExists($studentid)){
 		echo "user Exist <br>";
 		return False;
 	}
 
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 	
 	$maxuserid = $pdo->query("SELECT MAX(userid) FROM User");
 	$newuserid = $maxuserid->fetchColumn() + 1;
@@ -172,8 +175,9 @@ function registerStudent($username,$password,$firstname,$lastname,$email,$studen
 	return ($err1 == 1) and ($err1 == 1);
 }
 
+//return true if a student with that studentid exists
 function studentExists($studentid){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 	
 	$pre = $pdo->prepare("SELECT Count(*) FROM Student Where studentid == ?");
 	$pre->execute(array($studentid));
@@ -184,6 +188,22 @@ function studentExists($studentid){
 	$pdo = null;
 	return $count == 1;
 }
+
+//Used to save a new TA review in the database
+//returns true if the review was added
+function addTAreview($studentid, $TAid, $rating, $review){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$maxreviewid = $pdo->query("SELECT MAX(reviewid) FROM TAreview");
+	$newreviewid = $maxreviewid->fetchColumn() + 1;
+
+	$query = $pdo->prepare("INSERT INTO TAreview (reviewid, taid, studentid, rating, review) VALUES (?,?,?,?,?)");
+	$err1 = $query->execute(array($newreviewid, $TAid, $studentid, $rating, $review));
+	
+	$pdo = null;
+	return ($err1 == 1);
+
+}
+
 
 
 	
