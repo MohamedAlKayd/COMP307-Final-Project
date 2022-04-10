@@ -1,0 +1,102 @@
+<style>
+.selectCourse{
+  background-color: Aqua;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.selectCourse:hover{
+    background-color: grey;
+    color: white;
+}
+.rightSide{
+    background-color: white;
+}
+.channel{
+  width:400px;
+  height: 400px;
+  float: right;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 35px;
+  background-color: grey;
+  color: white;
+}
+.channelText{
+    background: white;
+    color: black;
+    font-size: 35px;
+  padding: 25px 48px;
+}
+.announcements{
+    background-color: grey;
+    color: white;
+    font-size: 25px;
+
+}
+.announcements:hover{
+    background-color: white;
+    color: black;
+}
+.chat{
+    background-color: grey;
+    color: white;
+    font-size: 25px;
+}
+.chat:hover{
+    background-color: white;
+    color: black;
+}
+.assignmentNotes{
+    background-color: grey;
+    color: white;
+    font-size: 25px;
+}
+.assignmentNotes:hover{
+    background-color: white;
+    color: black;
+}
+.reminders{   
+    background-color: grey;
+    color: white;
+    font-size: 25px;
+}
+.reminders:hover{
+    background-color: white;
+    color: black;
+}
+.links{
+    background-color: grey;
+    color: white;
+    font-size: 25px;
+}
+.links:hover{
+    background-color: white;
+    color: black;
+}
+
+}
+</style>
+
+<body>
+<div class = "selectCourse">Select Course</div>
+<div style ="overflow:scroll" class = "channel">
+<div class = "announcements" >Announcements</div>
+<div class = "chat" >Chat</div>
+<div class = "assignmentNotes" >Assignment Notes</div>
+<div class = "reminders">Reminders</div>
+<div class = "links">Links</div>
+</div>
+</body>
