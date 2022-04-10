@@ -1,68 +1,107 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <title> Login and Registration Form </title>
-    <link rel="stylesheet" href="CSS/loginStyle.css">
+    <link rel="stylesheet" href="./CSS/loginStyle.css">
 </head>
 
 <body>
-    <div class="login-page">
-        <div class="form">
-            <form class="register-form" action="main.php" method="post">
-                <input type="text" name="uname" placeholder="user name" required></br>
-                </br>
-                <input type="text" name="email" placeholder="email id" required></br>
-                </br>
-                <input type="text" name="passwd" placeholder="password" minlength="8" required></br>
-                </br>
-                <p id="info"></p>
-                <!-- Select UserType from casacding dropdown list -->
-                <select name="utype" style="box-sizing: border-box;" class="input" required>
-               <option value="" >--Please choose an option--</option>
-               <option value="Prof">Professor</option>
-               <option value="SysOP">System Operator</option>
-               <option value="Student">Student</option>
-               <option value="TA">Teaching Assistant</option>
-            </select>
-                <p id="utype"></p>
-                <input id="info, utype" type="submit" name="formSubmit" value="Register">
-                <button> create </button>
-                <p class="message"> Already registered? <a href="#"> Login </a>
-                </p>
-            </form>
-            <form class="login-form" action="main.php" method="post">
-                <input type="text" name="uname" placeholder="user name" required></br>
-                </br>
-                <input type="password" name="passwd" placeholder="password" minlength="8" required></br>
-                </br>
-                <input type="text" name="email" placeholder="email id" required></br>
-                </br>
-                <p id="info"></p>
-                <!-- Select UserType from casacding dropdown list -->
-                <select name="utype" style="box-sizing: border-box;" class="input form" required>
-               <option value="" >--Please choose an option--</option>
-               <option value="Prof">Professor</option>
-               <option value="SysOP">System Operator</option>
-               <option value="Student">Student</option>
-               <option value="TA">Teaching Assistant</option>
-            </select>
-                <p id="utype"></p>
-                </br>
-                </br>
-                <button> login </button>
-                <!-- <input id="info, utype" name="formSubmit"> -->
-                <p class="message" id="reg"> Not registered? <a href="#"> Register </a></p>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">
+                Login Form
+            </div>
+            <div class="title signup">
+                Signup Form
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="signup">
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slider-tab"></div>
+            </div>
+            <div class="form-inner">
+                <form action="main.php" class="login" method="post">
 
-            </form>
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <p id="info"></p>
+
+                    <div class="field">
+                        <select name="utype" class="input" required>
+                 <option value="" >-- Please choose an option --</option>
+                 <option value="Prof">Professor</option>
+                 <option value="SysOP">System Operator</option>
+                 <option value="Student">Student</option>
+                 <option value="TA">Teaching Assistant</option>
+              </select>
+
+                    </div>
+                    <p id="utype"></p>
+
+
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input id="info, utype" type="submit" value="LOGIN">
+                    </div>
+                    <div class="signup-link">
+                        Not a member? <a href="">  Signup now</a>
+                    </div>
+                </form>
+                <form action="main.php" method="post" class="signup">
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Confirm password" required>
+                    </div>
+                    <div class="field">
+                        <select name="utype" class="input" required>
+                 <option value="" >-- Please choose an option --</option>
+                 <option value="Prof">Professor</option>
+                 <option value="SysOP">System Operator</option>
+                 <option value="Student">Student</option>
+                 <option value="TA">Teaching Assistant</option>
+              </select>
+                        <p id="utype"></p>
+
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input id="info, utype" type="submit" value="SIGNUP">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-
     <script>
-        $(".message a").click(function() {
-            $("form").animate({
-                height: "toggle",
-                opacity: "toggle"
-            }, slow);
+        const loginText = document.querySelector(".title-text .login");
+        const loginForm = document.querySelector("form.login");
+        const loginBtn = document.querySelector("label.login");
+        const signupBtn = document.querySelector("label.signup");
+        const signupLink = document.querySelector("form .signup-link a");
+        signupBtn.onclick = (() => {
+            loginForm.style.marginLeft = "-50%";
+            loginText.style.marginLeft = "-50%";
+        });
+        loginBtn.onclick = (() => {
+            loginForm.style.marginLeft = "0%";
+            loginText.style.marginLeft = "0%";
+        });
+        signupLink.onclick = (() => {
+            signupBtn.click();
+            return false;
         });
     </script>
 </body>
