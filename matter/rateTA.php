@@ -1,6 +1,12 @@
 <?php
 /*Variables used to rate a TA*/
 $studentid = $_GET["Student"];
+
+echo "<html>";
+echo "<head>";
+echo "</head>";
+echo "<body>";
+display("header.txt");
 display("RateReviewaTAbyCourseTOP.txt");
 
 if ($_GET["Page"] == "getCourse") {
@@ -64,7 +70,8 @@ else if ($_GET["Page"]=="reviewSubmit") {
 if($_GET["Page"]!="reviewSubmit"){
 	display("RateReviewaTAbyCoursebottom.txt");
 }
-display("footer.txt");
+echo "<body>";
+echo "</html>";
 
 function display($path) {
   $file = fopen($path,"r");
