@@ -1,0 +1,13 @@
+
+<form method="post" action="rateTA.php?Page=submitRating">
+
+<h2>Rating</h2>
+How would you rate the TA on a scale of 1 to 5?<br>
+<input type="radio" NAME="rating" VALUE="1"> 1
+<input type="radio" NAME="rating" VALUE="2"> 2
+<input type="radio" NAME="rating" VALUE="3"> 3
+<input type="radio" NAME="rating" VALUE="4"> 4
+<input type="radio" NAME="rating" VALUE="5"> 5<br><br>
+
+<h2>Comments</h2>
+<textarea name="comment" rows="5" cols="50"></textarea><br><br>
