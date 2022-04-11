@@ -20,10 +20,10 @@ if(isset($_POST["signup"])){
 }
 
 if($clickedOnRegister){
-    registerStudent($USERNAME, $PWD, $FNAME, $LNAME, $STID);
+    if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME, $STID)){
+        echo "Registration works" ;   
+    }
     echo "Resigtration Succesful!";
-    
-    
 }
 else{
     echo "There's Something wrong! ";
