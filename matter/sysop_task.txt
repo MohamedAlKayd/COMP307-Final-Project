@@ -1,0 +1,36 @@
+<style>
+.general{
+  float: left;
+  background-color:#e5e4e2;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left:10px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.general:hover{
+      background: white;
+      color: black;
+}
+.manageUsers{
+
+}
+.importProfCourse{
+
+}
+.manualAddProfCourse{
+
+}
+</style>
+<body>
+<a class = "general" id="ManageUsers" href="main.php?Page=ManageUsers"> Manage Users </a>
+<a class = "general" id="ImportProfessorandCourse" href="main.php?Page=ImportProfessorandCourse"> Import Professor and Course </a>
+<a class = "general" id="ManualAddProfessorandCourse" href="main.php?Page=ManualAddProfessorandCourse"> Manual add Professor and Course </a>
+
+</body>

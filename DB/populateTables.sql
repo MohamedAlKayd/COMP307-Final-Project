@@ -1,4 +1,4 @@
-INSERT INTO User(userid, username, password) VALUES
+INSERT INTO User(userid, username, password,usertype) VALUES
     (1, 'bob', 'abc123'),
     (2, 'linda', '99tt55'),
     (3, 'jeremy', '1234'),
@@ -29,14 +29,14 @@ INSERT  INTO Admin(adminid, userid, firstname, lastName, email) VALUES
 INSERT INTO Sysop(sysopid, userid, firstname, lastName, email) VALUES
     (777, 4, 'Anthony', 'Bouchard', 'anthony_b.hotmail.com');
 
-INSERT INTO TAreview(reviewid, taid, studentid, rating, review) VALUES 
-    (1, 111567887, 222666000, 5, 'Very helpful with homework.');
+INSERT INTO TAreview(reviewid, taid, courseid, rating, review) VALUES 
+    (1, 111567887, 1, 5, 'Very helpful with homework.');
 
-INSERT INTO Course(courseid, term_month_year, course_num, course_name, instructor_assigned_name) VALUES
-    (1, 'winter_01_2021', 'COMP 307', 'Web Dev', 'Joseph Vybihal'),
-    (2, 'fall_01_2022', 'COMP 424', 'AI', 'Jeremy Brown'),
-    (3, 'fall_01_2021', 'COMP 421', 'AI', 'Joseph Dsilva'),
-    (4, 'winter_01_2022', 'COMP 307', 'Web Dev', 'Joseph Vybihal');
+INSERT INTO Course(courseid, term_year, course_num, course_name, instructor_assigned_name) VALUES
+    (1, 'winter_2021', 'COMP 307', 'Web Dev', 'Joseph Vybihal'),
+    (2, 'fall_2022', 'COMP 424', 'AI', 'Jeremy Brown'),
+    (3, 'fall_2021', 'COMP 421', 'AI', 'Joseph Dsilva'),
+    (4, 'winter_2022', 'COMP 307', 'Web Dev', 'Joseph Vybihal');
 
 INSERT INTO TakingCourse (studentid,courseid) VALUES
     (222666000, 1),
@@ -55,6 +55,28 @@ INSERT INTO TeachingCourse (proffesorid,courseid) VALUES
     (1166, 2),
     (1168, 3),
     (1167, 4);
+
+
+CREATE VIEW UserInfo(userid,firstname,lastname,username,password,usertype) AS
+SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, ('Student') as usertype
+From Student s, User u
+Where s.userid = u.userid
+UNION
+SELECT  ta.userid, ta.firstname, ta.lastName, u.username, u.password, ('TA') as usertype
+From TA ta, User u
+Where ta.userid = u.userid
+UNION
+SELECT  p.userid, p.firstname, p.lastName, u.username, u.password, ('Prof') as usertype
+From Prof p, User u
+Where p.userid = u.userid
+UNION
+SELECT  a.userid, a.firstname, a.lastName, u.username, u.password, ('Admin') as usertype
+From Admin a, User u
+Where a.userid = u.userid
+UNION
+SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, ('Sysop') as usertype
+From Sysop s, User u
+Where s.userid = u.userid;
 
 
 

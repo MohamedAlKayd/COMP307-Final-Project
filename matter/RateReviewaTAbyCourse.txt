@@ -1,0 +1,64 @@
+<style>
+.RateReview{
+  background-color: #e5e4e2;
+  color: black;
+}
+</style>
+
+<body>
+<div class="RateReview">
+<h1>Rate / Review a TA by course</h1>
+Please fill in all fields and click submit.<br>
+</div>
+
+<form method="post" action="rateTA.php">
+
+<h2>Term</h2>
+Which term was the course taken in?<br>
+<select name="course">
+    <option value="----------------------------------------------------------" >----------------------------------------------------------</option>
+    <option value="summer2021" >summer2021</option>
+    <option value="fall2021">fall2021</option>
+    <option value="winter2022">winter2022</option>
+    <option value="summer2022">summer2022</option>
+    <option value="fall2022">fall2022</option>
+</select><br><br>
+
+<h2>Course</h2>
+Choose the course?<br>
+<select name="term">
+    <option value="----------------------------------------------------------" >----------------------------------------------------------</option>
+    <option value="course1" >course1</option>
+    <option value="course2">course2</option>
+    <option value="course3">course3</option>
+    <option value="course4">course4</option>
+    <option value="course5">course5</option>
+</select><br><br>
+
+<h2>TA</h2>
+Choose the TA you are rating?<br>
+<select name="TA">
+    <option value="----------------------------------------------------------" >----------------------------------------------------------</option>
+    <option value="TA1">TA1</option>
+    <option value="TA2">TA2</option>
+    <option value="TA3">TA3</option>
+    <option value="TA4">TA4</option>
+    <option value="TA5">TA5</option>
+</select><br><br>
+
+<h2>Rating</h2>
+How would you rate the TA on a scale of 1 to 5?<br>
+<input type="radio" NAME="rating" VALUE="1"> 1
+<input type="radio" NAME="rating" VALUE="2"> 2
+<input type="radio" NAME="rating" VALUE="3"> 3
+<input type="radio" NAME="rating" VALUE="4"> 4
+<input type="radio" NAME="rating" VALUE="5"> 5<br><br>
+
+<h2>Comments</h2>
+<textarea name="comment" rows="5" cols="50"></textarea><br><br>
+
+<!-- Submission Button -->
+<input type="submit" name="submit" value="submit"><br><br><br><br>
+</form>
+
+</body>

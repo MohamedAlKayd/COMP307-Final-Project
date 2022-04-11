@@ -21,5 +21,5 @@
 </style>
 
 <body>
-<a class = "general" id="RateReviewaTAbyCourse" href="main.php?Page=RateReviewaTAbyCourse"> Rate / Review a TA by Course </a>
+<a class = "general" id="Export" href="main.php?Page=Export"> Export </a>
 </body>

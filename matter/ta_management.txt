@@ -1,9 +1,30 @@
 <style>
-.selectCourse{
-  background-color: Aqua;
+.general{
+  float: left;
+  background-color:#e5e4e2;
   border: none;
   border-radius: 12px;
   margin-top: 50px;
+  margin-right: 10px;
+  margin-left:10px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.general:hover{
+      background: white;
+      color: black;
+}
+.selectCourse{
+  background-color: #e5e4e2;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
   color: black;
   padding: 25px 48px;
   text-align: center;
@@ -12,8 +33,8 @@
   font-size: 25px;
 }
 .selectCourse:hover{
-    background-color: grey;
-    color: white;
+    background-color: white;
+    color: black;
 }
 .rightSide{
     background-color: white;
@@ -31,8 +52,8 @@
   text-decoration: none;
   display: inline-block;
   font-size: 35px;
-  background-color: grey;
-  color: white;
+  background-color: #e5e4e2;
+  color: black;
 }
 .channelText{
     background: white;
@@ -40,19 +61,27 @@
     font-size: 35px;
   padding: 25px 48px;
 }
-.announcements{
-    background-color: grey;
-    color: white;
+.generalListing{
+    background-color: #e5e4e2;
+    color: black;
     font-size: 25px;
-
+}  
+.generalListing:hover{
+    background-color: white;
+    color: black;
+}
+.announcements{
+    background-color: #e5e4e2;
+    color: black;
+    font-size: 25px;
 }
 .announcements:hover{
     background-color: white;
     color: black;
 }
 .chat{
-    background-color: grey;
-    color: white;
+    background-color: #e5e4e2;
+    color: black;
     font-size: 25px;
 }
 .chat:hover{
@@ -60,8 +89,8 @@
     color: black;
 }
 .assignmentNotes{
-    background-color: grey;
-    color: white;
+    background-color: #e5e4e2;
+    color: black;
     font-size: 25px;
 }
 .assignmentNotes:hover{
@@ -69,8 +98,8 @@
     color: black;
 }
 .reminders{   
-    background-color: grey;
-    color: white;
+    background-color: #e5e4e2;
+    color: black;
     font-size: 25px;
 }
 .reminders:hover{
@@ -78,8 +107,8 @@
     color: black;
 }
 .links{
-    background-color: grey;
-    color: white;
+    background-color: #e5e4e2;
+    color: black;
     font-size: 25px;
 }
 .links:hover{
@@ -91,12 +120,11 @@
 </style>
 
 <body>
-<div class = "selectCourse">Select Course</div>
-<div style ="overflow:scroll" class = "channel">
-<div class = "announcements" >Announcements</div>
-<div class = "chat" >Chat</div>
-<div class = "assignmentNotes" >Assignment Notes</div>
-<div class = "reminders">Reminders</div>
-<div class = "links">Links</div>
+
+<a class = "general" id="SelectCourse" href="main.php?Page=SelectCourse"> Select Course </a>
+<a class = "general" id="Channel" href="main.php?Page=Channel"> Channel </a>
+<a class = "general" id="AllTAsReport" href="main.php?Page=AllTAsReport"> All TAs Report </a>
+
 </div>
 </body>
+

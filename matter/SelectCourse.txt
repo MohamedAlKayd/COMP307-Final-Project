@@ -1,0 +1,29 @@
+<style>
+.general{
+  float: left;
+  background-color:#e5e4e2;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left:10px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.general:hover{
+      background: white;
+      color: black;
+}
+</style>
+
+<body>
+<a class = "general" id="OfficeHoursResponsibilitiesSheet" href="main.php?Page=OfficeHoursResponsibilitiesSheet"> Office Hours / responsibilities Sheet </a>
+<a class = "general" id="TAEvaluationTAWorkload" href="main.php?Page=TAEvaluationTAWorkload"> TA evaluation / TA Workload </a>
+<a class = "general" id="ProfsTAPerformanceLog" href="main.php?Page=ProfsTAPerformanceLog"> Prof's TA performance log </a>
+<a class = "general" id="TAWishList" href="main.php?Page=TAWishList"> TA wish list </a>
+
+</body>

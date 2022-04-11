@@ -39,12 +39,39 @@ displayTable("Sysop");
 echo "<br>";
 
 echo "TAreview <br>";
-echo "reviewid, taid, studentid, rating, review <br>";
+echo "reviewid, taid, courseid, rating, review <br>";
 displayTable("TAreview");
 
+echo "<br>";
+
+echo "Course <br>";
+echo "courseid, term_month_year, course_num, course_name, instructor_assigned_name <br>";
+displayTable("Course");
+
+echo "<br>";
+
+echo "TakingCourse <br>";
+echo "studentid,courseid <br>";
+displayTable("TakingCourse");
+
+echo "<br>";
+
+echo "AssistingCourse <br>";
+echo "taid,courseid <br>";
+displayTable("AssistingCourse");
+
+echo "<br>";
+
+echo "TeachingCourse <br>";
+echo "proffesorid,courseid <br>";
+displayTable("TeachingCourse");
 
 
+echo "<h2>Main.db Views: </h2>";
 
+echo "UserInfo <br>";
+echo "userid,firstname,lastname,username,password,usertype <br>";
+displayTable("UserInfo");
 
 function displayTable($table){
 	$pdo = new PDO("sqlite:" . "Main.db");
