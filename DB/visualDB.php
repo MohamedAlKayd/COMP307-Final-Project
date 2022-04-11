@@ -67,6 +67,15 @@ echo "proffesorid,courseid <br>";
 displayTable("TeachingCourse");
 
 
+echo "<h2>Main.db Views: </h2>";
+
+echo "UserInfo <br>";
+echo "userid,firstname,lastname,username,password,usertype <br>";
+displayTable("UserInfo");
+
+
+
+
 
 
 
