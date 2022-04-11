@@ -23,7 +23,18 @@ if($clickedOnRegister){
     if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME, $STID)){
         echo "Registration works" ;   
     }
-    echo "Resigtration Succesful!";
+    $to = $EMAIL; // this is your Email address
+    $from = "mohito.bahamsAreTheWebmasters@gmail.com"; // this is the sender's Email address
+    $subject = "Welcome to TA Management Website";
+    $subject2 = "Copy of your form submission";
+    $message = $FNAME . " " . $LNAME . " wrote the following:" . "\n\n" . "Welcome to the website";
+    $message2 = "Here is a copy of your message " . $FNAME . "\n\n" . "You will be provided with a link to dashboard shortly";
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly.";
 }
 else{
     echo "There's Something wrong! ";
