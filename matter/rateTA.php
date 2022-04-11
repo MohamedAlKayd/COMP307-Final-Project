@@ -1,9 +1,9 @@
 <?php
 /*Variables used to rate a TA*/
-$studentid = "270856020";
+$studentid = $_GET["Student"];
 display("RateReviewaTAbyCourseTOP.txt");
 
-if (sizeof($_GET)==0) {
+if ($_GET["Page"] == "getCourse") {
 	echo "<form method=\"post\" action=\"rateTA.php?Page=getTA&Student=".$studentid."\">";
 
 	echo "<h2>Course</h2>";
@@ -21,9 +21,11 @@ if (sizeof($_GET)==0) {
 }
 else if ($_GET["Page"]=="getTA") {
 	$courseid = $_POST['course'];
+	$course = getCourse($courseid);
 
 	echo "<form method=\"post\" action=\"rateTA.php?Page=rateTA&Student=".$studentid."&Course=".$courseid."\">";
 	echo"<h2>TA</h2>";
+	echo "TA's for ".$course['term_year']."-".$course['course_num']."-".$course['course_name'].";<br>";
 	echo "Choose the TA you are rating?<br>";
 	echo "<select name=\"TA\">";
 	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
@@ -40,6 +42,8 @@ else if ($_GET["Page"]=="getTA") {
 
 else if ($_GET["Page"]=="rateTA") {
 	$taid = $_POST['TA'];
+	$ta = getTA($taid);
+	echo "Rate and Review "."TA-".$ta['taid']." ".$ta['firstname']." ".$ta[2].":";
 	echo "<form method=\"post\" action=\"rateTA.php?Page=reviewSubmit&Student=".$studentid."&Course=".$_GET["Course"]."&TA=".$taid."\">";
 
 	display("RateReviewaTA.txt");
@@ -116,5 +120,30 @@ function getTAforCourse($courseid){
 
 	return $query->fetchAll();
 }
+
+function getCourse($courseid){
+	$pdo = new PDO("sqlite:" . "../DB/Main.db");
+
+	$query = $pdo->prepare("SELECT c.term_year, c.course_num, c.course_name 
+		FROM Course c 
+		WHERE c.courseid == ?;");
+	
+	$query->execute(array($courseid));
+	
+	return $query->fetch();
+}
+
+function getTA($taid){
+	$pdo = new PDO("sqlite:" . "../DB/Main.db");
+
+	$query = $pdo->prepare("SELECT ta.taid, ta.firstname, ta.lastname 
+		FROM TA ta
+		WHERE ta.taid == ?");
+	
+	$query->execute(array($taid));
+	
+	return $query->fetch();
+}
+
 
 ?>
