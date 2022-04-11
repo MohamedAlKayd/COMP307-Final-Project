@@ -1,204 +1,64 @@
 <style>
-.Course{
-    background-color: white;
-    font-color: black;
-}
-
-.TA{
-}
-
-.RateReviewButton{
-  float: left;
-  background-color:#e5e4e2;
-  border: none;
-  border-radius: 12px;
-  margin-top: 50px;
-  color: black;
-  padding: 25px 48px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 25px;
-}
-.RateReviewButton:hover{
-      background: white;
-      color: black;
-}
-.RequiredInformation{
-  background-color: white;
-  border: none;
-  border-radius: 50%;
-  margin-top: 50px;
-  color: black;
-  padding: 25px 48px;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-}
-.RequiredInformation:hover{
-      background: #e5e4e2;
-      color: black;
-}
-.dropbtn {
+.RateReview{
   background-color: #e5e4e2;
-  width: 250px;
   color: black;
-  padding: 25px;
-  font-size: 16px;
-  border: none;
-  display: none;
 }
-
-.dropdown {
-  position: relative;
-  float: left;
-  margin-top: 50px;
-  display: inline-block;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #e5e4e2;
-  min-width: 160px;
-  width: 300px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-.dropdown-content a:hover {background-color: white;}
-.dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn {background-color: white;}
-
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-
-a:link { text-decoration: none; color: black; }
-a:visited { text-decoration: none; color: black;}
-a:hover { text-decoration: none; color: black;}
-a:active { text-decoration: none; color: black;}
-
 </style>
 
 <body>
-
-<div class = "RateReviewButton"> Rate / Review TA by course <br> <p><i class="arrow down"></i></p>
-
-<button id="courseandterm1" class = "RequiredInformation" onclick="choseCourseAndTerm()">
-Required Information:
-    <ul>
-    <li>Course</li>
-    <li>Term</li>
-    <li>TA</li>
-    <li>Score Range</li>
-    <li>Comments</li>
-    </ul>
-</button>
+<div class="RateReview">
+<h1>Rate / Review a TA by course</h1>
+Please fill in all fields and click submit.<br>
 </div>
 
-<div class="dropdown">
-  <button id="courseandterm2" class="dropbtn">Course and Term</button>
-  <button id="choseTA1" class="dropdown-content" onclick="choseTA()">
-    <a href="#">Course 1 - Winter2022</a>
-    <a href="#">Course 2 - Fall2021</a>
-    <a href="#">Course 3 - Summer2022</a>
-  </button>
-</div>
+<form method="post" action="rateTA.php">
 
-<div class="dropdown">
-  <button id="choseTA2" class="dropbtn">TA</button>
-  <button id="choseRating1" class="dropdown-content" onclick="choseRating()">
-    <a href="#">TA 1</a>
-    <a href="#">TA 2</a>
-    <a href="#">TA 3</a>
-  </button>
-</div>
+<h2>Term</h2>
+Which term was the course taken in?<br>
+<select name="course">
+    <option value="----------------------------------------------------------" >----------------------------------------------------------</option>
+    <option value="summer2021" >summer2021</option>
+    <option value="fall2021">fall2021</option>
+    <option value="winter2022">winter2022</option>
+    <option value="summer2022">summer2022</option>
+    <option value="fall2022">fall2022</option>
+</select><br><br>
 
-<div class="dropdown">
-<div id="choseRating2" class="dropbtn" onclick="comments()">Rating<br></button>
-<input type="radio" NAME="operatingsystem" VALUE="1"> 1
-<input type="radio" NAME="operatingsystem" VALUE="2"> 2
-<input type="radio" NAME="operatingsystem" VALUE="3"> 3
-<input type="radio" NAME="operatingsystem" VALUE="4"> 4
-<input type="radio" NAME="operatingsystem" VALUE="5"> 5
-</div>
-</div>
+<h2>Course</h2>
+Choose the course?<br>
+<select name="term">
+    <option value="----------------------------------------------------------" >----------------------------------------------------------</option>
+    <option value="course1" >course1</option>
+    <option value="course2">course2</option>
+    <option value="course3">course3</option>
+    <option value="course4">course4</option>
+    <option value="course5">course5</option>
+</select><br><br>
 
-<div class="dropdown">
-<div id="comment" class="dropbtn"><br></button>
-Comments:<br>
-<textarea name="commentsAboutTA" rows="10" cols="30">
-  </textarea>
-</div>
-</div>
+<h2>TA</h2>
+Choose the TA you are rating?<br>
+<select name="TA">
+    <option value="----------------------------------------------------------" >----------------------------------------------------------</option>
+    <option value="TA1">TA1</option>
+    <option value="TA2">TA2</option>
+    <option value="TA3">TA3</option>
+    <option value="TA4">TA4</option>
+    <option value="TA5">TA5</option>
+</select><br><br>
+
+<h2>Rating</h2>
+How would you rate the TA on a scale of 1 to 5?<br>
+<input type="radio" NAME="rating" VALUE="1"> 1
+<input type="radio" NAME="rating" VALUE="2"> 2
+<input type="radio" NAME="rating" VALUE="3"> 3
+<input type="radio" NAME="rating" VALUE="4"> 4
+<input type="radio" NAME="rating" VALUE="5"> 5<br><br>
+
+<h2>Comments</h2>
+<textarea name="comment" rows="5" cols="50"></textarea><br><br>
+
+<!-- Submission Button -->
+<input type="submit" name="submit" value="submit"><br><br><br><br>
+</form>
 
 </body>
-
-<script>
-function choseCourseAndTerm(){
-  
-  const home = document.getElementById('courseandterm2');
-  const action = document.getElementById('courseandterm1');
-  
-  action.onclick = function(){
-  if(home.style.display != "none"){home.style.display = "none";} 
-  else{home.style.display = "block";}
-  }
-
-  }
-</script>
-
-<script>
-function choseTA(){
-  
-  const home = document.getElementById('choseTA2');
-  const action = document.getElementById('choseTA1');
-  
-  action.onclick = function(){
-  if(home.style.display != "none"){home.style.display = "none";} 
-  else{home.style.display = "block";}
-  }
-     
-  }
-</script>
-
-<script>
-function choseRating(){
-  
-  const home = document.getElementById('choseRating2');
-  const action = document.getElementById('choseRating1');
-  
-  action.onclick = function(){
-  if(home.style.display != "none"){home.style.display = "none";} 
-  else{home.style.display = "block";}
-  }
-     
-  }
-</script>
-
-<script>
-function comments(){
-  
-  const home = document.getElementById('comment');
-  const action = document.getElementById('choseRating2');
-  
-  action.onclick = function(){
-  if(home.style.display != "none"){home.style.display = "none";} 
-  else{home.style.display = "block";}
-  }
-     
-  }
-</script>

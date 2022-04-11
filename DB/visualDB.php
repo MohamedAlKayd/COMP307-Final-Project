@@ -73,12 +73,6 @@ echo "UserInfo <br>";
 echo "userid,firstname,lastname,username,password,usertype <br>";
 displayTable("UserInfo");
 
-
-
-
-
-
-
 function displayTable($table){
 	$pdo = new PDO("sqlite:" . "Main.db");
 	$result = $pdo->query("SELECT * from ".$table);

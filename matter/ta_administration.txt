@@ -1,0 +1,29 @@
+<style>
+.select{
+  background-color: #e5e4e2;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.select:hover{
+    background-color: white;
+    color: black;
+}
+</style>
+<body>
+<button class="select">Import TA cohort</button>
+<button class="select">TA Info / history</button>
+<button class="select">Course TA history</button>
+<button class="select">Add TA to course</button>
+<button class="select">Remove TA from course</button>
+<button class="select">Import old TA statistics</button>
+
+</body>
