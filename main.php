@@ -122,9 +122,25 @@ else if ($_GET["Page"]=="TAWishList") {
 	display("matter/TAWishList.txt");
 }
 
+/*1 Office Hours Responsibilites Sheet Page*/
+else if ($_GET["Page"]=="Export") {
+	display("matter/Export.txt");
+}
 
+/*1 Prof's TA Performance Log Page*/
+else if ($_GET["Page"]=="EdStatsImport") {
+	display("matter/EdStatsImport.txt");
+}
+
+/*1 Manage User's Page*/
+else if ($_GET["Page"]=="ConfirmationEmail") {
+	display("matter/ConfirmationEmail.txt");
+}
+
+
+
+/*Error Page*/
 else {
-	// ERROR PAGE
 	echo "404: Invalid Page!";
 }
 

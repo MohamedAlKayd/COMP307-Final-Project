@@ -1,0 +1,25 @@
+<style>
+.general{
+  float: left;
+  background-color:#e5e4e2;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left:10px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.general:hover{
+      background: white;
+      color: black;
+}
+</style>
+
+<body>
+<a class = "general" id="EdStatsImport" href="main.php?Page=EdStatsImport"> Ed Stats Import </a>
+</body>
