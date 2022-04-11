@@ -1,4 +1,23 @@
 <style>
+.general{
+  float: left;
+  background-color:#e5e4e2;
+  border: none;
+  border-radius: 12px;
+  margin-top: 50px;
+  margin-right: 10px;
+  margin-left:10px;
+  color: black;
+  padding: 25px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 25px;
+}
+.general:hover{
+      background: white;
+      color: black;
+}
 .selectCourse{
   background-color: #e5e4e2;
   border: none;
@@ -101,15 +120,10 @@
 </style>
 
 <body>
-<button class = "selectCourse">Select Course</button>
-<button class = "selectCourse">All TAs Report</button>
 
-<div style ="overflow:scroll" class = "channel">
-<div class = "generalListing" >Announcements</div>
-<div class = "generalListing" >Chat</div>
-<div class = "generalListing" >Assignment Notes</div>
-<div class = "generalListing">Reminders</div>
-<div class = "generalListing">Links</div>
+<a class = "general" id="SelectCourse" href="main.php?Page=SelectCourse"> Select Course </a>
+<a class = "general" id="Channel" href="main.php?Page=Channel"> Channel </a>
+<a class = "general" id="AllTAsReport" href="main.php?Page=AllTAsReport"> All TAs Report </a>
 
 </div>
 </body>

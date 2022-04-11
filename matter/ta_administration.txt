@@ -19,11 +19,12 @@
 }
 </style>
 <body>
-<button class="select">Import TA cohort</button>
-<button class="select">TA Info / history</button>
-<button class="select">Course TA history</button>
-<button class="select">Add TA to course</button>
-<button class="select">Remove TA from course</button>
-<button class="select">Import old TA statistics</button>
+<a class = "select" id="ImportTACohort" href="main.php?Page=ImportTACohort"> Import TA cohort </a>
+<a class = "select" id="TAInfoHistory" href="main.php?Page=TAInfoHistory"> TA Info / history </a>
+<a class = "select" id="CourseTAHistory" href="main.php?Page=CourseTAHistory"> Course TA history </a>
+<a class = "select" id="AddTAToCourse" href="main.php?Page=AddTAToCourse"> Add TA to course </a>
+<a class = "select" id="RemoveTAFromCourse" href="main.php?Page=RemoveTAFromCourse"> Remove TA from course </a>
+<a class = "select" id="ImportOldTAStatistics" href="main.php?Page=ImportOldTAStatistics"> Import old TA statistics </a>
+
 
 </body>

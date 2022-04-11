@@ -29,8 +29,8 @@
 }
 </style>
 <body>
-<button class="general">Manage Users</button>
-<button class="general">Import Professor and Course</button>
-<button class="general">Manual add Professor and Course</button>
+<a class = "general" id="ManageUsers" href="main.php?Page=ManageUsers"> Manage Users </a>
+<a class = "general" id="ImportProfessorandCourse" href="main.php?Page=ImportProfessorandCourse"> Import Professor and Course </a>
+<a class = "general" id="ManualAddProfessorandCourse" href="main.php?Page=ManualAddProfessorandCourse"> Manual add Professor and Course </a>
 
 </body>

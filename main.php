@@ -50,7 +50,10 @@ displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
 if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
 	// DashBoard
 	display("matter/dashboard.txt");
-} else if ($_GET["Page"]=="Administration") {
+
+} 
+/*4 Main Pages*/
+else if ($_GET["Page"]=="Administration") {
 	// TA Administration
 	display("matter/ta_administration.txt");
 } else if ($_GET["Page"]=="Management") {
@@ -62,7 +65,65 @@ if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
 } else if ($_GET["Page"]=="Sysop") {
 	// Sysop Tasks
 	display("matter/sysop_task.txt");
-} else {
+
+/* 6 TA Administration Pages*/
+} else if ($_GET["Page"]=="ImportTACohort") {
+	display("matter/ImportTACohort.txt");
+}
+else if ($_GET["Page"]=="TAInfoHistory") {
+	display("matter/TAInfoHistory.txt");
+}
+else if ($_GET["Page"]=="CourseTAHistory") {
+	display("matter/CourseTAHistory.txt");
+}
+else if ($_GET["Page"]=="AddTAToCourse") {
+	display("matter/AddTAToCourse.txt");
+}
+else if ($_GET["Page"]=="RemoveTAFromCourse") {
+	display("matter/RemoveTAFromCourse.txt");
+}
+else if ($_GET["Page"]=="ImportOldTAStatistics") {
+	display("matter/ImportOldTAStatistics.txt");
+}
+
+/* 3 Sysop Tasks Pages*/
+else if ($_GET["Page"]=="ManageUsers") {
+	display("matter/ManageUsers.txt");
+}
+else if ($_GET["Page"]=="ImportProfessorandCourse") {
+	display("matter/ImportProfessorandCourse.txt");
+}
+else if ($_GET["Page"]=="ManualAddProfessorandCourse") {
+	display("matter/ManualAddProfessorandCourse.txt");
+}
+
+/* 3 TA Management Pages*/
+else if ($_GET["Page"]=="SelectCourse") {
+	display("matter/SelectCourse.txt");
+}
+else if ($_GET["Page"]=="Channel") {
+	display("matter/Channel.txt");
+}
+else if ($_GET["Page"]=="AllTAsReport") {
+	display("matter/AllTAsReport.txt");
+}
+
+/* 4 Select Course Pages*/
+else if ($_GET["Page"]=="OfficeHoursResponsibilitiesSheet") {
+	display("matter/OfficeHoursResponsibilitiesSheet.txt");
+}
+else if ($_GET["Page"]=="TAEvaluationTAWorkload") {
+	display("matter/TAEvaluationTAWorkload.txt");
+}
+else if ($_GET["Page"]=="ProfsTAPerformanceLog") {
+	display("matter/ProfsTAPerformanceLog.txt");
+}
+else if ($_GET["Page"]=="TAWishList") {
+	display("matter/TAWishList.txt");
+}
+
+
+else {
 	// ERROR PAGE
 	echo "404: Invalid Page!";
 }
