@@ -24,7 +24,7 @@ if($clickedOnRegister){
         echo "Registration works" ;   
     }
     $to = $EMAIL; // this is your Email address
-    $from = "mohito.bahamsAreTheWebmasters@gmail.com"; // this is the sender's Email address
+    $from = "atia.islam@mail.mcgill.ca"; // this is the sender's Email address
     $subject = "Welcome to TA Management Website";
     $subject2 = "Copy of your form submission";
     $message = $FNAME . " " . $LNAME . " wrote the following:" . "\n\n" . "Welcome to the website";

@@ -9,27 +9,7 @@ $USERTYPE = " ";
 $clickedOnRegister="False";
 $clickedOnLogin="False";
 
-if(isset($_POST["signup"])){
-	$FNAME = $_POST["fname"];
-	$LNAME = $_POST["lname"];
-    $USERNAME = $_POST["uname"];
-    $EMAIL = $_POST["email"];
-    $PWD = $_POST["passwd"];
-    $STID = $_POST["stdid"];
-	$clickedOnRegister="True";
-}
 
-if($clickedOnRegister){
-    if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME, $STID)){
-		echo "Resigtration Succesful!";
-	}
- 
-}
-else{
-    echo "There's Something wrong! ";
-    echo "Please check your student ID. ";
-    echo "Your record does not exist in our database. ";
-}
 // LOGIN
 if(isset($_POST["login"])){
     $EMAIL = $_POST["email"];
