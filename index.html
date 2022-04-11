@@ -59,29 +59,25 @@
                 </form>
                 <form action="main.php" method="post" class="signup">
                     <div class="field">
+                        <input type="text" placeholder="First Name" name="fname" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Last Name" name="lname" required>
+                    </div>
+                    <div class="field">
                         <input type="text" placeholder="User Name" name="uname" required>
                     </div>
                     <div class="field">
                         <input type="text" placeholder="Email Address" name="email" required>
                     </div>
+
                     <div class="field">
                         <input type="password" placeholder="Password" name="passwd" required>
                     </div>
 
-                    <div class="field">
-                        <select name="utype" class="input" required>
-                 <option value="" >-- Please choose an option --</option>
-                 <option value="Prof">Professor</option>
-                 <option value="SysOP">System Operator</option>
-                 <option value="Student">Student</option>
-                 <option value="TA">Teaching Assistant</option>
-              </select>
-                        <p id="utype"></p>
-
-                    </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>
-                        <input id="info, utype" name="signup" type="submit" value="SIGNUP">
+                        <input id="info" name="signup" type="submit" value="SIGNUP">
                     </div>
                 </form>
             </div>

@@ -11,10 +11,11 @@ $clickedOnLogin="False";
 
 // REGISTER
 if(isset($_POST["signup"])){
+	$firstname = $_POST["fname"];
+	$lastname = $_POST["lname"];
     $USERNAME = $_POST["uname"];
     $EMAIL = $_POST["email"];
     $PWD = $_POST["passwd"];
-    $USERTYPE = $_POST["utype"];
 	$clickedOnRegister="True";
 }
 // LOGIN
@@ -30,11 +31,13 @@ CSV File intialization
 */
 
 if($clickedOnRegister=="True"){
-	$file_open = fopen("database.csv", "a+");
+	/*$file_open = fopen("database.csv", "a+");*/
+	
 }
 
 if($clickedOnLogin=="True"){
-$file_open = fopen("database.csv", "r");
+	/*$file_open = fopen("database.csv", "r");*/
+	
 }
 
 
