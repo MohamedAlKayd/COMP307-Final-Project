@@ -1,3 +1,5 @@
+<!-- This is the landing and login page of the TA management website-->
+
 <!DOCTYPE html>
 <html>
 
@@ -26,29 +28,23 @@
             </div>
             <div class="form-inner">
                 <form action="main.php" class="login" method="post">
-
                     <div class="field">
-                        <input type="text" name="email" placeholder="Email Address" required>
+                        <input type="text" name="uname" placeholder="User Name" required>
                     </div>
                     <div class="field">
                         <input type="password" name="passwd" placeholder="Password" required>
                     </div>
                     <p id="info"></p>
-
                     <div class="field">
-
                         <select name="utype" class="input" required>
-                 <option value="" >-- Please choose an option --</option>
-                 <option value="Prof">Professor</option>
-                 <option value="SysOP">System Operator</option>
-                 <option value="Student">Student</option>
-                 <option value="TA">Teaching Assistant</option>
-              </select>
-
+                            <option value="" >-- Please choose an option --</option>
+                            <option value="Prof">Professor</option>
+                            <option value="SysOP">System Operator</option>
+                            <option value="Student">Student</option>
+                            <option value="TA">Teaching Assistant</option>
+                        </select>
                     </div>
                     <p id="utype"></p>
-
-
                     <div class="field btn">
                         <div class="btn-layer"></div>
                         <input id="info, utype" name="login" type="submit" value="LOGIN">
@@ -70,11 +66,12 @@
                     <div class="field">
                         <input type="text" placeholder="Email Address" name="email" required>
                     </div>
-
                     <div class="field">
                         <input type="password" placeholder="Password" name="passwd" required>
                     </div>
-
+                    <div class="field">
+                        <input type="text" placeholder="Student ID" name="stdid" required>
+                    </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>
                         <input id="info" name="signup" type="submit" value="SIGNUP">

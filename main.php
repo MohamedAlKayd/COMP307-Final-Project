@@ -9,14 +9,48 @@ $USERTYPE = " ";
 $clickedOnRegister="False";
 $clickedOnLogin="False";
 
-// REGISTER
 if(isset($_POST["signup"])){
-	$firstname = $_POST["fname"];
-	$lastname = $_POST["lname"];
+	$FNAME = $_POST["fname"];
+	$LNAME = $_POST["lname"];
     $USERNAME = $_POST["uname"];
     $EMAIL = $_POST["email"];
     $PWD = $_POST["passwd"];
+    $STID = $_POST["stdid"];
 	$clickedOnRegister="True";
+}
+
+if($clickedOnRegister){
+    //if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME, $STID)){
+	//	echo "Resigtration Succesful!";
+	//}
+	$list = array($USERNAME, $PWD, $FNAME, $LNAME,$STID);
+	$empStr = ", ";
+
+	// this did not work before putting chmod -R 777 public_html 
+	$myfile = fopen("database.csv", "a+") or die("Unable to open appended file!");
+	//echo fread($myfile,filesize("mini4.csv"));
+	foreach ($list as $line){
+		fputcsv($myfile, $line);		
+		//fwrite($myfile, $line);
+		//fwrite($myfile, $empStr);
+	}
+	//fwrite($myfile, "\n");
+
+
+	fclose($myfile);
+
+	$myfile = fopen("database.csv", "r") or die("Unable to open read file!");
+	// Output one line until end-of-file
+	while(!feof($myfile)) {
+			echo fgets($myfile) . "<br>";
+	}
+	fclose($myfile);
+    
+}
+else{
+    echo "There's Something wrong! ";
+    echo "Please check your student ID. ";
+    echo "Your record does not exist in our database. ";
 }
 // LOGIN
 if(isset($_POST["login"])){
