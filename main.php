@@ -137,7 +137,10 @@ else if ($_GET["Page"]=="ConfirmationEmail") {
 	display("matter/ConfirmationEmail.txt");
 }
 
-
+/*1 Rate a TA's Page*/
+else if ($_GET["Page"]=="RateReviewaTAbyCourse") {
+	display("matter/RateReviewaTAbyCourse.txt");
+}
 
 /*Error Page*/
 else {
