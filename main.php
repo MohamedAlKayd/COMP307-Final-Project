@@ -6,13 +6,13 @@ $USERNAME = " ";
 $EMAIL = " ";
 $PWD = " ";
 $USERTYPE = " ";
-$clickedOnRegister="False";
+
 $clickedOnLogin="False";
 
 
 // LOGIN
 if(isset($_POST["login"])){
-    $EMAIL = $_POST["email"];
+    $USERNAME = $_POST["uname"];
 	$PWD = $_POST["passwd"]; 
 	$USERTYPE = $_POST["utype"]; 
 	$clickedOnLogin="True";  
@@ -22,131 +22,132 @@ if(isset($_POST["login"])){
 CSV File intialization
 */
 
-if($clickedOnRegister=="True"){
-	/*$file_open = fopen("database.csv", "a+");*/
-	
-}
 
 if($clickedOnLogin=="True"){
 	/*$file_open = fopen("database.csv", "r");*/
-	
+	if(userExists($USERNAME,$PWD,$USERTYPE)){
+		// --------- COMMON WEBPAGE TOP ---------
+		echo "<html>";
+		echo "<head>";
+		echo "</head>";
+		echo "<body>";
+
+		displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
+
+		// --------- ROUTING WEBPAGE BODY -----------
+		if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
+			// DashBoard
+			display("matter/dashboard.txt");
+
+		} 
+		/*4 Main Pages*/
+		else if ($_GET["Page"]=="Administration") {
+			// TA Administration
+			display("matter/ta_administration.txt");
+		} else if ($_GET["Page"]=="Management") {
+			// TA Management
+			display("matter/ta_management.txt");
+		} else if ($_GET["Page"]=="Rate") {
+			// Rate a TA
+			display("matter/rate_a_ta.txt");
+		} else if ($_GET["Page"]=="Sysop") {
+			// Sysop Tasks
+			display("matter/sysop_task.txt");
+
+		/* 6 TA Administration Pages*/
+		} else if ($_GET["Page"]=="ImportTACohort") {
+			display("matter/ImportTACohort.txt");
+		}
+		else if ($_GET["Page"]=="TAInfoHistory") {
+			display("matter/TAInfoHistory.txt");
+		}
+		else if ($_GET["Page"]=="CourseTAHistory") {
+			display("matter/CourseTAHistory.txt");
+		}
+		else if ($_GET["Page"]=="AddTAToCourse") {
+			display("matter/AddTAToCourse.txt");
+		}
+		else if ($_GET["Page"]=="RemoveTAFromCourse") {
+			display("matter/RemoveTAFromCourse.txt");
+		}
+		else if ($_GET["Page"]=="ImportOldTAStatistics") {
+			display("matter/ImportOldTAStatistics.txt");
+		}
+
+		/* 3 Sysop Tasks Pages*/
+		else if ($_GET["Page"]=="ManageUsers") {
+			display("matter/ManageUsers.txt");
+		}
+		else if ($_GET["Page"]=="ImportProfessorandCourse") {
+			display("matter/ImportProfessorandCourse.txt");
+		}
+		else if ($_GET["Page"]=="ManualAddProfessorandCourse") {
+			display("matter/ManualAddProfessorandCourse.txt");
+		}
+
+		/* 3 TA Management Pages*/
+		else if ($_GET["Page"]=="SelectCourse") {
+			display("matter/SelectCourse.txt");
+		}
+		else if ($_GET["Page"]=="Channel") {
+			display("matter/Channel.txt");
+		}
+		else if ($_GET["Page"]=="AllTAsReport") {
+			display("matter/AllTAsReport.txt");
+		}
+
+		/* 4 Select Course Pages*/
+		else if ($_GET["Page"]=="OfficeHoursResponsibilitiesSheet") {
+			display("matter/OfficeHoursResponsibilitiesSheet.txt");
+		}
+		else if ($_GET["Page"]=="TAEvaluationTAWorkload") {
+			display("matter/TAEvaluationTAWorkload.txt");
+		}
+		else if ($_GET["Page"]=="ProfsTAPerformanceLog") {
+			display("matter/ProfsTAPerformanceLog.txt");
+		}
+		else if ($_GET["Page"]=="TAWishList") {
+			display("matter/TAWishList.txt");
+		}
+
+		/*1 Office Hours Responsibilites Sheet Page*/
+		else if ($_GET["Page"]=="Export") {
+			display("matter/Export.txt");
+		}
+
+		/*1 Prof's TA Performance Log Page*/
+		else if ($_GET["Page"]=="EdStatsImport") {
+			display("matter/EdStatsImport.txt");
+		}
+
+		/*1 Manage User's Page*/
+		else if ($_GET["Page"]=="ConfirmationEmail") {
+			display("matter/ConfirmationEmail.txt");
+		}
+
+		/*1 Rate a TA's Page*/
+		else if ($_GET["Page"]=="RateReviewaTAbyCourse") {
+			display("matter/RateReviewaTAbyCourse.txt");
+		}
+
+		/*Error Page*/
+		else {
+			echo "404: Invalid Page!";
+		}
+
+		// --------- COMMON WEBPAGE BOTTOM ----------
+		display("matter/footer.txt");
+
+		echo "<body>";
+		echo "</html>";
+	}
+	else{
+		echo "User Does Not Exist";
+	}
 }
 
 
-// --------- COMMON WEBPAGE TOP ---------
-echo "<html>";
-echo "<head>";
-echo "</head>";
-echo "<body>";
 
-displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
-
-// --------- ROUTING WEBPAGE BODY -----------
-if (sizeof($_GET)==0 || $_GET["Page"]=="DashBoard") {
-	// DashBoard
-	display("matter/dashboard.txt");
-
-} 
-/*4 Main Pages*/
-else if ($_GET["Page"]=="Administration") {
-	// TA Administration
-	display("matter/ta_administration.txt");
-} else if ($_GET["Page"]=="Management") {
-	// TA Management
-	display("matter/ta_management.txt");
-} else if ($_GET["Page"]=="Rate") {
-	// Rate a TA
-	display("matter/rate_a_ta.txt");
-} else if ($_GET["Page"]=="Sysop") {
-	// Sysop Tasks
-	display("matter/sysop_task.txt");
-
-/* 6 TA Administration Pages*/
-} else if ($_GET["Page"]=="ImportTACohort") {
-	display("matter/ImportTACohort.txt");
-}
-else if ($_GET["Page"]=="TAInfoHistory") {
-	display("matter/TAInfoHistory.txt");
-}
-else if ($_GET["Page"]=="CourseTAHistory") {
-	display("matter/CourseTAHistory.txt");
-}
-else if ($_GET["Page"]=="AddTAToCourse") {
-	display("matter/AddTAToCourse.txt");
-}
-else if ($_GET["Page"]=="RemoveTAFromCourse") {
-	display("matter/RemoveTAFromCourse.txt");
-}
-else if ($_GET["Page"]=="ImportOldTAStatistics") {
-	display("matter/ImportOldTAStatistics.txt");
-}
-
-/* 3 Sysop Tasks Pages*/
-else if ($_GET["Page"]=="ManageUsers") {
-	display("matter/ManageUsers.txt");
-}
-else if ($_GET["Page"]=="ImportProfessorandCourse") {
-	display("matter/ImportProfessorandCourse.txt");
-}
-else if ($_GET["Page"]=="ManualAddProfessorandCourse") {
-	display("matter/ManualAddProfessorandCourse.txt");
-}
-
-/* 3 TA Management Pages*/
-else if ($_GET["Page"]=="SelectCourse") {
-	display("matter/SelectCourse.txt");
-}
-else if ($_GET["Page"]=="Channel") {
-	display("matter/Channel.txt");
-}
-else if ($_GET["Page"]=="AllTAsReport") {
-	display("matter/AllTAsReport.txt");
-}
-
-/* 4 Select Course Pages*/
-else if ($_GET["Page"]=="OfficeHoursResponsibilitiesSheet") {
-	display("matter/OfficeHoursResponsibilitiesSheet.txt");
-}
-else if ($_GET["Page"]=="TAEvaluationTAWorkload") {
-	display("matter/TAEvaluationTAWorkload.txt");
-}
-else if ($_GET["Page"]=="ProfsTAPerformanceLog") {
-	display("matter/ProfsTAPerformanceLog.txt");
-}
-else if ($_GET["Page"]=="TAWishList") {
-	display("matter/TAWishList.txt");
-}
-
-/*1 Office Hours Responsibilites Sheet Page*/
-else if ($_GET["Page"]=="Export") {
-	display("matter/Export.txt");
-}
-
-/*1 Prof's TA Performance Log Page*/
-else if ($_GET["Page"]=="EdStatsImport") {
-	display("matter/EdStatsImport.txt");
-}
-
-/*1 Manage User's Page*/
-else if ($_GET["Page"]=="ConfirmationEmail") {
-	display("matter/ConfirmationEmail.txt");
-}
-
-/*1 Rate a TA's Page*/
-else if ($_GET["Page"]=="RateReviewaTAbyCourse") {
-	display("matter/RateReviewaTAbyCourse.txt");
-}
-
-/*Error Page*/
-else {
-	echo "404: Invalid Page!";
-}
-
-// --------- COMMON WEBPAGE BOTTOM ----------
-display("matter/footer.txt");
-
-echo "<body>";
-echo "</html>";
 
 function display($path) {
   $file = fopen($path,"r");

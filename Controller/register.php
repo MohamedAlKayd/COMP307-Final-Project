@@ -20,10 +20,10 @@ if(isset($_POST["signup"])){
 }
 
 if($clickedOnRegister){
-    if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME, $STID)){
+    if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME,$EMAIL, $STID)){
         echo "Registration works" ;   
     }
-    $to = $EMAIL; // this is your Email address
+	$to = $EMAIL; // this is your Email address
     $from = "atia.islam@mail.mcgill.ca"; // this is the sender's Email address
     $subject = "Welcome to TA Management Website";
     $subject2 = "Copy of your form submission";
@@ -34,7 +34,7 @@ if($clickedOnRegister){
     $headers2 = "From:" . $to;
     mail($to,$subject,$message,$headers);
     mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly.";
+    echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly."; 
 }
 else{
     echo "There's Something wrong! ";
@@ -43,7 +43,7 @@ else{
 }
 
 function userExists($username,$password,$USERTYPE) {
-	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$pdo = new PDO("sqlite:" . "../DB/Main.db");
 
 	$query = $pdo->prepare("SELECT COUNT(*) FROM User u, " . $USERTYPE . " t
 		WHERE u.username == ? and u.password == ? and u.userid == t.userid");
@@ -59,7 +59,7 @@ function userExists($username,$password,$USERTYPE) {
 }
 //return true if a student with that studentid exists
 function studentExists($studentid){
-	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$pdo = new PDO("sqlite:" . "../DB/Main.db");
 	
 	$pre = $pdo->prepare("SELECT Count(*) FROM Student Where studentid == ?");
 	$pre->execute(array($studentid));
@@ -77,7 +77,7 @@ function registerStudent($username,$password,$firstname,$lastname,$email,$studen
 		return False;
 	}
 
-	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$pdo = new PDO("sqlite:" . "../DB/Main.db");
 	
 	$maxuserid = $pdo->query("SELECT MAX(userid) FROM User");
 	$newuserid = $maxuserid->fetchColumn() + 1;
