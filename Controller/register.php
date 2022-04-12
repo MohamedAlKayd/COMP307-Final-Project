@@ -1,4 +1,5 @@
 <?php
+require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
 $FNAME = " ";
 $LNAME = " ";
 $USERNAME = " ";
@@ -23,17 +24,33 @@ if($clickedOnRegister){
     if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME,$EMAIL, $STID)){
         echo "Registration works" ;   
     }
-	$to = $EMAIL; // this is your Email address
-    $from = "atia.islam@mail.mcgill.ca"; // this is the sender's Email address
-    $subject = "Welcome to TA Management Website";
-    $subject2 = "Copy of your form submission";
-    $message = $FNAME . " " . $LNAME . " wrote the following:" . "\n\n" . "Welcome to the website";
-    $message2 = "Here is a copy of your message " . $FNAME . "\n\n" . "You will be provided with a link to dashboard shortly";
+	
+	
+	$mail = new PHPMailer(false); // Passing `true` enables exceptions
 
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    mail($to,$subject,$message,$headers);
-    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    //Server settings
+    $mail->SMTPDebug = 1;//Enable verbose debug output
+    $mail->isSMTP();//Set mailer to use SMTP
+    $mail->Host = 'mail.cs.mcgill.ca';//Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;//Enable SMTP authentication
+    $mail->Username = getenv('SMTP_USERNAME');//SMTP username
+    $mail->Password = getenv('SMTP_PASSWORD');//SMTP password
+    $mail->SMTPSecure = 'tls';//Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;//TCP port to connect to
+
+
+    //Recipients
+    $mail->setFrom('atia.islam@mail.mcgill.ca');
+    $mail->addAddress('atia.islam@mail.mcgill.ca');//Add a recipient
+	//$mail->addAddress($EMAIL);
+
+
+    //Content
+    $mail->isHTML(true);//Set email format to HTML
+    $mail->Subject = 'test';
+
+    $mail->Body    = 'this is a test';
+    $mail->send();
     echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly."; 
 }
 else{
