@@ -18,7 +18,7 @@
             		redirectLogin();
           	}
         }
-        xhttp.open("GET", "UserType.php?Userid="+userid, true);
+        xhttp.open("GET", "VerifyUser.php?Userid="+userid, true);
         xhttp.send();
 	}
       }
