@@ -73,6 +73,7 @@ else if ($_GET["Page"]=="reviewSubmit") {
 if($_GET["Page"]!="reviewSubmit"){
 	display("matter/RateReviewaTAbyCoursebottom.txt");
 }
+display("matter/footer.txt");
 echo "<body>";
 echo "</html>";
 
