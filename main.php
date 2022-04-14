@@ -1,15 +1,28 @@
 <?php
 
 	
-if(sizeof($_GET)==0){
+if(sizeof($_GET)==0|| $_GET["Page"] == "Logout"){
 	header("Location: index.html");
   	exit();
 }
 else{
 	$page = $_GET["Page"];
-	displayPage("verifyUserAndRedirect.txt", $page);
+	if($page == "Logout"){
+		display(matter/logout.txt);
+	}
+	else{
+		displayPage("verifyUserAndRedirect.txt", $page);
+	}
 }
 
+function display($path) {
+  $file = fopen($path,"r");
+  while(!feof($file)) {
+    $line = fgets($file);
+    echo $line;
+  }
+  fclose($file);
+}
 
 function displayPage($path, $page){
   	$file = fopen($path,"r");
