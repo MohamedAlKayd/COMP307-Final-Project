@@ -5,16 +5,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 .hidden {
     display: none;
-  }
+}
 
 body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(./images/transp.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./images/transp.jpg);
     background-size: cover;
     background-position: center;
     height: 100vh;
