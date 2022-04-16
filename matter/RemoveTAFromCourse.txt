@@ -1,0 +1,48 @@
+<script>
+    function hideAll(){
+        document.getElementById("TA").className = "hidden";
+        document.getElementById("TAButton").className = "Left-Button";
+    }
+
+    function displayForm(usertype){
+        hideAll()
+         document.getElementById(usertype+"Button").className = "BOLD Left-Button";
+        document.getElementById(usertype).className = "show";
+    }
+
+</script>
+
+<div style = "width: 10%;height: 10%;">    
+    <a class = "Left-Button" id="TAButton" onclick="displayForm('TA')"> Remove TA from course</a>
+</div>
+
+<form id = "TA" action="AddUser.php?Usertype=TA" method="post" class="hidden">
+
+    <h3><br>Enter TA Information</h3>
+
+    <div class="field">
+        <input type="text" placeholder="term_month_year" name="term_month_year" required>
+    </div>
+    
+    <div class="field">
+        <input type="text" placeholder="course_num" name="course_num" required>
+    </div>
+    
+    <div class="field">
+        <input type="text" placeholder="TA_name" name="TA_name" required>
+    </div>
+    
+    <div class="field">
+        <input type="text" placeholder="student_ID" name="student_ID" required>
+    </div>
+
+     <div class="field">
+        <input type="text" placeholder="assigned_hours" name="assigned_hours" required>
+    </div>
+    
+    <div class="field btn">
+        <div class="btn-layer"></div>
+        <input id="info" name="signup" type="submit" value="Remove TA from course">
+    </div>
+
+</form>
