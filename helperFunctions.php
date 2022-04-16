@@ -1,4 +1,24 @@
 <?php
+
+function addTatoCourse($taid,$courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("INSERT INTO AssistingCourse (taid,courseid) VALUES (?,?)");
+	$err1 = $query->execute(array($taid,$courseid));
+
+	return $err1 == 1;
+}
+
+function removeTafromCourse($taid,$courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	
+	$query = $pdo->prepare("DELETE FROM AssistingCourse WHERE taid == ? and courseid == ?");
+
+	$err1 = $query->execute(array($taid,$courseid));
+
+	return ($err1 == 1); 
+}
+
 //returtns all comments a Ta has received
 //returns an array of rows
 //each row is a comment
