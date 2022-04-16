@@ -4,7 +4,7 @@
 //each row is a comment
 //each row is an array of this form $row = ['review']
 function getAllCommentsForTA($taid){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
     $query = $pdo->prepare("SELECT review FROM TAreview WHERE taid == ?");
 
@@ -16,7 +16,7 @@ function getAllCommentsForTA($taid){
 
 
 function getAverageTArating($taid){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
     $query = $pdo->prepare("SELECT avg(rating) FROM TAreview WHERE taid == ?");
 
@@ -31,7 +31,7 @@ function getAverageTArating($taid){
 //each row is a TA
 //each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
 function getCourses(){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
     $query = $pdo->prepare("SELECT courseid, term_year, course_num, course_name, instructor_assigned_name FROM Course");
 
@@ -46,7 +46,7 @@ function getCourses(){
 //each row is a TA
 //each row is an array of this form $row = ['taid','firstname','lastname']
 function geTAs(){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
     $query = $pdo->prepare("SELECT taid,firstname,lastname FROM TA");
 
@@ -60,7 +60,7 @@ function geTAs(){
 //each row is a Course associated with that TA
 //each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
 function getCourseforTA($taid){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
 	$query = $pdo->prepare("SELECT c.courseid, c.term_year, c.course_num, c.course_name, c.instructor_assigned_name 
 		FROM Course c, AssistingCourse ac
@@ -75,7 +75,7 @@ function getCourseforTA($taid){
 //each row is a TA associated with that course
 //each row is an array of this form $row = ['taid', 'firstname', 'lastname']
 function getTAforCourse($courseid){
-	$pdo = new PDO("sqlite:" . "Main.db");
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
 	$query = $pdo->prepare("SELECT ta.taid, ta.firstname, ta.lastname 
 		FROM TA ta, AssistingCourse ac
