@@ -14,25 +14,25 @@ displayActive("matter/header.txt","Administration",$usertype);
 
 
 if(empty($page)){
-	display("matter/ta_administration.txt");
+	displaySub("matter/ta_administration.txt", $userid);
 }
 else if($page == "ImportTACohort"){
-	display("matter/ImportTACohort.txt");
+	displaySub("matter/ImportTACohort.txt", $userid);
 }
 else if($page == "TAInfoHistory"){
-	display("matter/TAInfoHistory.txt");
+	displaySub("matter/TAInfoHistory.txt", $userid);
 }
 else if($page == "CourseTAHistory"){
-	display("matter/CourseTAHistory.txt");
+	displaySub("matter/CourseTAHistory.txt", $userid);
 }
 else if($page == "AddTAToCourse"){
-	display("matter/AddTAToCourse.txt");
+	displaySub("matter/AddTAToCourse.txt", $userid);
 }
 else if($page == "RemoveTAFromCourse"){
-	display("matter/RemoveTAFromCourse.txt");
+	displaySub("matter/RemoveTAFromCourse.txt", $userid);
 }
 else if($page == "ImportOldTAStatistics"){
-	display("matter/ImportOldTAStatistics.txt");
+	displaySub("matter/ImportOldTAStatistics.txt", $userid);
 }
 
 display("matter/footer.txt");
@@ -59,6 +59,20 @@ function getUserType($userid){
 
 	$pdo = null;
   return $query->fetch()[0];
+}
+
+
+function displaySub($path, $userid){
+	$file = fopen($path,"r");
+	while(!feof($file)) {
+		$line = fgets($file);
+		if (strstr($line,"STANDIN")){
+			$line=str_replace("STANDIN",$userid, $line);
+		}
+  	if($line != ""){
+			echo $line;
+		}
+  }
 }
 
 function displayActive($path,$target,$USERTYPE) {
