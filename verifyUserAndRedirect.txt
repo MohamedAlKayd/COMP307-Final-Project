@@ -10,8 +10,8 @@
 	else{
         	const xhttp = new XMLHttpRequest();
         	xhttp.onload = function(){
-          	var usertype = this.responseText;
-          	if(usertype.length > 0){
+          	var response = this.responseText;
+          	if(response.length > 0){
             		redirect(userid);
           	}
           	else{

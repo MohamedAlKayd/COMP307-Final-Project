@@ -1,0 +1,14 @@
+
+<div style = "width: 100%;height: 10%;">
+
+<a class = "Left-Button" id=" ManageU" href="Sysop.php?Page=ManageUsers&Userid=STANDIN"> Manage Users </a>
+
+<a class = "Left-Button" id="AddP" href="Sysop.php?Page=AddUser&Userid=STANDIN"> Add User </a>
+
+<a class = "Left-Button" id="AddC" href="Sysop.php?Page=AddCourse&Userid=STANDIN"> Add Course </a>
+
+<a class = "Left-Button" id="ImportP" href="Sysop.php?Page=ImportProfs&Userid=STANDIN"> Import Profs </a>
+
+<a class = "Left-Button" id="ImportC" href="Sysop.php?Page=ImportCourses&Userid=STANDIN"> Import Courses </a>
+
+</div>

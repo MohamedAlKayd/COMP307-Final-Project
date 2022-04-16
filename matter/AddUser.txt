@@ -1,0 +1,140 @@
+<script>
+    function hideAll(){
+        document.getElementById("Student").className = "hidden";
+        document.getElementById("Admin").className = "hidden";
+        document.getElementById("Prof").className = "hidden";
+        document.getElementById("Sysop").className = "hidden";
+        document.getElementById("TA").className = "hidden";
+
+        document.getElementById("StudentButton").className = "Left-Button";
+        document.getElementById("AdminButton").className = "Left-Button";
+        document.getElementById("ProfButton").className = "Left-Button";
+        document.getElementById("SysopButton").className = "Left-Button";
+        document.getElementById("TAButton").className = "Left-Button";
+    }
+
+    function displayForm(usertype){
+        hideAll()
+         document.getElementById(usertype+"Button").className = "BOLD Left-Button";
+
+        document.getElementById(usertype).className = "show";
+    }
+
+</script>
+
+<div style = "width: 10%;height: 10%;">
+
+    <a class = "Left-Button" id="StudentButton" onclick="displayForm('Student')"> Add Student </a>
+    
+    <a class = "Left-Button" id="AdminButton" onclick="displayForm('Admin')"> Add Admin</a>
+    
+    <a class = "Left-Button" id="ProfButton" onclick="displayForm('Prof')"> Add Prof </a>
+    
+    <a class = "Left-Button" id="SysopButton" onclick="displayForm('Sysop')"> Add Sysop </a>
+    
+    <a class = "Left-Button" id="TAButton" onclick="displayForm('TA')"> Add TA </a>
+    
+</div>
+
+<form id = "Student" action="AddUser.php?Usertype=Student" method="post" class="hidden">
+    <h3>Enter Student Information</h3>
+    <div class="field">
+        <input type="text" placeholder="First Name" name="fname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Last Name" name="lname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="User Name" name="uname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Email Address" name="email" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Student ID" name="stdid" required>
+    </div>
+    <div class="field btn">
+        <div class="btn-layer"></div>
+        <input id="info" name="signup" type="submit" value="Add Student">
+    </div>
+</form>
+
+<form id = "Admin" action="AddUser.php?Usertype=Admin" method="post" class="hidden">
+    <h3>Enter Admin Information</h3>
+    <div class="field">
+        <input type="text" placeholder="First Name" name="fname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Last Name" name="lname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="User Name" name="uname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Email Address" name="email" required>
+    </div>
+    <div class="field btn">
+        <div class="btn-layer"></div>
+        <input id="info" name="signup" type="submit" value="Add Admin">
+    </div>
+</form>
+
+<form id = "Prof" action="AddUser.php?Usertype=Prof" method="post" class="hidden">
+    <h3>Enter Prof Information</h3>
+    <div class="field">
+        <input type="text" placeholder="First Name" name="fname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Last Name" name="lname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="User Name" name="uname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Email Address" name="email" required>
+    </div>
+    <div class="field btn">
+        <div class="btn-layer"></div>
+        <input id="info" name="signup" type="submit" value="Add Prof">
+    </div>
+</form>
+
+<form id = "Sysop" action="AddUser.php?Usertype=Sysop" method="post" class="hidden">
+    <h3>Enter Sysop Information</h3>
+    <div class="field">
+        <input type="text" placeholder="First Name" name="fname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Last Name" name="lname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="User Name" name="uname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Email Address" name="email" required>
+    </div>
+    <div class="field btn">
+        <div class="btn-layer"></div>
+        <input id="info" name="signup" type="submit" value="Add Sysop">
+    </div>
+</form>
+
+<form id = "TA" action="AddUser.php?Usertype=TA" method="post" class="hidden">
+    <h3>Enter TA Information</h3>
+    <div class="field">
+        <input type="text" placeholder="First Name" name="fname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Last Name" name="lname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="User Name" name="uname" required>
+    </div>
+    <div class="field">
+        <input type="text" placeholder="Email Address" name="email" required>
+    </div>
+    <div class="field btn">
+        <div class="btn-layer"></div>
+        <input id="info" name="signup" type="submit" value="Add TA">
+    </div>
+</form>

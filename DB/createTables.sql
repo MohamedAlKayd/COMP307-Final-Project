@@ -1,7 +1,7 @@
 CREATE TABLE User (
     userid INTEGER PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
-    password TEXT UNIQUE NOT NULL,
+    password TEXT UNIQUE,
     ticket INTEGER,
     ticketexpires TEXT
 );
