@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script>
+      //rtores the user id in the browser in variable Userid
+      function storeUserIdAndRedirect(userid){
+        sessionStorage.Userid = userid;
+        window.location.replace("dashboard.php?Userid="+userid);
+      }
+    </script>
+  </head>
+  <body onload = "javascript:storeUserIdAndRedirect(STANDINID)">
+  </body>
+</html>

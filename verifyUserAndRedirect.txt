@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function getUserType(){
+        var userid = sessionStorage.Userid;
+	if(typeof(userid) === "undefined"){
+	  redirectLogin();
+	}
+	else{
+        	const xhttp = new XMLHttpRequest();
+        	xhttp.onload = function(){
+          	var usertype = this.responseText;
+          	if(usertype.length > 0){
+            		redirect(userid);
+          	}
+          	else{
+            		redirectLogin();
+          	}
+        }
+        xhttp.open("GET", "VerifyUser.php?Userid="+userid, true);
+        xhttp.send();
+	}
+      }
+
+      function redirect(userid){
+        window.location.replace("PATHSTANDIN.php?Userid="+userid);
+      }
+
+      function redirectLogin(){
+	window.location.replace("index.html");
+      }
+    </script>
+
+  </head>
+  <body id="body" onload="javascript:getUserType()">
+
+  </body>
+</html>

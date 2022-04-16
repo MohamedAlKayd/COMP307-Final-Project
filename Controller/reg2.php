@@ -1,4 +1,7 @@
 <?php
+//export SMTP_USERNAME=socsusername
+//export SMTP_PASSWORD=socspassword
+
 require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
 $FNAME = " ";
 $LNAME = " ";
@@ -24,24 +27,9 @@ if($clickedOnRegister){
     if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME,$EMAIL, $STID)){
         echo "Registration works" ;   
     }
-<<<<<<< HEAD
-	$to = $EMAIL; // this is your Email address
-    $from = "atia.islam@mail.mcgill.ca"; // this is the sender's Email address
-    $subject = "Welcome to TA Management Website";
-    $subject2 = "Copy of your form submission";
-    $message = $FNAME . " " . $LNAME . " wrote the following:" . "\n\n" . "Welcome to the website";
-    $message2 = "Here is a copy of your message " . $FNAME . "\n\n" . "You will be provided with a link to dashboard shortly";
-
-    $headers = "From:" . $from;
-    $headers2 = "From:" . $to;
-    mail($to,$subject,$message,$headers);
-    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-    echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly.<br>"; 
-    echo "<input type='button' onclick=\"location.href='../index.html'\" value='Go To Login'></input>";
-=======
 	
 	
-	$mail = new PHPMailer(false); // Passing `true` enables exceptions
+    $mail = new PHPMailer(false); // Passing `true` enables exceptions
 
     //Server settings
     $mail->SMTPDebug = 1;//Enable verbose debug output
@@ -64,10 +52,11 @@ if($clickedOnRegister){
     $mail->isHTML(true);//Set email format to HTML
     $mail->Subject = 'test';
 
-    $mail->Body    = 'this is a test';
+    $mail->Body = 'this is a test';
+
+
     $mail->send();
     echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly."; 
->>>>>>> 53158a2a84be1d4de8053c726f5c8a953566e51e
 }
 else{
     echo "There's Something wrong! ";

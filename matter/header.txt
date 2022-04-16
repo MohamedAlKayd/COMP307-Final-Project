@@ -20,6 +20,25 @@ font-size: 75px;
   display: inline-block;
   font-size: 20px;
 }
+#Logout{
+  float: left;
+  margin-left: 5px;
+  margin-top: 1%;
+  background-color: #e5e4e2;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+
+}
+
+#Logout:hover{
+ color:black;
+ background: white;
+}
 
 a:link { text-decoration: none; color: black; }
 a:visited { text-decoration: none; color: black;}
@@ -30,9 +49,7 @@ a:active { text-decoration: none; color: black;}
     background: white;
 }
 
-.Button:hover{
-    background: white;
-}
+
 
 @media screen and (min-width:551px) and (max-width: 1000px){
 .Button{
@@ -64,6 +81,8 @@ a:active { text-decoration: none; color: black;}
 <a class = "Button" id="RateaTA" href="main.php?Page=Rate"> Rate a TA </a>
 
 <a class = "Button" id="SysopTasks" href="main.php?Page=Sysop"> Sysop Tasks </a>
+
+<a class = "Button" id="Logout" href="main.php?Page=Logout"> Logout </a>
 
 </div>
 
