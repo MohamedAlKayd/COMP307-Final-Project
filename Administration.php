@@ -3,6 +3,7 @@
 /*Variables used for Administration*/
 $userid = $_GET["Userid"];
 $usertype = getUserType($userid);
+$page = $_GET["Page"];
 
 echo "<html>";
 echo "<head>";
@@ -10,6 +11,30 @@ echo "</head>";
 echo "<body>";
 
 displayActive("matter/header.txt","Administration",$usertype);
+
+
+if(empty($page)){
+	display("matter/ta_administration.txt");
+}
+else if($page == "ImportTACohort"){
+	display("matter/ImportTACohort.txt");
+}
+else if($page == "TAInfoHistory"){
+	display("matter/TAInfoHistory.txt");
+}
+else if($page == "CourseTAHistory"){
+	display("matter/CourseTAHistory.txt");
+}
+else if($page == "AddTAToCourse"){
+	display("matter/AddTAToCourse.txt");
+}
+else if($page == "RemoveTAFromCourse"){
+	display("matter/RemoveTAFromCourse.txt");
+}
+else if($page == "ImportOldTAStatistics"){
+	display("matter/ImportOldTAStatistics.txt");
+}
+
 display("matter/footer.txt");
 
 echo "<body>";
@@ -68,6 +93,7 @@ function displayActive($path,$target,$USERTYPE) {
 		);
 	}
 	else $hideList = array();
+
 
   while(!feof($file)) {
 		$line = fgets($file);
