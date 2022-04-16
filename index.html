@@ -14,7 +14,7 @@
             <div class="title login">
                 Login Form
             </div>
-            <div class="title signup">
+            <div id = "SignupForm" class="title signup">
                 Signup Form
             </div>
         </div>
@@ -54,7 +54,29 @@
                         Not a member? <a href="">  Signup now</a>
                     </div>
                 </form>
-                <form action="Controller/register.php" method="post" class="signup">
+                <div id = "TypeOptions">
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <button id="info, utype" name="login" onclick="displayForm('TA')" type="button" >TA</button>TA</button>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <button id="info, utype" name="login" onclick="displayForm('Student')" type="button" >Student</button>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <button id="info, utype" name="login" onclick="displayForm('Admin')" type="button" >Admin</button>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <button id="info, utype" name="login" onclick="displayForm('Sysop')" type="button" >Sysop</button>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <button id="info, utype" name="login" onclick="displayForm('Prof')" type="button" >Proffesor</button>
+                    </div>
+                </div>
+                <form id = "Student" action="Controller/register.php?UserType=Student" method="post" class="hidden">
                     <div class="field">
                         <input type="text" placeholder="First Name" name="fname" required>
                     </div>
@@ -78,9 +100,83 @@
                         <input id="info" name="signup" type="submit" value="SIGNUP">
                     </div>
                 </form>
+                <form id = "TA" action="Controller/register.php?UserType=TA" method="post" class="hidden">
+                    <div class="field">
+                        <input type="text" placeholder="Enter given UserName" name="uname" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Create new Password" name="passwd" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input id="info" name="signup" type="submit" value="SIGNUP">
+                    </div>
+                </form>
+                <form id = "Prof" action="Controller/register.php?UserType=Prof" method="post" class="hidden">
+                    <div class="field">
+                        <input type="text" placeholder="Enter given UserName" name="uname" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Create new Password" name="passwd" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input id="info" name="signup" type="submit" value="SIGNUP">
+                    </div>
+                </form>
+                <form id = "Admin" action="Controller/register.php?UserType=Admin" method="post" class="hidden">
+                    <div class="field">
+                        <input type="text" placeholder="Enter given UserName" name="uname" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Create new Password" name="passwd" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input id="info" name="signup" type="submit" value="SIGNUP">
+                    </div>
+                </form>
+                <form id = "Sysop" action="Controller/register.php?UserType=Sysop" method="post" class="hidden">
+                    <div class="field">
+                        <input type="text" placeholder="Enter given UserName" name="uname" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Create new Password" name="passwd" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input id="info" name="signup" type="submit" value="SIGNUP">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+
+    <form style="display: none;" action="Controller/register.php" method="post" class="hidden">
+        <div class="field">
+            <input type="text" placeholder="First Name" name="fname" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Last Name" name="lname" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="User Name" name="uname" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Email Address" name="email" required>
+        </div>
+        <div class="field">
+            <input type="password" placeholder="Password" name="passwd" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Student ID" name="stdid" required>
+        </div>
+        <div class="field btn">
+            <div class="btn-layer"></div>
+            <input id="info" name="signup" type="submit" value="SIGNUP">
+        </div>
+    </form>
     <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");
@@ -99,6 +195,22 @@
             signupBtn.click();
             return false;
         });
+
+        function hideAll(){
+            document.getElementById("TA").className = "hidden";
+            document.getElementById("Student").className = "hidden";
+            document.getElementById("Prof").className = "hidden";
+            document.getElementById("Admin").className = "hidden";
+            document.getElementById("Sysop").className = "hidden";
+            document.getElementById("TypeOptions").className = "hidden";
+        }
+
+        function displayForm(usertype){
+            hideAll();
+            console.log(usertype);
+            document.getElementById(usertype).className = "";
+            document.getElementById("SignupForm").innerText = usertype+" Signup Form";
+        }
     </script>
 </body>
 
