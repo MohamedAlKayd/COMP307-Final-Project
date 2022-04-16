@@ -4,8 +4,8 @@ $LNAME = " ";
 $USERNAME = " ";
 $EMAIL = " ";
 $PWD = " ";
-$USERTYPE = "Student";
-$clickedOnRegister = "False";
+$USERTYPE = $_GET['UserType'];
+
 
 
 // REGISTER
@@ -16,13 +16,78 @@ if(isset($_POST["signup"])){
     $EMAIL = $_POST["email"];
     $PWD = $_POST["passwd"];
     $STID = $_POST["stdid"];
-	$clickedOnRegister="True";
 }
 
-if($clickedOnRegister){
-    if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME,$EMAIL, $STID)){
-        echo "Registration works" ;   
-    }
+if(isset($_POST["signup"])){
+	$USERNAME = $_POST["uname"];
+	$PWD = $_POST["passwd"];
+	if($USERTYPE == "Student"){
+		$FNAME = $_POST["fname"];
+		$LNAME = $_POST["lname"];
+    	$EMAIL = $_POST["email"];
+    	$STID = $_POST["stdid"];
+		if(registerStudent($USERNAME, $PWD, $FNAME, $LNAME,$EMAIL, $STID)){
+			echo "Registration works" ;   
+		}
+		sendEmail();
+	}
+	else{
+		if(EdditUserpsw($USERNAME,$USERTYPE,$PWD)){
+			echo "User Registration works" ;
+			echo "<input type='button' onclick=\"location.href='../index.html'\" value='Go To Login'></input>";
+		}
+	}
+}
+else{
+    echo "There's Something wrong! ";
+}
+
+function EdditUserpsw($username,$usertype,$password){
+    $pdo = new PDO("sqlite:" . "../DB/Main.db");
+	$query = $pdo->prepare(
+        "Select userid
+		From UserInfo
+		Where username == ? and usertype == ? and password IS NULL"
+	);
+ 
+	$err1 = $query->execute(array($username,$usertype));
+	if($err1 != 1){
+		return FALSE;
+	}
+	
+	$userid = $query->fetch()[0];
+	if(empty($userid)){
+		
+		return FALSE;
+	}
+	
+    $query2 = $pdo->prepare(
+        "Update User 
+        SET password = ?
+	    Where userid == ?"
+	);
+
+    $err2 = $query2->execute(array($password,$userid));
+	
+	$pdo = null;
+    return ($err2 == 1);
+}
+
+function getStudentId($userid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT studentid 
+	FROM Student
+	Where userid == ?"
+	);
+
+	$query->execute(array($userid));
+
+	$pdo = null;
+	return $query->fetch()[0];
+}
+
+function sendEmail(){
 	$to = $EMAIL; // this is your Email address
     $from = "atia.islam@mail.mcgill.ca"; // this is the sender's Email address
     $subject = "Welcome to TA Management Website";
@@ -36,11 +101,6 @@ if($clickedOnRegister){
     mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
     echo "Mail Sent. Thank you " . $FNAME . ", we will contact you shortly.<br>"; 
     echo "<input type='button' onclick=\"location.href='../index.html'\" value='Go To Login'></input>";
-}
-else{
-    echo "There's Something wrong! ";
-    echo "Please check your student ID. ";
-    echo "Your record does not exist in our database. ";
 }
 
 function userExists($username,$password,$USERTYPE) {
