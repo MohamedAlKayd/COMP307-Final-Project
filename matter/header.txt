@@ -7,6 +7,18 @@ height: 15%;
 font-size: 75px;
 }
 
+.hidden {
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.BOLD{
+  font-weight: bold;
+}
+
 .Button{
   float: right;
   margin-right: 5px;
@@ -33,6 +45,20 @@ font-size: 75px;
   display: inline-block;
   font-size: 20px;
 
+}
+
+.Left-Button{
+  float: left;
+  margin-left: 5px;
+  margin-top: 1%;
+  background-color: #e5e4e2;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
 }
 
 #Logout:hover{

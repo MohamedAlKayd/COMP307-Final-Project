@@ -26,6 +26,7 @@ if (sizeof($_GET)==1 || $_GET["Page"] == "getCourse") {
 	}
 
     	echo "</select><br><br>";
+	
 
 }
 else if ($_GET["Page"]=="getTA") {
