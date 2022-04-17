@@ -17,20 +17,174 @@ if(empty($page)){
 }
 
 else if($page == "SelectCourse"){
-	displaySub("matter/SelectCourse.txt", $userid);
+	echo "<form method=\"post\" action=\"Management.php?Page=CourseSelected&Userid=".$userid."\">";
+
+	echo "<h2>Course</h2>";
+	echo "Select A Course<br>";
+	echo "<select name=\"course\">";
+    	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+    	
+	$courseArray = getCourses();
+	foreach($courseArray as $row){
+		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
+	}
+
+    echo "</select><br><br>";
+	echo "<input type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+	echo "</form>";
+}
+else if($page == "CourseSelected"){
+	$courseid = $_POST['course'];
+	displaySub2("matter/SelectCourse.txt", $userid,$courseid);
 }
 else if($page == "ProfsTAPerformanceLog"){
+<<<<<<< HEAD
 	displaySub("matter/ProfsTAPerformanceLog.txt", $userid);
 }
 else if($page == "TAWishList"){
 	displaySub("matter/TAWishList.txt", $userid);
+=======
+	$courseid = $_GET["Courseid"];
+	echo "<form method=\"post\" action=\"Management.php?Page=AddProfsTAPerformanceLog&Userid=".$userid."&Courseid=".$courseid."\">";
+
+	echo "<h2>TA Performance Log</h2>";
+	echo "Select A TA<br>";
+	echo "<select name=\"taid\">";
+    	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+    	
+	$TAArray = getTAforCourse($courseid);
+	foreach($TAArray as $row){
+		echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
+	}
+    echo "</select><br><br>";
+
+	echo "Write a Note<br>";
+	echo "<textarea name=\"note\" rows=\"5\" cols=\"50\"></textarea><br><br>";
+
+	echo "<input type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+	echo "</form>";
 }
+else if($page == "AddProfsTAPerformanceLog"){
+	$courseid = $_GET["Courseid"];
+	$profid = getProfid($userid);
+	$taid = $_POST['taid'];
+	$note = $_POST['note'];
+	
+	addToTAPerformanceLog($taid,$courseid,$profid,$note);
+	header("Location: main.php?Page=Management");
+}
+else if($page == "TAWishList"){
+	$courseid = $_GET["Courseid"];
+	echo "<form method=\"post\" action=\"Management.php?Page=AddTAWishList&Userid=".$userid."&Courseid=".$courseid."\">";
+
+	echo "<h2>TA Wish List</h2>";
+	echo "Select TA to Add to Wish List<br>";
+	echo "<select name=\"taid\">";
+    	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+    	
+	$TAArray = getTAs();
+	foreach($TAArray as $row){
+		echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
+	}
+    echo "</select><br><br>";
+
+	echo "<input type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+	echo "</form>";
+}
+else if($page == "AddTAWishList"){
+	$courseid = $_GET["Courseid"];
+	$profid = getProfid($userid);
+	$taid = $_POST['taid'];
+
+	addToTAWishlist($taid,$courseid,$profid);
+	header("Location: main.php?Page=Management");
+}
+else{
+	displaySub("matter/ta_management.txt", $userid);
+>>>>>>> f1687b09119f7682befd10e5390d20d33e88a4a9
+}
+
 
 
 display("matter/footer.txt");
 
 echo "<body>";
 echo "</html>";
+
+//returtns all TAs
+//returns an array of rows
+//each row is a TA
+//each row is an array of this form $row = ['taid','firstname','lastname']
+function getTAs(){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT taid,firstname,lastname FROM TA");
+
+    $query->execute();
+
+	$pdo = null;
+    return $query->fetchAll();
+}
+
+function addToTAWishlist($taid,$courseid,$profid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("INSERT INTO TAWishlist (taid,courseid,profid) VALUES (?,?,?)");
+	$err1 = $query->execute(array($taid,$courseid,$profid));
+
+	return $err1 == 1;
+}
+
+function addToTAPerformanceLog($taid,$courseid,$profid,$comment){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$maxlogid = $pdo->query("SELECT MAX(logid) FROM TAPerformanceLog");
+	$newlogid = $maxlogid->fetchColumn() + 1;
+
+	$query = $pdo->prepare("INSERT INTO TAPerformanceLog (logid,taid,courseid,profid,comment) VALUES (?,?,?,?,?)");
+	$err1 = $query->execute(array($newlogid,$taid,$courseid,$profid,$comment));
+
+	return $err1 == 1;
+}
+
+function getProfid($userid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT proffesorid FROM Prof Where userid == ?");
+
+    $query->execute(array($userid));
+
+	$pdo = null;
+    return $query->fetch()[0];
+}
+
+//returns an array of rows (access each rows like this: foreach($arrray as $row){})
+//each row is a TA associated with that course
+//each row is an array of this form $row = ['taid', 'firstname', 'lastname']
+function getTAforCourse($courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT ta.taid, ta.firstname, ta.lastname 
+		FROM TA ta, AssistingCourse ac
+		WHERE ta.taid == ac.taid and ac.courseid == ?");
+	$query->execute(array($courseid));
+	$pdo = null;
+	return $query->fetchAll();
+}
+
+//returtns all Courses
+//returns an array of rows
+//each row is a TA
+//each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
+function getCourses(){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT courseid, term_year, course_num, course_name, instructor_assigned_name FROM Course");
+
+    $query->execute();
+
+	$pdo = null;
+    return $query->fetchAll();
+}
 
 function display($path) {
   $file = fopen($path,"r");
@@ -47,6 +201,22 @@ function displaySub($path, $userid){
 		$line = fgets($file);
 		if (strstr($line,"STANDIN")){
 			$line=str_replace("STANDIN",$userid, $line);
+		}
+  	if($line != ""){
+			echo $line;
+		}
+  }
+}
+
+function displaySub2($path, $userid, $courseid){
+	$file = fopen($path,"r");
+	while(!feof($file)) {
+		$line = fgets($file);
+		if (strstr($line,"STANDIN")){
+			$line=str_replace("STANDIN",$userid, $line);
+		}
+		if (strstr($line,"STAND2IN")){
+			$line=str_replace("STAND2IN",$courseid, $line);
 		}
   	if($line != ""){
 			echo $line;

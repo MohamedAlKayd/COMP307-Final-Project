@@ -21,9 +21,7 @@
 </style>
 
 <body>
-<a class = "general" id="OfficeHoursResponsibilitiesSheet" href="main.php?Page=OfficeHoursResponsibilitiesSheet"> Office Hours / responsibilities Sheet </a>
-<a class = "general" id="TAEvaluationTAWorkload" href="main.php?Page=TAEvaluationTAWorkload"> TA evaluation / TA Workload </a>
-<a class = "general" id="ProfsTAPerformanceLog" href="main.php?Page=ProfsTAPerformanceLog"> Prof's TA performance log </a>
-<a class = "general" id="TAWishList" href="main.php?Page=TAWishList"> TA wish list </a>
+<a class = "general" id="ProfsTAPerformanceLog" href="Management.php?Page=ProfsTAPerformanceLog&Userid=STANDIN&Courseid=STAND2IN"> Prof's TA performance log </a>
+<a class = "general" id="TAWishList" href="Management.php?Page=TAWishList&Userid=STANDIN&Courseid=STAND2IN"> TA wish list </a>
 
 </body>
