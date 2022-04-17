@@ -1,7 +1,6 @@
 DROP TABLE TakingCourse;
 DROP TABLE AssistingCourse;
 DROP TABLE TeachingCourse;
-DROP TABLE Course;
 DROP TABLE Student;
 DROP TABLE TA;
 DROP TABLE Prof;
@@ -9,4 +8,7 @@ DROP TABLE Admin;
 DROP TABLE Sysop;
 DROP TABLE USER;
 DROP TABLE TAreview;
+DROP TABLE Course;
+DROP TABLE TAWishlist;
+DROP TABLE TAPerformanceLog;
 DROP VIEW UserInfo;

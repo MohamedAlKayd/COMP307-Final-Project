@@ -1,4 +1,4 @@
-INSERT INTO User(userid, username, password) VALUES
+    INSERT INTO User(userid, username, password) VALUES
     (1, 'bob', 'abc123'),
     (2, 'linda', '99tt55'),
     (3, 'jeremy', '1234'),
@@ -56,28 +56,13 @@ INSERT INTO TeachingCourse (proffesorid,courseid) VALUES
     (1168, 3),
     (1167, 4);
 
+INSERT INTO TAWishlist (taid,courseid,profid) VALUES
+    (111567887, 1,1167),
+    (222666000, 4,1167);
 
-CREATE VIEW UserInfo(userid,firstname,lastname,username,password,email,usertype) AS
-SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, s.email, ('Student') as usertype
-From Student s, User u
-Where s.userid = u.userid
-UNION
-SELECT  ta.userid, ta.firstname, ta.lastName, u.username, u.password, ta.email, ('TA') as usertype
-From TA ta, User u
-Where ta.userid = u.userid
-UNION
-SELECT  p.userid, p.firstname, p.lastName, u.username, u.password, p.email, ('Prof') as usertype
-From Prof p, User u
-Where p.userid = u.userid
-UNION
-SELECT  a.userid, a.firstname, a.lastName, u.username, u.password, a.email, ('Admin') as usertype
-From Admin a, User u
-Where a.userid = u.userid
-UNION
-SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, s.email, ('Sysop') as usertype
-From Sysop s, User u
-Where s.userid = u.userid;
-
+INSERT INTO TAPerformanceLog (logid,taid,courseid,profid,comment) VALUES
+    (1, 111567887, 1,1167, 'Very good'),
+    (2, 222666000, 4,1167, 'Not the best');
 
 
 

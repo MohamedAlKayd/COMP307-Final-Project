@@ -1,5 +1,25 @@
 <?php
 
+function addToTAPerformanceLog($taid,$courseid,$profid,$comment){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$maxlogid = $pdo->query("SELECT MAX(logid) FROM TAPerformanceLog");
+	$newlogid = $maxlogid->fetchColumn() + 1;
+
+	$query = $pdo->prepare("INSERT INTO TAPerformanceLog (logid,taid,courseid,profid,comment) VALUES (?,?,?,?,?)");
+	$err1 = $query->execute(array($newlogid,$taid,$courseid,$profid,$comment));
+
+	return $err1 == 1;
+}
+
+function addToTAWishlist($taid,$courseid,$profid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("INSERT INTO TAWishlist (taid,courseid,profid) VALUES (?,?,?)");
+	$err1 = $query->execute(array($taid,$courseid,$profid));
+
+	return $err1 == 1;
+}
+
 function addTatoCourse($taid,$courseid){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
