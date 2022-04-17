@@ -20,3 +20,11 @@
         <input id="info" name="signup" type="submit" value="Add Course">
     </div>
 </form>
+
+<script>
+document.getElementById("Sysop").addEventListener("submit", myFunction);
+
+function myFunction() {
+  alert("The course was added");
+}
+</script>

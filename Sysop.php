@@ -29,7 +29,6 @@ if($page == "ManageUsers"){
 	}
 	else{
 		echo "<form method=\"post\" action=\"Sysop.php?Page=ManageUsers&Userid=".$userid."\">";
-
 		echo "<h2>Users</h2>";
 		echo "Select A User:<br>";
 		echo "<select name=\"User\">";
