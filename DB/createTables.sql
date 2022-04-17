@@ -116,24 +116,24 @@ CREATE TABLE TAWishlist(
     PRIMARY key (taid,courseid,profid)
 );
 
-CREATE VIEW UserInfo(userid,firstname,lastname,username,password,usertype) AS
-SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, ('Student') as usertype
+CREATE VIEW UserInfo(userid,firstname,lastname,username,password,email,usertype) AS
+SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, s.email, ('Student') as usertype
 From Student s, User u
 Where s.userid = u.userid
 UNION
-SELECT  ta.userid, ta.firstname, ta.lastName, u.username, u.password, ('TA') as usertype
+SELECT  ta.userid, ta.firstname, ta.lastName, u.username, u.password, ta.email, ('TA') as usertype
 From TA ta, User u
 Where ta.userid = u.userid
 UNION
-SELECT  p.userid, p.firstname, p.lastName, u.username, u.password, ('Prof') as usertype
+SELECT  p.userid, p.firstname, p.lastName, u.username, u.password, p.email, ('Prof') as usertype
 From Prof p, User u
 Where p.userid = u.userid
 UNION
-SELECT  a.userid, a.firstname, a.lastName, u.username, u.password, ('Admin') as usertype
+SELECT  a.userid, a.firstname, a.lastName, u.username, u.password, a.email, ('Admin') as usertype
 From Admin a, User u
 Where a.userid = u.userid
 UNION
-SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, ('Sysop') as usertype
+SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, s.email, ('Sysop') as usertype
 From Sysop s, User u
 Where s.userid = u.userid;
 
