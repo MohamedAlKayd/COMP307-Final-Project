@@ -17,7 +17,7 @@ if(empty($page)){
 	displaySub("matter/ta_administration.txt", $userid);
 }
 else if($page == "ImportTACohort"){
-	displaySub("matter/ImportTACohort.txt", $userid);
+	displaySub("matter/ImportTACohort.php", $userid);
 }
 else if($page == "TAInfoHistory"){
 	displaySub("matter/TAInfoHistory.txt", $userid);
