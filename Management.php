@@ -12,10 +12,7 @@ echo "<body>";
 
 displayActive("matter/header.txt","Management",$usertype);
 
-if($usertype != "Prof"){
-	echo "Sorry There are no Functionalities for Your User Type (".$usertype.")";
-	exit(1);
-}
+
 
 if(empty($page)){
 	displaySub("matter/ta_management.txt", $userid);
