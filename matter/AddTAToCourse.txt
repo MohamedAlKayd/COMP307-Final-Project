@@ -1,48 +1,76 @@
-<script>
-    function hideAll(){
-        document.getElementById("TA").className = "hidden";
-        document.getElementById("TAButton").className = "Left-Button";
-    }
+<style>
+.dropbtn {
+  background-color: #e5e4e2;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
 
-    function displayForm(usertype){
-        hideAll()
-         document.getElementById(usertype+"Button").className = "BOLD Left-Button";
-        document.getElementById(usertype).className = "show";
-    }
+.dropdown{
+  position: relative;
+  display: inline-block;
+}
 
-</script>
+.dropdown2{
+  position: relative;
+  display: none;
+}
 
-<div style = "width: 10%;height: 10%;">    
-    <a class = "Left-Button" id="TAButton" onclick="displayForm('TA')"> Add TA to course</a>
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #e5e4e2;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: white;}
+</style>
+
+<body>
+
+<h2>Add TA to a course</h2>
+<p>Choose a TA and the course</p>
+
+<div class="dropdown" id="starter">
+  <button class="dropbtn">Choose a TA</button>
+  <div class="dropdown-content">
+   <button onclick="myFunction()">TA 1</button>
+   <button onclick="myFunction()">TA 2</button>
+   <button onclick="myFunction()">TA 3</button>
+  </div>
 </div>
 
-<form id = "TA" action="AddUser.php?Usertype=TA" method="post" class="hidden">
+<div class="dropdown" id="myDIV">
+  <button class="dropbtn">Choose a Course</button>
+  <div class="dropdown-content">
+    <a href="#">Course 1</a>
+    <a href="#">Course 2</a>
+    <a href="#">Course 3</a>
+  </div>
+</div>
 
-    <h3>Enter TA Information</h3>
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  var y = document.getElementById("starter");
 
-    <div class="field">
-        <input type="text" placeholder="term_month_year" name="term_month_year" required>
-    </div>
-    
-    <div class="field">
-        <input type="text" placeholder="course_num" name="course_num" required>
-    </div>
-    
-    <div class="field">
-        <input type="text" placeholder="TA_name" name="TA_name" required>
-    </div>
-    
-    <div class="field">
-        <input type="text" placeholder="student_ID" name="student_ID" required>
-    </div>
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
 
-     <div class="field">
-        <input type="text" placeholder="assigned_hours" name="assigned_hours" required>
-    </div>
-    
-    <div class="field btn">
-        <div class="btn-layer"></div>
-        <input id="info" name="signup" type="submit" value="Add TA to course">
-    </div>
-
-</form>
+}
+</script>

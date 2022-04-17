@@ -85,7 +85,7 @@ function getCourses(){
 //returns an array of rows
 //each row is a TA
 //each row is an array of this form $row = ['taid','firstname','lastname']
-function geTAs(){
+function getTAs(){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
     $query = $pdo->prepare("SELECT taid,firstname,lastname FROM TA");

@@ -3,6 +3,7 @@
 /*Variables used for Management*/
 $userid = $_GET["Userid"];
 $usertype = getUserType($userid);
+$page = $_GET["Page"];
 
 echo "<html>";
 echo "<head>";
@@ -10,6 +11,22 @@ echo "</head>";
 echo "<body>";
 
 displayActive("matter/header.txt","Management",$usertype);
+
+if(empty($page)){
+	displaySub("matter/ta_management.txt", $userid);
+}
+
+else if($page == "SelectCourse"){
+	displaySub("matter/SelectCourse.txt", $userid);
+}
+else if($page == "Channel"){
+	displaySub("matter/Channel.txt", $userid);
+}
+else if($page == "AllTAsReport"){
+	displaySub("matter/AllTAsReport.txt", $userid);
+}
+
+
 display("matter/footer.txt");
 
 echo "<body>";
@@ -24,6 +41,18 @@ function display($path) {
   fclose($file);
 }
 
+function displaySub($path, $userid){
+	$file = fopen($path,"r");
+	while(!feof($file)) {
+		$line = fgets($file);
+		if (strstr($line,"STANDIN")){
+			$line=str_replace("STANDIN",$userid, $line);
+		}
+  	if($line != ""){
+			echo $line;
+		}
+  }
+}
 
 function getUserType($userid){
   $pdo = new PDO("sqlite:" . "DB/Main.db");

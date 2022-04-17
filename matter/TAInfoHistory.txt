@@ -46,8 +46,3 @@
     <a href="#">TA 3</a>
   </div>
 </div>
-
-
-<script>
-
-</script>

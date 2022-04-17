@@ -1,4 +1,37 @@
 <style>
+.dropbtn {
+  background-color: #e5e4e2;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #e5e4e2;}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn {background-color: white;}
+
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -17,6 +50,34 @@ tr:nth-child(even) {
 </style>
 
 <body>
+
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#myDIV {
+  width: 100%;
+  padding: 50px 0;
+  text-align: center;
+  background-color: lightblue;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<p>Choose a TA:</p>
+
+<div class="dropdown">
+  <button class="dropbtn">TAs</button>
+  <div class="dropdown-content">
+  <button onclick="myFunction()">TA 1 </button>
+  <button onclick="myFunction()">TA 2 </button>
+  <button onclick="myFunction()">TA 3 </button>
+
+  </div>
+
+<div id="myDIV">
 
 <h2>Course TA history feature</h2>
 
@@ -64,5 +125,19 @@ tr:nth-child(even) {
   </tr>
 
 </table>
+</div>
 
 </body>
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+

@@ -12,3 +12,17 @@ Processing '/etc/joe/editorrc'...
 Processing '/etc/joe/ftyperc'...
 Finished processing /etc/joe/ftyperc
 Finished processing /etc/joe/editorrc
+
+*** These modified files were found in JOE when it aborted on Sat Apr 16 18:57:26 2022
+*** JOE was aborted by UNIX signal 1
+
+*** File '(Unnamed)'
+/home/2021/mmahmo27/CurrentCourses/COMP310/COMP310-Assignment-3/.git/COMMIT_EDITMSG
+/home/2021/mmahmo27/public_html/Project/.git/MERGE_MSG
+/home/2021/mmahmo27/public_html/Project/.git/MERGE_MSG
+
+*** File '* Startup Log *'
+Processing '/etc/joe/editorrc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/editorrc
