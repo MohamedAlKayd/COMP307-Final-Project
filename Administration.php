@@ -27,6 +27,7 @@ else if($page == "CourseTAHistory"){
 }
 else if($page == "AddTAToCourse"){
 	displaySub("matter/AddTAToCourse.txt", $userid);
+	
 }
 else if($page == "RemoveTAFromCourse"){
 	displaySub("matter/RemoveTAFromCourse.txt", $userid);

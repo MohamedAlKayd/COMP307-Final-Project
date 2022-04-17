@@ -19,11 +19,11 @@ if(empty($page)){
 else if($page == "SelectCourse"){
 	displaySub("matter/SelectCourse.txt", $userid);
 }
-else if($page == "Channel"){
-	displaySub("matter/Channel.txt", $userid);
+else if($page == "ProfsTAPerformanceLog"){
+	displaySub("matter/ProfsTAPerformanceLog.txt", $userid);
 }
-else if($page == "AllTAsReport"){
-	displaySub("matter/AllTAsReport.txt", $userid);
+else if($page == "TAWishList"){
+	displaySub("matter/TAWishList.txt", $userid);
 }
 
 

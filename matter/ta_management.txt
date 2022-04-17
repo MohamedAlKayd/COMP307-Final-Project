@@ -122,8 +122,8 @@
 <body>
 
 <a class = "general" id="SelectCourse" href="Management.php?Page=SelectCourse&Userid=STANDIN""> Select Course </a>
-<a class = "general" id="Channel" href="Management.php?Page=Channel&Userid=STANDIN""> Channel </a>
-<a class = "general" id="AllTAsReport" href="Management.php?Page=AllTAsReport&Userid=STANDIN""> All TAs Report </a>
+<a class = "general" id="Channel" href="Management.php?Page=ProfsTAPerformanceLog&Userid=STANDIN""> ProfsTAPerformanceLog </a>
+<a class = "general" id="AllTAsReport" href="Management.php?Page=TAWishList&Userid=STANDIN""> TAWishList </a>
 
 </div>
 </body>

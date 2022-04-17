@@ -1,4 +1,8 @@
 <style>
+.intialDisplay{
+  display: none;
+}
+
 .dropbtn {
   background-color: #e5e4e2;
   color: black;
@@ -39,10 +43,32 @@
 <p>Gathers all the information about the selected TA.</p>
 
 <div class="dropdown">
-  <button class="dropbtn">TAs</button>
+  <div class="dropbtn">TAs</button>
   <div class="dropdown-content">
-    <a href="#">TA 1</a>
-    <a href="#">TA 2</a>
-    <a href="#">TA 3</a>
+    <button onclick="myFunction()">TA 1</button><br>
+    <button onclick="myFunction()">TA 2</button><br>
+    <button onclick="myFunction()">TA 3</button><br>
   </div>
 </div>
+
+<div id="change" class="intialDisplay">
+<br> TA Cohort
+<br> Student rating average
+<br> Professor Performance Log 
+<br> Student Rating Comments
+<br> Prof Wish List Membership
+<br> Courses currently assigned to this term
+</div>
+
+</body>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("change");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
