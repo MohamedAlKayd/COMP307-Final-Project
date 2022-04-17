@@ -137,11 +137,11 @@ a:active { text-decoration: none; color: black;}
   text-decoration:underline:
 }
 h3{
-   margin: 15px;
+   margin: 20px;
    text-shadow: 0 2px #999;
 }
 .field input[type="text"] {
-    margin: 10px; 
+    margin: 15px; 
     width: 50%;
     outline: none;
     padding-left: 15px;
@@ -152,7 +152,7 @@ h3{
     transition: all 0.3s ease;
 }
 #info{
-    margin:15px;
+    margin:25px;
     background:#50b752;
     padding:15px;
     border-radius:15px;

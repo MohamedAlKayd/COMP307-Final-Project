@@ -32,7 +32,8 @@ if($page == "ManageUsers"){
 		echo "<div class=\"search_categories\">";
 		echo "<div class=\"select-menu\">";	
 		echo "<h2>Users</h2>";
-		echo "Select A User:<br>";
+		echo "<text style=\"margin:15px;\"> Select A User:</text>";
+		echo "<br>";
 		echo "<select name=\"User\">";
 			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 			
@@ -42,10 +43,15 @@ if($page == "ManageUsers"){
 		}
 
 		echo "</select><br><br>";
-		
-		echo "<input type=\"submit\" name=\"Edit\" value=\"Edit\">";
-		echo "<input type=\"submit\" name=\"Remove\" value=\"Remove\">";
+	    //echo "<div class=\"field\">";	
+		echo "<input style=\"margin:15px;\" type=\"submit\" name=\"Edit\" value=\"Edit\">";
+		//echo "</div>";	
+
+        //echo "<div class=\"field\">";
+		echo "<input style=\"margin:5px;\" type=\"submit\" name=\"Remove\" value=\"Remove\">";
+		//echo "</div>";
 		echo "</form>";
+		
 		echo "</div>";
 		echo "</div>";
 	}

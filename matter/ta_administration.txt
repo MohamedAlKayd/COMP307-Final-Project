@@ -10,21 +10,32 @@
   padding: 25px 48px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  font-size: 25px;
+  font-size: 20px;
 }
 .select:hover{
     background-color: white;
     color: black;
 }
+.sysmenu .select {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 10%;
+}
+
 </style>
 <body>
-<a class = "select" id="ImportTACohort" href="Administration.php?Page=ImportTACohort&Userid=STANDIN"> Import TA cohort </a>
-<a class = "select" id="TAInfoHistory" href="Administration.php?Page=TAInfoHistory&Userid=STANDIN"> TA Info / history </a>
-<a class = "select" id="CourseTAHistory" href="Administration.php?Page=CourseTAHistory&Userid=STANDIN"> Course TA history </a>
-<a class = "select" id="AddTAToCourse" href="Administration.php?Page=AddTAToCourse&Userid=STANDIN"> Add TA to course </a>
-<a class = "select" id="RemoveTAFromCourse" href="Administration.php?Page=RemoveTAFromCourse&Userid=STANDIN"> Remove TA from course </a>
-<a class = "select" id="ImportOldTAStatistics" href="Administration.php?Page=ImportOldTAStatistics&Userid=STANDIN"> Import old TA statistics </a>
+<div class="sysmenu">
+  <a class = "select" id="ImportTACohort" href="Administration.php?Page=ImportTACohort&Userid=STANDIN"> Import TA cohort </a>
+  <a class = "select" id="TAInfoHistory" href="Administration.php?Page=TAInfoHistory&Userid=STANDIN"> TA Info / history </a>
+  <a class = "select" id="CourseTAHistory" href="Administration.php?Page=CourseTAHistory&Userid=STANDIN"> Course TA history </a>
+  <a class = "select" id="AddTAToCourse" href="Administration.php?Page=AddTAToCourse&Userid=STANDIN"> Add TA to course </a>
+  <a class = "select" id="RemoveTAFromCourse" href="Administration.php?Page=RemoveTAFromCourse&Userid=STANDIN"> Remove TA from course </a>
+  <a class = "select" id="ImportOldTAStatistics" href="Administration.php?Page=ImportOldTAStatistics&Userid=STANDIN"> Import old TA statistics </a>
+  <br>
+  <br>
+  <br>
 
+</div>
 
 </body>
