@@ -99,7 +99,7 @@ CREATE TABLE TAPerformanceLog(
     logid INTEGER PRIMARY KEY NOT NULL,
     taid INTEGER NOT NULL,
     courseid INTEGER NOT NULL,
-    profid INTEGER NOT NULL,
+    profid INTEGER NOT NULL,  
     comment TEXT,
     FOREIGN key (taid) references TA(taid),
     FOREIGN key (profid) references Prof(proffesorid),
