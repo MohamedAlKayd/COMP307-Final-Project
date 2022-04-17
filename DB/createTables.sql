@@ -81,6 +81,7 @@ CREATE TABLE TakingCourse(
 CREATE TABLE AssistingCourse(
     taid INTEGER NOT NULL,
     courseid INTEGER NOT NULL,
+    assigned_hours INTEGER,
     FOREIGN key (taid) references TA(taid),
     FOREIGN key (courseid) references Course(courseid),
     PRIMARY key (taid,courseid)

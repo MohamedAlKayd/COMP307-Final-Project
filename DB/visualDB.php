@@ -57,7 +57,7 @@ displayTable("TakingCourse");
 echo "<br>";
 
 echo "AssistingCourse <br>";
-echo "taid,courseid <br>";
+echo "taid,courseid,assigned_hours <br>";
 displayTable("AssistingCourse");
 
 echo "<br>";

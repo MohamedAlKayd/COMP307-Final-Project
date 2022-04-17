@@ -20,11 +20,11 @@ function addToTAWishlist($taid,$courseid,$profid){
 	return $err1 == 1;
 }
 
-function addTatoCourse($taid,$courseid){
+function addTatoCourse($taid,$courseid,$assigned_hours){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
-	$query = $pdo->prepare("INSERT INTO AssistingCourse (taid,courseid) VALUES (?,?)");
-	$err1 = $query->execute(array($taid,$courseid));
+	$query = $pdo->prepare("INSERT INTO AssistingCourse (taid,courseid,assigned_hours) VALUES (?,?,?)");
+	$err1 = $query->execute(array($taid,$courseid,$assigned_hours));
 
 	return $err1 == 1;
 }
