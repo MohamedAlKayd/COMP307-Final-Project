@@ -20,7 +20,13 @@ else if($page == "ImportTACohort"){
 	displaySub("matter/ImportTACohort.php", $userid);
 }
 else if($page == "TAInfoHistory"){
-	displaySub("matter/TAInfoHistory.txt", $userid);
+	if(isset($_POST["submitTA"])){
+		$taid = $_POST["taid"];
+		displayTAhistory($taid);
+	}
+	else{
+		displayAllTAs("TAInfoHistory",$userid);
+	}
 }
 else if($page == "CourseTAHistory"){
 	if(isset($_POST["submitTA"])){
@@ -28,21 +34,7 @@ else if($page == "CourseTAHistory"){
 		displayhistory("matter/CourseTAHistory.txt", $taid);
 	}
 	else{
-		echo "<form method=\"post\" action=\"Administration.php?Page=CourseTAHistory&Userid=".$userid."\">";
-
-		echo "<h2>TA History</h2>";
-		echo "Select A TA<br>";
-		echo "<select name=\"taid\">";
-			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
-			
-		$TAArray = getTAs();
-		foreach($TAArray as $row){
-			echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
-		}
-
-		echo "</select><br><br>";
-		echo "<input type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
-		echo "</form>";
+		displayAllTAs("CourseTAHistory",$userid);
 	}
 }
 else if($page == "AddTAToCourse"){
@@ -116,6 +108,128 @@ display("matter/footer.txt");
 
 echo "<body>";
 echo "</html>";
+
+function displayTAhistory($taid){
+	$ta = getTA($taid);
+	$taname = $ta['firstname']." ".$ta[2];
+	$avrRating = getAverageTArating($taid);
+
+	$studentComments = getAllCommentsForTA($taid);
+
+	$profComments = getAllLogsForTA($taid);
+
+	$wishlist = getWishList($taid);
+
+	echo "<h2>TA History for ".$taname."</h2>";
+	echo "Avergae Rating: ".$avrRating;
+
+	echo "<h4>Student Comments: </h4>";
+	displayComments($studentComments);
+	echo "<h4>Proffesor Comments: </h4>";
+	displayComments($profComments);
+
+	echo "<h4>Wish List: </h4>";
+	displayWish($wishlist);
+
+	echo "<h4>Course History: </h4>";
+	displayhistory("matter/CourseTAHistory.txt", $taid);
+}
+
+function displayWish($wishlist){
+	$count = 0;
+	foreach($wishlist as $wish){
+		if($count > 0){
+			echo "<br>";
+		}
+		
+		$courseid = $wish[0];
+		$profid = $wish[1];
+		$course = getCourse($courseid);
+		$coursename = $course['term_year']."-".$course['course_num']."-".$course['course_name'];
+		$prof = getProf($profid);
+		$profname = $prof['firstname']." ".$prof[2];
+		$count += 1;
+		echo "Wish List Entry".$count.": Proffesor ".$profname." Wants this TA for The following Course: ".$coursename."<br>";
+	}
+}
+
+
+function displayComments($comments){
+	$count = 0;
+	foreach($comments as $content){
+		if($count > 0){
+			echo "<br>";
+		}
+		$count += 1;
+		echo "Comment ".$count.": ".$content[0]."<br>";
+	}
+}
+
+function getWishList($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT courseid,profid FROM TAWishlist WHERE taid == ?");
+
+    $query->execute(array($taid));
+
+	$pdo = null;
+    return $query->fetchAll();
+}
+
+function getAllLogsForTA($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT comment FROM TAPerformanceLog WHERE taid == ?");
+
+    $query->execute(array($taid));
+
+	$pdo = null;
+    return $query->fetchAll();
+}
+
+//returtns all comments a Ta has received
+//returns an array of rows
+//each row is a comment
+//each row is an array of this form $row = ['review']
+function getAllCommentsForTA($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT review FROM TAreview WHERE taid == ?");
+
+    $query->execute(array($taid));
+
+	$pdo = null;
+    return $query->fetchAll();
+}
+
+function getAverageTArating($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT avg(rating) FROM TAreview WHERE taid == ?");
+
+    $query->execute(array($taid));
+
+	$pdo = null;
+    return $query->fetch()[0];
+}
+
+function displayAllTAs($page,$userid){
+	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."\">";
+
+		echo "<h2>TA History</h2>";
+		echo "Select A TA<br>";
+		echo "<select name=\"taid\">";
+			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+			
+		$TAArray = getTAs();
+		foreach($TAArray as $row){
+			echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
+		}
+
+		echo "</select><br><br>";
+		echo "<input type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
+		echo "</form>";
+}
 
 
 function removeTafromCourse($taid,$courseid){
@@ -215,6 +329,19 @@ function getTA($taid){
 		WHERE ta.taid == ?");
 	
 	$query->execute(array($taid));
+	
+	$pdo = null;
+	return $query->fetch();
+}
+
+function getProf($profid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT p.proffesorid, p.firstname, p.lastname 
+		FROM Prof p
+		WHERE p.proffesorid == ?");
+	
+	$query->execute(array($profid));
 	
 	$pdo = null;
 	return $query->fetch();
