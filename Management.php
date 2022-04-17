@@ -12,11 +12,17 @@ echo "<body>";
 
 displayActive("matter/header.txt","Management",$usertype);
 
+if($usertype != "Prof"){
+	echo "Sorry There are no Functionalities for Your User Type (".$usertype.")";
+	exit(1);
+}
+
 if(empty($page)){
 	displaySub("matter/ta_management.txt", $userid);
 }
 
 else if($page == "SelectCourse"){
+	$profid = getProfid($userid);
 	echo "<form method=\"post\" action=\"Management.php?Page=CourseSelected&Userid=".$userid."\">";
 
 	echo "<h2>Course</h2>";
@@ -24,7 +30,7 @@ else if($page == "SelectCourse"){
 	echo "<select name=\"course\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	
-	$courseArray = getCourses();
+	$courseArray = getCourseProf($profid);
 	foreach($courseArray as $row){
 		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
 	}
@@ -168,15 +174,15 @@ function getTAforCourse($courseid){
 //returns an array of rows
 //each row is a TA
 //each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
-function getCourses(){
+function getCourseProf($profid){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
-    $query = $pdo->prepare("SELECT courseid, term_year, course_num, course_name, instructor_assigned_name FROM Course");
-
-    $query->execute();
-
+	$query = $pdo->prepare("SELECT c.courseid, c.term_year, c.course_num, c.course_name, c.instructor_assigned_name 
+		FROM Course c, TeachingCourse tc
+		WHERE tc.proffesorid == ? and c.courseid == tc.courseid");
+	$query->execute(array($profid));
 	$pdo = null;
-    return $query->fetchAll();
+	return $query->fetchAll();
 }
 
 function display($path) {
