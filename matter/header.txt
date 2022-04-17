@@ -1,11 +1,70 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
+*, ::after, ::before {
+        box-sizing: border-box;
+  }
+  body {
+  	margin: 0;
+  	font-family: Arial, Verdana, Helvetica, sans-serif;
+  }
 
-.header{
-background-color: #e5e4e2;
-width: 100%;
-height: 15%;
-font-size: 75px;
+.topnav {
+  top: 0;
+  overflow: hidden;
+  display:box;
+  display-content: space-evenly;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url(./CSS/images/Nature_.jpg);
+  width: 100%;
+  height: 15%;
+  font-size: 75px;
 }
+
+.topnav a {
+  float: right;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+@media screen and (max-width: 920px) {
+  	.topnav a:not(:first-child) {display: none;}
+  	.topnav a.icon {
+      background-color: #ddd;
+      float: right ;
+  		display: block;
+  	}
+  }
+
+  @media screen and (max-width: 920px) {
+  	.topnav.responsive {position: relative;}
+  	.topnav.responsive .icon {
+      background-color: #ddd;
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+  	}
+  	.topnav.responsive a {
+    	float: none;
+    	display: block;
+    	text-align: right; 
+  	}
+  }
 
 .hidden {
   display: none;
@@ -47,20 +106,6 @@ font-size: 75px;
 
 }
 
-.Left-Button{
-  float: left;
-  margin-left: 5px;
-  margin-top: 1%;
-  background-color: #e5e4e2;
-  border: none;
-  color: black;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-}
-
 #Logout:hover{
  color:black;
  background: white;
@@ -76,39 +121,94 @@ a:active { text-decoration: none; color: black;}
 }
 
 
-
-@media screen and (min-width:551px) and (max-width: 1000px){
-.Button{
-  font-size: 14px;
-  margin-right: 1px;
-  padding: 10px 20px;
+.Left-Button{
+  float: left;
+  position:fixed:
+  margin-left: 5px;
+  margin-top: 1%;
+  background-color: #e5e4e2;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  text-decoration:underline:
 }
+h3{
+   margin: 15px;
+   text-shadow: 0 2px #999;
 }
-
-@media screen and (min-width:180px) and (max-width: 551px){
-    .Button{
-  font-size: 12px;
-  margin-right: 1px;
-  padding: 10px 20px;
+.field input[type="text"] {
+    margin: 10px; 
+    width: 50%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
 }
+#info{
+    margin:15px;
+    background:#50b752;
+    padding:15px;
+    border-radius:15px;
+    box-shadow: 0 9px #999;
+    cursor:pointer;
 }
-
+#info:hover{
+  background-color: #3e8e41
+}
 
 </style>
+<script>
+	function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+    	x.className += " responsive";
+    } else {
+      x.className = "topnav";
+   	}
+  }
+         
+  function showContent(menuElement, theContent) {
+  // Hide everything
+    //document.getElementById("content0").style.display="none";
+    document.getElementById("content1").style.display="none";
+    document.getElementById("content2").style.display="none";
+    document.getElementById("content3").style.display="none";
+    document.getElementById("content4").style.display="none";
+
+    document.getElementById("Logout").className="none";
+    document.getElementById("SysopTasks").className="none";
+    document.getElementById("RateaTA").className="none";
+    document.getElementById("TAManagement").className="none";
+    document.getElementById("TAAdministration").className="none";
+
+		document.getElementById(theContent).style.height="100%";
+   	document.getElementById(menuElement).className="active";
+	}
+</script>
 
 <head>
 
-<div class = "header">
+<div class = "topnav" id="myTopnav">
+<a class = "Button empty" id="Logout" href="main.php?Page=Logout" onclick="showContent('Logout', 'content0')"> Logout </a>
 
-<a class = "Button" id="TAAdministration" href="main.php?Page=Administration"> TA Administration </a>
+<a class = "Button none" id="SysopTasks" href="main.php?Page=Sysop" onclick="showContent('SysopTasks', 'content1')"> Sysop Tasks </a>
 
-<a class = "Button" id="TAManagement" href="main.php?Page=Management"> TA Management </a>
+<a class = "Button none" id="RateaTA" href="main.php?Page=Rate" onclick="showContent('RateaTA', 'content2')"> Rate a TA </a>
 
-<a class = "Button" id="RateaTA" href="main.php?Page=Rate"> Rate a TA </a>
+<a class = "Button none" id="TAManagement" href="main.php?Page=Management" onclick="showContent('TAManagement', 'content3')"> TA Management </a>
 
-<a class = "Button" id="SysopTasks" href="main.php?Page=Sysop"> Sysop Tasks </a>
+<a class = "Button none" id="TAAdministration" href="main.php?Page=Administration" onclick="showContent('TAAdministration', 'content4')"> TA Administration </a>
 
-<a class = "Button" id="Logout" href="main.php?Page=Logout"> Logout </a>
+
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+	<i class="fa fa-bars"></i>
 
 </div>
 

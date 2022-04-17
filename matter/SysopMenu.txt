@@ -1,14 +1,50 @@
 
-<div style = "width: 100%;height: 10%;">
+<style>
+.sysmenu{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+}
+.search_categories{
+  font-size: 13px;
+  padding: 20px 18px 12px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
 
-<a class = "Left-Button" id=" ManageU" href="Sysop.php?Page=ManageUsers&Userid=STANDIN"> Manage Users </a>
+.search_categories .select-menu{
+  width: 120%;
+  background-position:80% center;
+}
 
-<a class = "Left-Button" id="AddP" href="Sysop.php?Page=AddUser&Userid=STANDIN"> Add User </a>
+.search_categories .select-menu select{
+  background: transparent;
+  line-height: 10px;
+  border: 1;
+  padding: 0;
+  border-radius: 10px;
+  width: 30%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}
 
-<a class = "Left-Button" id="AddC" href="Sysop.php?Page=AddCourse&Userid=STANDIN"> Add Course </a>
+</style>
 
-<a class = "Left-Button" id="ImportP" href="Sysop.php?Page=ImportProfs&Userid=STANDIN"> Import Profs </a>
+<div class="sysmenu">
 
-<a class = "Left-Button" id="ImportC" href="Sysop.php?Page=ImportCourses&Userid=STANDIN"> Import Courses </a>
+    <a class = "Left-Button" id=" ManageU" href="Sysop.php?Page=ManageUsers&Userid=STANDIN"> Manage Users </a>
+
+    <a class = "Left-Button" id="AddP" href="Sysop.php?Page=AddUser&Userid=STANDIN"> Add User </a>
+
+    <a class = "Left-Button" id="AddC" href="Sysop.php?Page=AddCourse&Userid=STANDIN"> Add Course </a>
+
+    <a class = "Left-Button" id="ImportP" href="Sysop.php?Page=ImportProfs&Userid=STANDIN"> Import Profs </a>
+
+    <a class = "Left-Button" id="ImportC" href="Sysop.php?Page=ImportCourses&Userid=STANDIN"> Import Courses </a>
 
 </div>
