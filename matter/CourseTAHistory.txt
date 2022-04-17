@@ -66,32 +66,18 @@ tr:nth-child(even) {
 </head>
 <body>
 
-<p>Choose a TA:</p>
-
-<div class="dropdown">
-  <button class="dropbtn">TAs</button>
-  <div class="dropdown-content">
-  <button onclick="myFunction()">TA 1 </button>
-  <button onclick="myFunction()">TA 2 </button>
-  <button onclick="myFunction()">TA 3 </button>
-
-  </div>
 
 <div id="myDIV">
 
-<h2>Course TA history feature</h2>
+<h2>TA Course history for NAMESTANDIN</h2>
 
 <table>
   <tr>
-    <th>TA</th>
-    <th>Course that the TA was assigned to this term and in the past</th>
+    <th>Term_Year</th>
+    <th>Course Name</th>
+    <th>Proffesor</th>
   </tr>
-
-  <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>COMP303</td>
-  </tr>
-
+  ADDCONTENTHERE
 </table>
 </div>
 

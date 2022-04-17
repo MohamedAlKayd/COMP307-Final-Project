@@ -23,14 +23,90 @@ else if($page == "TAInfoHistory"){
 	displaySub("matter/TAInfoHistory.txt", $userid);
 }
 else if($page == "CourseTAHistory"){
-	displaySub("matter/CourseTAHistory.txt", $userid);
+	if(isset($_POST["submitTA"])){
+		$taid = $_POST["taid"];
+		displayhistory("matter/CourseTAHistory.txt", $taid);
+	}
+	else{
+		echo "<form method=\"post\" action=\"Administration.php?Page=CourseTAHistory&Userid=".$userid."\">";
+
+		echo "<h2>TA History</h2>";
+		echo "Select A TA<br>";
+		echo "<select name=\"taid\">";
+			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+			
+		$TAArray = getTAs();
+		foreach($TAArray as $row){
+			echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
+		}
+
+		echo "</select><br><br>";
+		echo "<input type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
+		echo "</form>";
+	}
 }
 else if($page == "AddTAToCourse"){
-	displaySub("matter/AddTAToCourse.txt", $userid);
-	
+	if(isset($_POST["submitTA"])){
+		$taid = $_POST["taid"];
+		displayCourses($userid,$taid, "Add", "AddTAToCourse");
+	}
+	else if(isset($_POST["submitCourse"])){
+		$courseid = $_POST["courseid"];
+		displayTAs($userid,$courseid, "Add", "AddTAToCourse");
+	}
+	else if(isset($_POST["submitCourseTA"])){
+		$taid = $_GET["TAid"];
+		$assigned_hours = $_POST["hours"];
+		$courseid = $_POST["courseid"];
+		echo $assigned_hours."<br>";
+		echo $courseid."<br>";
+		echo $taid."<br>";
+		addTatoCourse($taid,$courseid,$assigned_hours);
+		header("Location: main.php?Page=Administration");
+	}
+	else if(isset($_POST["submitTACourse"])){
+		$courseid = $_GET["Courseid"];
+		$assigned_hours = $_POST["hours"];
+		$taid = $_POST["taid"];
+		echo $assigned_hours."<br>";
+		echo $courseid."<br>";
+		echo $taid."<br>";
+		addTatoCourse($taid,$courseid,$assigned_hours);
+		header("Location: main.php?Page=Administration");
+	}
+	else{
+		//displaySub("matter/AddTAToCourse.txt", $userid);
+		displayChooseTAorCourse($userid, "AddTAToCourse",  "Add");
+	}
 }
 else if($page == "RemoveTAFromCourse"){
-	displaySub("matter/RemoveTAFromCourse.txt", $userid);
+	if(isset($_POST["submitTA"])){
+		$taid = $_POST["taid"];
+		displayCourses($userid,$taid,"Remove", "RemoveTAFromCourse");
+	}
+	else if(isset($_POST["submitCourse"])){
+		$courseid = $_POST["courseid"];
+		displayTAs($userid,$courseid,"Remove", "RemoveTAFromCourse");
+	}
+	else if(isset($_POST["submitCourseTA"])){
+		$taid = $_GET["TAid"];
+		$courseid = $_POST["courseid"];
+		echo $courseid."<br>";
+		echo $taid."<br>";
+		removeTafromCourse($taid,$courseid);
+		header("Location: main.php?Page=Administration");
+	}
+	else if(isset($_POST["submitTACourse"])){
+		$courseid = $_GET["Courseid"];
+		$taid = $_POST["taid"];
+		echo $courseid."<br>";
+		echo $taid."<br>";
+		removeTafromCourse($taid,$courseid);
+		header("Location: main.php?Page=Administration");
+	}
+	else{
+		displayChooseTAorCourse($userid, "RemoveTAFromCourse",  "Remove");
+	}
 }
 else if($page == "ImportOldTAStatistics"){
 	displaySub("matter/ImportOldTAStatistics.txt", $userid);
@@ -40,6 +116,284 @@ display("matter/footer.txt");
 
 echo "<body>";
 echo "</html>";
+
+
+function removeTafromCourse($taid,$courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	
+	$query = $pdo->prepare("DELETE FROM AssistingCourse WHERE taid == ? and courseid == ?");
+
+	$err1 = $query->execute(array($taid,$courseid));
+
+	return ($err1 == 1); 
+}
+
+function addTatoCourse($taid,$courseid,$assigned_hours){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("INSERT INTO AssistingCourse (taid,courseid,assigned_hours) VALUES (?,?,?)");
+	$err1 = $query->execute(array($taid,$courseid,$assigned_hours));
+
+	return $err1 == 1;
+}
+
+//returns an array of rows (access each rows like this: foreach($arrray as $row){})
+//each row is a TA associated with that course
+//each row is an array of this form $row = ['taid', 'firstname', 'lastname']
+function getTAforCourse($courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT ta.taid, ta.firstname, ta.lastname 
+		FROM TA ta, AssistingCourse ac
+		WHERE ta.taid == ac.taid and ac.courseid == ?");
+	$query->execute(array($courseid));
+	$pdo = null;
+	return $query->fetchAll();
+}
+
+function getTAforNotCourse($courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT DISTINCT ta.taid, ta.firstname, ta.lastname 
+		FROM TA ta, AssistingCourse ac
+		WHERE ta.taid == ac.taid and ac.courseid != ?");
+	$query->execute(array($courseid));
+	$pdo = null;
+	return $query->fetchAll();
+}
+
+function getCourse($courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT c.term_year, c.course_num, c.course_name 
+		FROM Course c 
+		WHERE c.courseid == ?;");
+	
+	$query->execute(array($courseid));
+	
+	return $query->fetch();
+}
+
+function displayTAs($userid,$courseid,$function, $page){
+	$course = getCourse($courseid);
+	$coursename = $course['term_year']."-".$course['course_num']."-".$course['course_name'];
+	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."&Courseid=".$courseid."\">";
+
+		echo "<h2>".$function."TA </h2>";
+		echo "Select A TA for ".$coursename."<br>";
+		echo "<select name=\"taid\">";
+			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+		
+		if ($function == "Add"){
+			$TAArray = getTAs();
+		}
+		else{
+			$TAArray = getTAforCourse($courseid);
+		}
+		foreach($TAArray as $row){
+			echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
+		}
+		echo "</select><br><br>";
+		if ($function == "Add"){
+			echo "Select assigned_hours<br>";
+			echo "<select name=\"hours\">";
+				echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+				echo "<option value=\"90\">90</option>";
+				echo "<option value=\"180\" >180</option>";
+			echo "</select><br><br>";
+		}
+
+		echo "<input type=\"submit\" name=\"submitTACourse\" value=\"".$function."\"><br><br><br><br>";
+		echo "</form>";
+}
+
+function getTA($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT ta.taid, ta.firstname, ta.lastname 
+		FROM TA ta
+		WHERE ta.taid == ?");
+	
+	$query->execute(array($taid));
+	
+	$pdo = null;
+	return $query->fetch();
+}
+
+function displayCourses($userid,$taid, $function, $page){
+	$ta = getTA($taid);
+	$taname = $ta['firstname']." ".$ta[2];
+	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."&TAid=".$taid."\">";
+
+		echo "<h2>".$function." TA</h2>";
+		echo "Select A Course for ".$taname."<br>";
+		echo "<select name=\"courseid\">";
+			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+		
+
+		if ($function == "Add"){
+			$CourseArray = getCourses();
+		}
+		else{
+			$CourseArray = getCourseforTA($taid);
+		}
+		foreach($CourseArray as $row){
+			echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
+		}
+
+		echo "</select><br><br>";
+
+		if ($function == "Add"){
+			echo "Select assigned_hours<br>";
+			echo "<select name=\"hours\">";
+				echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+				echo "<option value=\"90\">90</option>";
+				echo "<option value=\"180\" >180</option>";
+			echo "</select><br><br>";
+		}
+
+		echo "<input type=\"submit\" name=\"submitCourseTA\" value=\"".$function."\"><br><br><br><br>";
+		echo "</form>";
+}
+
+function displayChooseTAorCourse($userid, $page, $function){
+	echo "<div>";
+	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."\">";
+
+	echo "<h2>".$function." TA</h2>";
+	echo "Select A TA<br>";
+	echo "<select name=\"taid\">";
+		echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+			
+	$TAArray = getTAs();
+	foreach($TAArray as $row){
+		echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
+	}
+
+	echo "</select><br><br>";
+	echo "<input type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
+	echo "</form>";
+	echo "</div>";
+
+	echo "<div>";
+	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."\">";
+
+	echo "Select A Course<br>";
+	echo "<select name=\"courseid\">";
+		echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+			
+	$CourseArray = getCourses();
+	foreach($CourseArray as $row){
+		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
+	}
+
+	echo "</select><br><br>";
+	echo "<input type=\"submit\" name=\"submitCourse\" value=\"submit\"><br><br><br><br>";
+	echo "</form>";
+	echo "</div>";
+}
+
+//returtns all Courses
+//returns an array of rows
+//each row is a TA
+//each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
+function getCourses(){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT courseid, term_year, course_num, course_name, instructor_assigned_name FROM Course");
+
+    $query->execute();
+
+	$pdo = null;
+    return $query->fetchAll();
+}
+
+
+function displayhistory($path, $taid){
+	$file = fopen($path,"r");
+	$ta = getTAinfo($taid);
+	$fname = $ta[0];
+	$lname = $ta[1];
+
+	while(!feof($file)) {
+		$line = fgets($file);
+		if (strstr($line,"NAMESTANDIN")){
+			$line=str_replace("NAMESTANDIN",$fname." ".$lname, $line);
+		}
+		if (strstr($line,"ADDCONTENTHERE")){
+			$line = "";
+			$CourseArray = getCourseforTA($taid);
+			foreach($CourseArray as $row){
+				$coursename = $row['course_num']."-".$row['course_name'];
+				$term_year = $row['term_year'];
+				$prof = $row['instructor_assigned_name'];
+
+				echo "<tr>";
+    				echo "<td>".$term_year."</td>";
+    				echo "<td>".$coursename."</td>";
+					echo "<td>".$prof."</td>";
+  				echo "</tr>";
+
+			}
+		}
+  	if($line != ""){
+			echo $line;
+		}
+  }
+}
+
+function getCourseforNotTA($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT DISTINCT c.courseid, c.term_year, c.course_num, c.course_name, c.instructor_assigned_name 
+		FROM Course c, AssistingCourse ac
+		WHERE ac.taid != ? and c.courseid == ac.courseid
+		ORDER BY c.term_year");
+	$query->execute(array($taid));
+	$pdo = null;
+	return $query->fetchAll();
+}
+
+//returns an array of rows (access each rows like this: foreach($arrray as $row){})
+//each row is a Course associated with that TA
+//each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
+function getCourseforTA($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT c.courseid, c.term_year, c.course_num, c.course_name, c.instructor_assigned_name 
+		FROM Course c, AssistingCourse ac
+		WHERE ac.taid == ? and c.courseid == ac.courseid
+		ORDER BY c.term_year");
+	$query->execute(array($taid));
+	$pdo = null;
+	return $query->fetchAll();
+}
+
+//returtns all TAs
+//returns an array of rows
+//each row is a TA
+//each row is an array of this form $row = ['taid','firstname','lastname']
+function getTAs(){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT taid,firstname,lastname FROM TA");
+
+    $query->execute();
+
+	$pdo = null;
+    return $query->fetchAll();
+}
+
+function getTAinfo($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT firstname,lastname FROM TA Where taid == ?");
+
+    $query->execute(array($taid));
+
+	$pdo = null;
+    return $query->fetch();
+}
 
 function display($path) {
   $file = fopen($path,"r");
