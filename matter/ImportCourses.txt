@@ -1,12 +1,3 @@
-<h3 style="margin: 20px;padding: 8px;">Upload Course CSV file</h3>
-
-<b style="margin: 20px;padding: 8px;">Following this format: (term_year, course_num, course_name, instructor_assigned_name)</b>
-
-<form action="ImportCourses.php" method="post" enctype="multipart/form-data">
-  <text style="margin: 20px;padding: 8px;" >Select csv file to upload:</text>
-  <input type="file" name="file" id="file">
-  <input type="submit" value="Upload csv" name="submit">
-</form>
 
 <script>
     function Loadfile(){

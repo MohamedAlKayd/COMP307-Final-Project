@@ -4,18 +4,6 @@
   margin: 20px;
 }
 </style>
-
-<h3 style="margin: 20px;padding: 8px;">Upload Proffesor CSV file</h3>
-
-<b style="margin: 20px;padding: 8px;">Following this format: (firstname, lastName, username, email)</b>
-
-<div class="form-new">
-  <form action="ImportProfs.php" method="post" enctype="multipart/form-data">
-    <text style="margin: 9px;">Select csv file to upload: </text>
-    <input type="file" name="file" id="file">
-    <input type="submit" value="Upload csv" name="submit">
-  </form>
-</div>
 <script>
     function Loadfile(){
         var file = document.getElementById('file').files[0];
