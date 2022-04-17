@@ -121,11 +121,11 @@ function displayTAhistory($taid){
 	$wishlist = getWishList($taid);
 
 	echo "<h2>TA History for ".$taname."</h2>";
-	echo "Avergae Rating: ".$avrRating;
+	echo "Average Rating: ".$avrRating;
 
 	echo "<h4>Student Comments: </h4>";
 	displayComments($studentComments);
-	echo "<h4>Proffesor Comments: </h4>";
+	echo "<h4>Professor Comments: </h4>";
 	displayComments($profComments);
 
 	echo "<h4>Wish List: </h4>";
@@ -149,7 +149,7 @@ function displayWish($wishlist){
 		$prof = getProf($profid);
 		$profname = $prof['firstname']." ".$prof[2];
 		$count += 1;
-		echo "Wish List Entry".$count.": Proffesor ".$profname." Wants this TA for The following Course: ".$coursename."<br>";
+		echo "Wish List Entry".$count.": Professor ".$profname." Wants this TA for The following Course: ".$coursename."<br>";
 	}
 }
 
@@ -337,9 +337,9 @@ function getTA($taid){
 function getProf($profid){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
 
-	$query = $pdo->prepare("SELECT p.proffesorid, p.firstname, p.lastname 
+	$query = $pdo->prepare("SELECT p.Professorid, p.firstname, p.lastname 
 		FROM Prof p
-		WHERE p.proffesorid == ?");
+		WHERE p.Professorid == ?");
 	
 	$query->execute(array($profid));
 	
