@@ -7,14 +7,18 @@
   border: none;
 }
 
+.dropbtntwo{
+  background-color: #e5e4e2;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  display: none;
+}
+
 .dropdown{
   position: relative;
   display: inline-block;
-}
-
-.dropdown2{
-  position: relative;
-  display: none;
 }
 
 .dropdown-content {
@@ -36,6 +40,8 @@
 .dropdown-content a:hover {background-color: #e5e4e2;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: white;}
+.dropdown:hover .dropbtntwo {background-color: white;}
+
 </style>
 
 <script>
@@ -69,8 +75,8 @@
   </div>
 </div>
 
-<div class="dropdown" id="myDIV">
-  <button class="dropbtn">Choose a Course</button>
+<div class="dropdown">
+  <button class="dropbtntwo" id="myDIV">Choose a Course</button>
   <div class="dropdown-content">
     <a href="#">Course 1</a>
     <a href="#">Course 2</a>

@@ -41,10 +41,6 @@ else if($page == "CourseSelected"){
 	displaySub2("matter/SelectCourse.txt", $userid,$courseid);
 }
 else if($page == "ProfsTAPerformanceLog"){
-	displaySub("matter/ProfsTAPerformanceLog.txt", $userid);
-}
-else if($page == "TAWishList"){
-	displaySub("matter/TAWishList.txt", $userid);
 	$courseid = $_GET["Courseid"];
 	echo "<form method=\"post\" action=\"Management.php?Page=AddProfsTAPerformanceLog&Userid=".$userid."&Courseid=".$courseid."\">";
 
@@ -288,5 +284,6 @@ function displayActive($path,$target,$USERTYPE) {
   }
   fclose($file);
 }
+
 
 ?>

@@ -84,44 +84,12 @@ tr:nth-child(even) {
 <table>
   <tr>
     <th>TA</th>
-    <th>Course assigned to this term</th>
-    <th>Courses assigned to in the past</th>
+    <th>Course that the TA was assigned to this term and in the past</th>
   </tr>
 
   <tr>
     <td>Alfreds Futterkiste</td>
     <td>COMP303</td>
-    <td>COMP307</td>
-  </tr>
-
-  <tr>
-    <td>Centro comercial Moctezuma</td>
-    <td>MATH323</td>
-    <td>COMP206</td>
-  </tr>
-
-  <tr>
-    <td>Ernst Handel</td>
-    <td>MATH222</td>
-    <td>COMP424</td>
-  </tr>
-
-  <tr>
-    <td>Island Trading</td>
-    <td>COMP421</td>
-    <td>MATH324</td>
-  </tr>
-
-  <tr>
-    <td>Laughing Bacchus Winecellars</td>
-    <td>COMP551</td>
-    <td>COMP520</td>
-  </tr>
-
-  <tr>
-    <td>Magazzini Alimentari Riuniti</td>
-    <td>COMP308</td>
-    <td>COMP310</td>
   </tr>
 
 </table>
