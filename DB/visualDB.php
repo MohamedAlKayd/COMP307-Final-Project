@@ -66,12 +66,32 @@ echo "TeachingCourse <br>";
 echo "proffesorid,courseid <br>";
 displayTable("TeachingCourse");
 
+echo "<br>";
+
+echo "TAWishlist <br>";
+echo "taid,courseid,profid <br>";
+displayTable("TAWishlist");
+
+echo "<br>";
+
+echo "TAPerformanceLog <br>";
+echo "logid,taid,courseid,profid,comment <br>";
+displayTable("TAPerformanceLog");
+
+
+
 
 echo "<h2>Main.db Views: </h2>";
 
 echo "UserInfo <br>";
 echo "userid,firstname,lastname,username,password,usertype <br>";
 displayTable("UserInfo");
+
+
+
+
+
+
 
 function displayTable($table){
 	$pdo = new PDO("sqlite:" . "Main.db");
