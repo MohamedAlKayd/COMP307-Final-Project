@@ -1,22 +1,41 @@
-<form id = "Sysop" action="AddCourse.php" method="post" >
-    <h3>Enter Course Information</h3>
-    <div class="field">
-        <input type="text" placeholder="Year" name="year" required>
-    </div>
-    <div class="field">
-        <input type="text" placeholder="Term" name="term" required>
-    </div>
-    <div class="field">
-        <input type="text" placeholder="Course Number" name="course_num" required>
-    </div>
-    <div class="field">
-        <input type="text" placeholder="Course Name" name="course_name" required>
-    </div>
-    <div class="field">
-        <input type="text" placeholder="Instructor Name" name="instructor" required>
-    </div>
-    <div class="field btn">
-        <div class="btn-layer"></div>
-        <input id="info" name="signup" type="submit" value="Add Course">
-    </div>
-</form>
+<style>
+.container .field input[type="text"] {
+    margin: 10px;
+    width: 50%;
+    outline: none;
+    padding-left: 15px;
+    border-radius: 15px;
+    border: 1px solid lightgrey;
+    border-bottom-width: 2px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+}
+
+</style>
+
+<div class= "container">
+    <form id = "Sysop" action="AddCourse.php" method="post" >
+
+        <h3>Enter Course Information</h3>
+        <div class="field">
+            <input type="text" placeholder="Year" name="year" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Term" name="term" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Course Number" name="course_num" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Course Name" name="course_name" required>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Instructor Name" name="instructor" required>
+        </div>
+        <div class="field btn">
+            <div class="btn-layer"></div>
+            <input id="info" name="signup" type="submit" value="Add Course">
+        </div>
+
+    </form>
+</div>
