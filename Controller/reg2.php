@@ -52,9 +52,9 @@ if($clickedOnRegister){
 
     //Content
     $mail->isHTML(true);//Set email format to HTML
-    $mail->Subject = 'test';
+    $mail->Subject = 'Confirmation email';
 
-    $mail->Body = 'this is a test';
+    $mail->Body = 'Thank you for your registration to TA Management Website. You can login with your credentials';
 
 
     $mail->send();
