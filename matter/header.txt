@@ -65,13 +65,14 @@
     	top: 0;
   	}
   	.topnav.responsive a {
-    	float: none;
-    	display: block;
+    	float: right;
+    	display: flex;
     	text-align: right; 
   	}
      .Button{
-      width: 150px;
-      float: right;
+      width: 200px;
+      float: center;
+      margin-right: 50px;
     }
   
   }
@@ -89,8 +90,8 @@
 }
 
 .Button{
-  float: center;
-  margin: 10px;
+  float: left;
+  margin: 1px;
   background-color: #e5e4e2;
   border: none;
   color: black;
@@ -102,8 +103,8 @@
   height: 75px;
 }
 #Logout{
-  float: center;
-  margin: 35px;
+  float: left;
+  margin: 1px;
   background-color: #e5e4e2;
   border: none;
   color: black;
