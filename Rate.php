@@ -15,8 +15,8 @@ display("matter/RateReviewaTAbyCourseTOP.txt");
 if (sizeof($_GET)==1 || $_GET["Page"] == "getCourse") {
 	echo "<form method=\"post\" action=\"Rate.php?Page=getTA&Userid=".$userid."&Student=".$studentid."\">";
 
-	echo "<h2>Course</h2>";
-	echo "For Which Course do you want to rate a TA?<br>";
+	echo "<h2 style=\"margin:15px; padding:8px\">Course</h2>";
+	echo "<text style=\"margin:15px; padding:8px\">For Which Course do you want to rate a TA?</text><br>";
 	echo "<select name=\"course\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	

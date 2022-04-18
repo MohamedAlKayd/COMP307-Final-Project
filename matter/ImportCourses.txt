@@ -1,3 +1,17 @@
+<style>
+h3{
+  margin:15px; 
+  padding:8px;
+}
+b{
+  margin:15px; 
+  padding:8px;
+}
+input{
+ margin:15px; 
+  padding:8px; 
+}
+</style>
 
 <script>
     function Loadfile(){
@@ -23,4 +37,4 @@
 
 <input type="file" id="file" accept=".csv">
 <br>
-<input type="button" value = "Add file" onclick="Loadfile()">
+<input style="margin:22px;" type="button" value = "Add file" onclick="Loadfile()">

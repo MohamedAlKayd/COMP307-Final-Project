@@ -22,13 +22,13 @@
 
     }
 </script>
-<h3>Upload Proffesor CSV file</h3>
+<h3 style="margin:15px; padding:8px;">Upload Proffesor CSV file</h3>
 
-<b>Following this format: (firstname, lastName, username, email)</b><br>
+<b style="margin:15px; padding:8px;" >Following this format: (firstname, lastName, username, email)</b><br>
 
-<input type="file" id="file" accept=".csv">
+<input style="margin:15px; padding:8px;" type="file" id="file" accept=".csv">
 <br>
-<input type="button" value = "Add file" onclick="Loadfile()">
+<input style="margin:22px; padding:8px;" type="button" value = "Add file" onclick="Loadfile()">
 
 
 
