@@ -1,13 +1,96 @@
+<style>
+.container {
+  display: inline-block;
+  position: relative;
+  margin:22px;
+  padding-left: 45px;
+  padding-right: 45px;
+  margin-bottom: 12px;
+  flex-wrap: nowrap;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 
-<form method="post" action="rateTA.php?Page=submitRating">
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #50b752;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>
+
+<form method="post" action="Rate.php?Page=submitRating">
 
 <h2>Rating</h2>
 <text> How would you rate the TA on a scale of 1 to 5?</text><br>
-<input type="radio" NAME="rating" VALUE="1"> 1
-<input type="radio" NAME="rating" VALUE="2"> 2
-<input type="radio" NAME="rating" VALUE="3"> 3
-<input type="radio" NAME="rating" VALUE="4"> 4
-<input type="radio" NAME="rating" VALUE="5"> 5<br><br>
+<label class="container">1
+  <input type="radio" checked="checked" name="radio">
+  <span class="checkmark"></span>
+</label>
+<label class="container">2
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label>
+<label class="container">3
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label>
+<label class="container">4
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label>
+<label class="container">5
+  <input type="radio" name="radio">
+  <span class="checkmark"></span>
+</label>
+<br><br>
 
 <h2>Comments</h2>
 <textarea name="comment" rows="5" cols="50"></textarea><br><br>

@@ -50,9 +50,10 @@ function getStudentid($userid){
 
 function displayCourses($userid){
 	echo "<form method=\"post\" action=\"dashboard.php?Page=CourseSelected&Userid=".$userid."\">";
-
+    echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
 	echo "<h2>Add Courses You are Taking</h2>";
-	echo "Select A Course<br>";
+	echo "<text> Select A Course </text><br>";
 	echo "<select name=\"course\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	
@@ -61,8 +62,10 @@ function displayCourses($userid){
 		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
 	}
 
-    echo "</select><br><br>";
-	echo "<input type=\"submit\" name=\"submit\" value=\"Add\"><br><br><br><br>";
+	echo "</select><br><br>";
+	echo "</div>";
+	echo "</div>";
+	echo "<input id=\"info\" type=\"submit\" name=\"submit\" value=\"Add\"><br><br><br><br>";
 	echo "</form>";
 }
 

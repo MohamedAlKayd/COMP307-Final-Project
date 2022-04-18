@@ -1,7 +1,7 @@
 <style>
 .general{
   float: left;
-  background-color:#e5e4e2;
+  background-color:#a4ea67;
   border: none;
   border-radius: 12px;
   margin-top: 50px;
@@ -14,15 +14,9 @@
   display: inline-block;
   font-size: 25px;
 }
-text{
-    margin:22px;
-    padding:8px;
-}
-
-
 .general:hover{
-      background: white;
-      color: black;
+    background: #e5e4e2;    
+    color: black;
 }
 .selectCourse{
   background-color: #e5e4e2;
@@ -122,13 +116,56 @@ text{
     color: black;
 }
 
+text{
+    margin:22px;
+    padding:8px;
 }
+h1{
+    margin:22px;
+    padding:8px;
+}
+h2{
+    margin:22px;
+    padding:8px;
+}
+h3{
+    margin:22px;
+    padding:8px;
+}
+.search_categories{
+  font-size: 13px;
+  padding: 20px 18px 12px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search_categories .select-menu{
+  width: 120%;
+  background-position:80% center;
+}
+
+.search_categories .select-menu select{
+  margin:25px;
+  background: transparent;
+  line-height: 10px;
+  border: 1;
+  padding: 5px;
+  border-radius: 10px;
+  width: 30%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}
+
 </style>
 
-<body>
+
 
 <a class = "general" id="SelectCourse" href="Management.php?Page=SelectCourse&Userid=STANDIN""> Select Course </a>
 
-</div>
-</body>
+
+
 

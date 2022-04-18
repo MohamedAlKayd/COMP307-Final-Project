@@ -37,6 +37,11 @@
   display: block;
 }
 
+p{
+  margin:22px;
+  padding:8px;
+}
+
 .dropdown-content a:hover {background-color: #e5e4e2;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: white;}

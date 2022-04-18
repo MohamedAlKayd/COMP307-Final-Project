@@ -15,7 +15,10 @@
   position: relative;
   display: inline-block;
 }
-
+p{
+  margin:22px;
+  padding:8px;
+}
 .dropdown-content {
   display: none;
   position: absolute;

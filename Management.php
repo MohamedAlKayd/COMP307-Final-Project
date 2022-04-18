@@ -21,9 +21,13 @@ if(empty($page)){
 else if($page == "SelectCourse"){
 	$profid = getProfid($userid);
 	echo "<form method=\"post\" action=\"Management.php?Page=CourseSelected&Userid=".$userid."\">";
-
-	echo "<h2>Course</h2>";
-	echo "Select A Course<br>";
+	
+	
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
+	echo "<h2 style=\"margin:22px; padding:8px;\"> Course</h2>";
+	echo "<text style=\"margin:22px; padding:8px;\"> Select A Course </text><br>";
+	
 	echo "<select name=\"course\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	
@@ -32,9 +36,13 @@ else if($page == "SelectCourse"){
 		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
 	}
 
-    echo "</select><br><br>";
-	echo "<input type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+	echo "</select><br><br>";
+	echo "</div>";
+	echo "</div>";
+	echo "<input id=\"info\" type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+	
 	echo "</form>";
+	
 }
 else if($page == "CourseSelected"){
 	$courseid = $_POST['course'];
@@ -43,9 +51,11 @@ else if($page == "CourseSelected"){
 else if($page == "ProfsTAPerformanceLog"){
 	$courseid = $_GET["Courseid"];
 	echo "<form method=\"post\" action=\"Management.php?Page=AddProfsTAPerformanceLog&Userid=".$userid."&Courseid=".$courseid."\">";
-
+	
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
 	echo "<h2>TA Performance Log</h2>";
-	echo "Select A TA<br>";
+	echo "<text> Select A TA </text> <br>";
 	echo "<select name=\"taid\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	
@@ -55,10 +65,11 @@ else if($page == "ProfsTAPerformanceLog"){
 	}
     echo "</select><br><br>";
 
-	echo "Write a Note<br>";
+	echo "<text> Write a Note <text> <br>";
 	echo "<textarea name=\"note\" rows=\"5\" cols=\"50\"></textarea><br><br>";
-
-	echo "<input type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+    echo "</div>";
+	echo "</div>";
+	echo "<input id=\"info\" type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
 	echo "</form>";
 }
 else if($page == "AddProfsTAPerformanceLog"){
@@ -73,9 +84,11 @@ else if($page == "AddProfsTAPerformanceLog"){
 else if($page == "TAWishList"){
 	$courseid = $_GET["Courseid"];
 	echo "<form method=\"post\" action=\"Management.php?Page=AddTAWishList&Userid=".$userid."&Courseid=".$courseid."\">";
-
+	
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
 	echo "<h2>TA Wish List</h2>";
-	echo "Select TA to Add to Wish List<br>";
+	echo "<text> Select TA to Add to Wish List <text> <br>";
 	echo "<select name=\"taid\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	
@@ -84,8 +97,9 @@ else if($page == "TAWishList"){
 		echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
 	}
     echo "</select><br><br>";
-
-	echo "<input type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
+	echo "</div>";
+	echo "</div>";
+	echo "<input id=\"info\" type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
 	echo "</form>";
 }
 else if($page == "AddTAWishList"){

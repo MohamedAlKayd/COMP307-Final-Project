@@ -1,5 +1,5 @@
 <?php
-    echo "CoHORT";
+    echo "<text> CoHORT </text>";
     $content = $_POST['con'];
 
     $ar = explode("\n",$content); 
@@ -24,7 +24,7 @@
         addToTACohortInfo($TA_name,$student_ID,$legal_name,$email,$grad_ugrad,$supervisor_name,$priority,$hours,$date_applied,$location,$phone,$degree,$courses_applied_for,$open_to_other_courses,$notes);
     }
 
-    echo "END";
+    echo "<text> END </text>";
 
     function addToTACohortInfo($TA_name,$student_ID,$legal_name,$email,$grad_ugrad,$supervisor_name,$priority,$hours,$date_applied,$location,$phone,$degree,$courses_applied_for,$open_to_other_courses,$notes){
         $namearray = explode(" ",$TA_name);

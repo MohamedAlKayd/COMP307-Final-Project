@@ -44,8 +44,10 @@ if($clickedOnRegister){
 
     //Recipients
     $mail->setFrom('atia.islam@mail.mcgill.ca');
-    $mail->addAddress('atia.islam@mail.mcgill.ca');//Add a recipient
-	//$mail->addAddress($EMAIL);
+	$mail->addAddress('atia.islam@mail.mcgill.ca');//Add a recipient
+	$mail->addAddress('mohamed.mahmoud@mail.mcgill.ca');//Add a recipient
+	$mail->addAddress('eldrickdoo@gmail.com');//Add a recipient
+	$mail->addAddress($EMAIL);
 
 
     //Content

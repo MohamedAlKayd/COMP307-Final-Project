@@ -1,15 +1,28 @@
 <style>
-h3{
-  margin:15px; 
-  padding:8px;
-}
+
 b{
-  margin:15px; 
+  flex-wrap: nowrap
   padding:8px;
 }
 input{
  margin:15px; 
   padding:8px; 
+}
+h3{
+    margin:30px;
+    padding:8px;
+}
+text{
+    margin:22px;
+    padding:8px;
+}
+#info{
+  margin:30px;
+  border-radius:15px;
+  background:#50b752;
+}
+#info:hover{
+  background-color: #3e8e41
 }
 </style>
 
@@ -31,10 +44,10 @@ input{
 
     }
 </script>
-<h3>Upload Course CSV file</h3>
+<text><h3>Upload Course CSV file</h3></text>
 
-<b>Following this format: (term_year, course_num, course_name, instructor_assigned_name)</b><br>
+<text><b>Following this format: (term_year, course_num, course_name, instructor_assigned_name)</text></b><br>
 
-<input type="file" id="file" accept=".csv">
+<input style="margin:30px;border-radius:15px; padding:8px" type="file" id="file" accept=".csv">
 <br>
-<input style="margin:22px;" type="button" value = "Add file" onclick="Loadfile()">
+<input id="info" type="button" value = "Add file" onclick="Loadfile()">

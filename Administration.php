@@ -136,7 +136,7 @@ function displayTAhistory($taid){
 	$tacohortinfo = getTaCohortInfo($taid);
 
 	echo "<h2>TA History for ".$taname."</h2>";
-	echo "Average Rating: ".$avrRating;
+	echo "<text> Average Rating: </text>".$avrRating;
 
 	echo "<h4>TA Info: </h4>";
 	if(!empty($tacohortinfo)){
@@ -154,24 +154,24 @@ function displayTAhistory($taid){
         $courses_applied_for = $tacohortinfo[11];
         $open_to_other_courses = $tacohortinfo[12];
         $notes = $tacohortinfo[13];
-		echo "Student ID :".$student_ID."<br>";
-		echo "Legal Name :".$legal_name."<br>";
-		echo "Email :".$email."<br>";
-		echo "Grad Ugrad:".$grad_ugrad."<br>";
-		echo "Supervisor :".$supervisor_name."<br>";
-		echo "Priority :".$priority."<br>";
-		echo "Hours :".$hours."<br>";
-		echo "Date Applied :".$date_applied."<br>";
-		echo "Location :".$location."<br>";
-		echo "Phone Number :".$phone."<br>";
-		echo "Degree :".$degree."<br>";
-		echo "Course Applied :".$courses_applied_for."<br>";
-		echo "Open to other Courses :".$open_to_other_courses."<br>";
-		echo "Notes :".$notes."<br>";
+		echo "<text> Student ID :".$student_ID."</text><br>";
+		echo "<text> Legal Name :".$legal_name."</text><br>";
+		echo "<text> Email :".$email."</text><br>";
+		echo "<text> Grad Ugrad:".$grad_ugrad."</text><br>";
+		echo "<text> Supervisor :".$supervisor_name."</text><br>";
+		echo "<text> Priority :".$priority."</text><br>";
+		echo "<text> Hours :".$hours."</text><br>";
+		echo "<text> Date Applied :".$date_applied."</text><br>";
+		echo "<text> Location :".$location."</text> <br>";
+		echo "<text> Phone Number :".$phone."</text> <br>";
+		echo "<text> Degree :".$degree."</text><br>";
+		echo "<text> Course Applied :".$courses_applied_for."</text><br>";
+		echo "<text> Open to other Courses :".$open_to_other_courses."</text><br>";
+		echo "<text> Notes :".$notes."</text><br>";
 		
 	}
 	else{
-		echo "This TA Lacks TA Cohort Info <br>";
+		echo "<text> This TA Lacks TA Cohort Info </text> <br>";
 	}
 
 	echo "<h4>Student Comments: </h4>";
@@ -200,7 +200,7 @@ function displayWish($wishlist){
 		$prof = getProf($profid);
 		$profname = $prof['firstname']." ".$prof[2];
 		$count += 1;
-		echo "Wish List Entry".$count.": Proffesor ".$profname." Wants this TA for The following Course: ".$coursename."<br>";
+		echo "<text> Wish List Entry".$count.": Proffesor ".$profname." Wants this TA for The following Course: ".$coursename."</text> <br>";
 	}
 }
 
@@ -212,7 +212,7 @@ function displayComments($comments){
 			echo "<br>";
 		}
 		$count += 1;
-		echo "Comment ".$count.": ".$content[0]."<br>";
+		echo "<text> Comment ".$count.": ".$content[0]."</text><br>";
 	}
 }
 
@@ -266,19 +266,24 @@ function getAverageTArating($taid){
 
 function displayAllTAs($page,$userid){
 	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."\">";
-
-		echo "<h2>TA History</h2>";
-		echo "Select A TA<br>";
-		echo "<select name=\"taid\">";
-			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+		
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
+	echo "<h2>TA History</h2>";
+	echo "<text> Select A TA </text><br>";
+	echo "<select name=\"taid\">";
+	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 			
 		$TAArray = getTAs();
 		foreach($TAArray as $row){
 			echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
 		}
 
-		echo "</select><br><br>";
-		echo "<input type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
+	echo "</select><br><br>";
+	echo "</div>";
+	echo "</div>";
+		
+		echo "<input id=\"info\" type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
 		echo "</form>";
 }
 
@@ -343,11 +348,14 @@ function displayTAs($userid,$courseid,$function, $page){
 	$course = getCourse($courseid);
 	$coursename = $course['term_year']."-".$course['course_num']."-".$course['course_name'];
 	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."&Courseid=".$courseid."\">";
+		
 
-		echo "<h2>".$function."TA </h2>";
-		echo "Select A TA for ".$coursename."<br>";
-		echo "<select name=\"taid\">";
-			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
+	echo "<h2>".$function."TA </h2>";
+	echo "<text> Select A TA for ".$coursename."</text><br>";
+	echo "<select name=\"taid\">";
+		echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 		
 		if ($function == "Add"){
 			$TAArray = getTAs();
@@ -360,15 +368,16 @@ function displayTAs($userid,$courseid,$function, $page){
 		}
 		echo "</select><br><br>";
 		if ($function == "Add"){
-			echo "Select assigned_hours<br>";
+			echo "<text> Select assigned_hours </text> <br>";
 			echo "<select name=\"hours\">";
 				echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 				echo "<option value=\"90\">90</option>";
 				echo "<option value=\"180\" >180</option>";
 			echo "</select><br><br>";
 		}
-
-		echo "<input type=\"submit\" name=\"submitTACourse\" value=\"".$function."\"><br><br><br><br>";
+		echo "</div>";
+		echo "</div>";
+		echo "<input id=\"info\" type=\"submit\" name=\"submitTACourse\" value=\"".$function."\"><br><br><br><br>";
 		echo "</form>";
 }
 
@@ -402,9 +411,11 @@ function displayCourses($userid,$taid, $function, $page){
 	$ta = getTA($taid);
 	$taname = $ta['firstname']." ".$ta[2];
 	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."&TAid=".$taid."\">";
-
+		
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
 		echo "<h2>".$function." TA</h2>";
-		echo "Select A Course for ".$taname."<br>";
+		echo "<text> Select A Course for ".$taname."</text><br>";
 		echo "<select name=\"courseid\">";
 			echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 		
@@ -422,24 +433,27 @@ function displayCourses($userid,$taid, $function, $page){
 		echo "</select><br><br>";
 
 		if ($function == "Add"){
-			echo "Select assigned_hours<br>";
+			echo "<text> Select assigned_hours </text> <br>";
 			echo "<select name=\"hours\">";
 				echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 				echo "<option value=\"90\">90</option>";
 				echo "<option value=\"180\" >180</option>";
 			echo "</select><br><br>";
 		}
-
-		echo "<input type=\"submit\" name=\"submitCourseTA\" value=\"".$function."\"><br><br><br><br>";
+	echo "</div>";	
+	echo "</div>";
+		echo "<input id=\"info\" type=\"submit\" name=\"submitCourseTA\" value=\"".$function."\"><br><br><br><br>";
 		echo "</form>";
 }
 
 function displayChooseTAorCourse($userid, $page, $function){
-	echo "<div>";
+	
 	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."\">";
-
+	
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
 	echo "<h2>".$function." TA</h2>";
-	echo "Select A TA<br>";
+	echo "<text> Select A TA </text><br>";
 	echo "<select name=\"taid\">";
 		echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 			
@@ -447,16 +461,19 @@ function displayChooseTAorCourse($userid, $page, $function){
 	foreach($TAArray as $row){
 		echo "<option value=\"" . $row['taid'] . "\" >".$row['firstname']." ".$row[2]."</option>";
 	}
-
+	
 	echo "</select><br><br>";
-	echo "<input type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
-	echo "</form>";
 	echo "</div>";
+	echo "</div>";
+	echo "<input id=\"info\" type=\"submit\" name=\"submitTA\" value=\"submit\"><br><br><br><br>";
+	echo "</form>";
+	
 
 	echo "<div>";
 	echo "<form method=\"post\" action=\"Administration.php?Page=".$page."&Userid=".$userid."\">";
-
-	echo "Select A Course<br>";
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
+	echo "<text> Select A Course </text><br>";
 	echo "<select name=\"courseid\">";
 		echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 			
@@ -466,7 +483,9 @@ function displayChooseTAorCourse($userid, $page, $function){
 	}
 
 	echo "</select><br><br>";
-	echo "<input type=\"submit\" name=\"submitCourse\" value=\"submit\"><br><br><br><br>";
+	echo "</div>";
+	echo "</div>";
+	echo "<input id=\"info\"  type=\"submit\" name=\"submitCourse\" value=\"submit\"><br><br><br><br>";
 	echo "</form>";
 	echo "</div>";
 }

@@ -22,7 +22,7 @@
 }
 
 .search_categories .select-menu select{
-  margin:15px;
+  margin:25px;
   background: transparent;
   line-height: 10px;
   border: 1;
@@ -34,9 +34,25 @@
   font-size: 1em;
 }
 h2{
-    margin:15px;
+  margin:22px; 
+  padding:8px;
 }
-
+h3{
+  margin:22px; 
+  padding:8px;
+}
+text{
+    margin:27px;
+    padding:8px;
+}
+#info{
+  margin:25px;
+  border-radius:15px;
+  background:#50b752;
+}
+#info:hover{
+  background-color: #3e8e41
+}
 
 </style>
 

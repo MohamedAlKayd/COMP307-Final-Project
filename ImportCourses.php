@@ -1,5 +1,5 @@
 <?php
-    echo "start";
+    echo "<text> start </text>";
     $content = $_POST['con'];
 
     $ar = explode("\n",$content); 
@@ -13,7 +13,7 @@
         addCourse($term_year, $course_num, $course_name, $instructor);
     }
 
-    echo "END";
+    echo "<text> END </text>";
 
     function addCourse($term_year, $course_num, $course_name, $instructor){
         

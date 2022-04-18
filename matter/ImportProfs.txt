@@ -3,6 +3,26 @@
   
   margin: 20px;
 }
+h3{
+    margin:30px;
+    padding:8px;
+}
+b{
+  flex-wrap: nowrap
+  padding:8px;
+}
+text{
+    margin:22px;
+    padding:8px;
+}
+#info{
+  margin:30px;
+  border-radius:15px;
+  background:#50b752;
+}
+#info:hover{
+  background-color: #3e8e41
+}
 </style>
 <script>
     function Loadfile(){
@@ -22,13 +42,13 @@
 
     }
 </script>
-<h3 style="margin:15px; padding:8px;">Upload Proffesor CSV file</h3>
+<text><h3>Upload Professor CSV file</h3></text>
 
-<b style="margin:15px; padding:8px;" >Following this format: (firstname, lastName, username, email)</b><br>
+<text><b>Following this format: (firstname, lastName, username, email)</text></b><br>
 
-<input style="margin:15px; padding:8px;" type="file" id="file" accept=".csv">
+<input style="margin:30px;border-radius:15px; padding:8px" type="file" id="file" accept=".csv">
 <br>
-<input style="margin:22px; padding:8px;" type="button" value = "Add file" onclick="Loadfile()">
+<input id="info" type="button" value = "Add file" onclick="Loadfile()">
 
 
 

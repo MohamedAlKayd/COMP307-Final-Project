@@ -21,10 +21,10 @@ if($page == "ManageUsers"){
 	else if(isset($_POST["Remove"])){
 		$OtherUserid = $_POST["User"];
 		$Otherusertype = getUserType($OtherUserid);
-		echo "ID:".$OtherUserid."<br>";
-		echo "TYPE:".$Otherusertype."<br>";
+		echo "<text> ID:".$OtherUserid."</text><br>";
+		echo "<text> TYPE:".$Otherusertype."</text><br>";
 		removeUser($OtherUserid, $Otherusertype);
-		echo "REMOVED";
+		echo "<text> REMOVED</text>";
 		header("Location: Sysop.php?Page=ManageUsers&Userid=".$userid);
 	}
 	else{
@@ -44,11 +44,11 @@ if($page == "ManageUsers"){
 
 		echo "</select><br><br>";
 	    //echo "<div class=\"field\">";	
-		echo "<input style=\"margin:15px;\" type=\"submit\" name=\"Edit\" value=\"Edit\">";
+		echo "<input id=\"info\" type=\"submit\" name=\"Edit\" value=\"Edit\">";
 		//echo "</div>";	
 
         //echo "<div class=\"field\">";
-		echo "<input style=\"margin:5px;\" type=\"submit\" name=\"Remove\" value=\"Remove\">";
+		echo "<input id=\"info\" style=\"margin:5px;\" type=\"submit\" name=\"Remove\" value=\"Remove\">";
 		//echo "</div>";
 		echo "</form>";
 		
@@ -84,25 +84,25 @@ function displayEditUser($Userid){
 	$User = getUser($Userid);
 
 	echo "<form id = \"Student\" action=\"EdditUser.php?Userid=".$Userid."\" method=\"post\">";
-    echo "<h3>Enter New Information</h3>";
+    echo "<text><h3>Enter New Information</h3></text>";
 
 	
     
 	echo "<div class=\"field\">";
-		echo "First name: ";
+		echo "<text> First name: </text>";
     	echo "<input type=\"text\" placeholder=\"".$User['firstname']."\" name=\"fname\"";
     echo "</div>";
 	echo "<div class=\"field\">";
-		echo "Last name: ";
+		echo "<text> Last name: </text>";
     	echo "<input type=\"text\" placeholder=\"".$User['lastname']."\" name=\"lname\"";
     echo "</div>";
 	echo "<div class=\"field\">";
-		echo "Username: ";
+		echo "<text> Username: </text>";
     	echo "<input type=\"text\" placeholder=\"".$User['username']."\" name=\"username\"";
     echo "</div>";
 	echo "<div class=\"field\">";
-		echo "Email: ";
-    	echo "<input type=\"text\" placeholder=\"".$User['email']."\" name=\"email\"";
+		echo "<text> Email: </text>";
+    	echo "<input style=\"margin:20px;\" type=\"text\" placeholder=\"".$User['email']."\" name=\"email\"";
     echo "</div>";
 
 	if($usertype == "Student"){
@@ -114,7 +114,7 @@ function displayEditUser($Userid){
 	}
 
 	echo "</select><br><br>";
-	echo "<input type=\"submit\" name=\"Commit Change\" value=\"Commit Change\">";
+	echo "<input id=\"info\" type=\"submit\" name=\"Commit Change\" value=\"Commit Change\">";
 	echo "</form>";
 }
 

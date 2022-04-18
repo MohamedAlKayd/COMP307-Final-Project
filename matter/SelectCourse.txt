@@ -1,7 +1,7 @@
 <style>
 .general{
   float: left;
-  background-color:#e5e4e2;
+  background-color:#a4ea67;
   border: none;
   border-radius: 12px;
   margin-top: 50px;
@@ -15,7 +15,7 @@
   font-size: 25px;
 }
 .general:hover{
-      background: white;
+      background: #e5e4e2;
       color: black;
 }
 </style>

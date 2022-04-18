@@ -11,6 +11,10 @@ h2{
   margin:22px; 
   padding:8px;
 }
+h3{
+  margin:22px; 
+  padding:8px;
+}
 text{
   margin:22px; 
   padding:8px; 
@@ -49,7 +53,7 @@ textarea{
 </style>
 
 <div class="RateReview">
-<h1>Rate / Review a TA by course</h1>
+<h1> Rate / Review a TA by course </h1>
 <text> Please fill in all fields and click submit.</text><br>
 </div>
 

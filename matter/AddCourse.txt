@@ -1,4 +1,8 @@
 <style>
+container{
+    margin:25px;
+    padding:8px;
+}
 .container .field input[type="text"] {
     margin: 20px;
     width: 50%;
@@ -17,7 +21,7 @@
 <div class= "container">
     <form id = "Sysop" action="AddCourse.php" method="post" >
 
-        <h3 style="margin: 20px;padding: 10px;">Enter Course Information</h3>
+        <h3 style="margin: 30px;padding: 10px;">Enter Course Information</h3>
         <div class="field">
             <input type="text" placeholder="Year" name="year" required>
         </div>

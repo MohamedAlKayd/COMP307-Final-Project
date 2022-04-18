@@ -18,8 +18,19 @@
 </script>
 <h3>Upload Course Quota CSV file</h3>
 
-<b>Following this format: (term_year,course_num,course_type,course_name,instructor_name,course_enrollment_num,TA_quota)</b><br>
+<p><b>Following this format: (term_year,course_num,course_type,course_name,instructor_name,course_enrollment_num,TA_quota)</p></b><br>
 
-<input type="file" id="fileq" accept=".csv">
+<input style="padding:27px" type="file" id="fileq" accept=".csv">
 <br>
-<input type="button" value = "Add file" onclick="LoadfileQuota()">
+
+<input id="info" type="button" value = "Add file" onclick="LoadfileQuota()">
+</br>
+<br>
+</br>
+<br>
+</br>
+</br>
+<br>
+</br>
+<br>
+</br>

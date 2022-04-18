@@ -103,6 +103,7 @@
   display: inline-block;
   font-size: 20px;
   height: 60px;
+  border-radius:15px;
 }
 #Logout{
   float: left;
@@ -115,7 +116,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-
+  border-radius:15px;
 }
 
 #Logout:hover{
@@ -131,7 +132,63 @@ a:active { text-decoration: none; color: black;}
 .Button:hover{
     background: white;
 }
+text{
+    margin:22px;
+    padding:8px;
+}
+h1{
+    margin:22px;
+    padding:8px;
+}
+h2{
+    margin:22px;
+    padding:8px;
+}
+h3{
+    margin:22px;
+    padding:8px;
+}
+h4{
+    margin:22px;
+    padding:8px;
+}
+b{
+    flex-wrap: nowrap;
+    margin:0px;
+    padding:8px;
+}
+p{
+    flex-wrap: nowrap;
+    margin:22px;
+    padding:8px;
+}
+.search_categories{
+  font-size: 13px;
+  padding: 20px 18px 12px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
 
+.search_categories .select-menu{
+  width: 120%;
+  background-position:80% center;
+}
+
+.search_categories .select-menu select{
+  margin:25px;
+  background: transparent;
+  line-height: 10px;
+  border: 1;
+  padding: 5px;
+  border-radius: 10px;
+  width: 30%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}
 
 .Left-Button{
   float: left;
@@ -147,10 +204,7 @@ a:active { text-decoration: none; color: black;}
   font-size: 20px;
   text-decoration:underline:
 }
-h3{
-   margin: 20px;
-   text-shadow: 0 2px #999;
-}
+
 .field input[type="text"] {
     margin: 15px; 
     width: 50%;
@@ -172,6 +226,10 @@ h3{
 }
 #info:hover{
   background-color: #3e8e41
+}
+textarea{
+  margin:22px; 
+  padding:8px; 
 }
 
 </style>
