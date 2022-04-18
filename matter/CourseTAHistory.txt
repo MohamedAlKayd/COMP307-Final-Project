@@ -75,7 +75,7 @@ tr:nth-child(even) {
   <tr>
     <th>Term_Year</th>
     <th>Course Name</th>
-    <th>Proffesor</th>
+    <th>Profesor</th>
   </tr>
   ADDCONTENTHERE
 </table>

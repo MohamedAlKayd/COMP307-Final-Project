@@ -1,0 +1,25 @@
+<script>
+    function Loadfile(){
+        var file = document.getElementById('file').files[0];
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          console.log(reader.result);
+          const xhttp = new XMLHttpRequest();
+          xhttp.onload = function(){
+            console.log(this.responseText);
+          }
+          xhttp.open("POST", "ImportCourseQuota.php", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send("con="+reader.result);
+        };
+        reader.readAsText(file);
+
+    }
+</script>
+<h3>Upload Course Quota CSV file</h3>
+
+<b>Following this format: (term_year,course_num,course_type,course_name,instructor_name,course_enrollment_num,TA_quota)</b><br>
+
+<input type="file" id="file" accept=".csv">
+<br>
+<input type="button" value = "Add file" onclick="Loadfile()">

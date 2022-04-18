@@ -11,4 +11,6 @@ DROP TABLE TAreview;
 DROP TABLE Course;
 DROP TABLE TAWishlist;
 DROP TABLE TAPerformanceLog;
+DROP TABLE TACohortInfo;
+DROP TABLE CourseQuotaInfo;
 DROP VIEW UserInfo;

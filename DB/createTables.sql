@@ -116,6 +116,39 @@ CREATE TABLE TAWishlist(
     PRIMARY key (taid,courseid,profid)
 );
 
+CREATE TABLE TACohortInfo(
+    taid INTEGER PRIMARY KEY NOT NULL,
+    TA_name TEXT, 
+    student_ID INTEGER,
+    legal_name TEXT, 
+    email TEXT, 
+    grad_ugrad TEXT, 
+    supervisor_name TEXT, 
+    priority TEXT, 
+    hours INTEGER,
+    date_applied TEXT,
+    location TEXT, 
+    phone TEXT, 
+    degree TEXT, 
+    courses_applied_for TEXT, 
+    open_to_other_courses TEXT, 
+    notes TEXT,
+    FOREIGN key (taid) references TA(taid)
+);
+
+
+CREATE TABLE CourseQuotaInfo(
+    courseid INTEGER PRIMARY KEY NOT NULL,
+    term_year TEXT,
+    course_num TEXT,
+    course_type TEXT,
+    course_name TEXT,
+    instructor_name TEXT,
+    course_enrollment_num INTEGER,
+    TA_quota TEXT,
+    FOREIGN key (courseid) references Course(courseid)
+);
+
 CREATE VIEW UserInfo(userid,firstname,lastname,username,password,email,usertype) AS
 SELECT  s.userid, s.firstname, s.lastName, u.username, u.password, s.email, ('Student') as usertype
 From Student s, User u

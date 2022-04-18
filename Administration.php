@@ -17,7 +17,8 @@ if(empty($page)){
 	displaySub("matter/ta_administration.txt", $userid);
 }
 else if($page == "ImportTACohort"){
-	displaySub("matter/ImportTACohort.php", $userid);
+	displaySub("matter/ImportTACohort.txt", $userid);
+	displaySub("matter/ImportCourseQuota.txt", $userid);
 }
 else if($page == "TAInfoHistory"){
 	if(isset($_POST["submitTA"])){
@@ -121,11 +122,11 @@ function displayTAhistory($taid){
 	$wishlist = getWishList($taid);
 
 	echo "<h2>TA History for ".$taname."</h2>";
-	echo "Avergae Rating: ".$avrRating;
+	echo "Average Rating: ".$avrRating;
 
 	echo "<h4>Student Comments: </h4>";
 	displayComments($studentComments);
-	echo "<h4>Proffesor Comments: </h4>";
+	echo "<h4>Profesor Comments: </h4>";
 	displayComments($profComments);
 
 	echo "<h4>Wish List: </h4>";
