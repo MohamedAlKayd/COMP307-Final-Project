@@ -1,8 +1,9 @@
 <style>
 .container .field input[type="text"] {
-    margin: 10px;
+    margin: 20px;
     width: 50%;
     outline: none;
+    padding-right: 15px;
     padding-left: 15px;
     border-radius: 15px;
     border: 1px solid lightgrey;
@@ -16,7 +17,7 @@
 <div class= "container">
     <form id = "Sysop" action="AddCourse.php" method="post" >
 
-        <h3>Enter Course Information</h3>
+        <h3 style="margin: 20px;padding: 10px;">Enter Course Information</h3>
         <div class="field">
             <input type="text" placeholder="Year" name="year" required>
         </div>
@@ -39,11 +40,19 @@
 
     </form>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5
 <script>
 document.getElementById("Sysop").addEventListener("submit", myFunction);
 
 function myFunction() {
   alert("The course was added");
 }
+<<<<<<< HEAD
 </script>
+=======
+</script>
+
+>>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5

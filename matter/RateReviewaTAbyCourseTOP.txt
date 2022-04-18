@@ -3,11 +3,23 @@
   background-color: #e5e4e2;
   color: black;
 }
+h1{
+  margin:22px; 
+  padding:8px;
+}
+h2{
+  margin:22px; 
+  padding:8px;
+}
+text{
+  margin:22px; 
+  padding:8px; 
+}
 </style>
 
 <div class="RateReview">
 <h1>Rate / Review a TA by course</h1>
-Please fill in all fields and click submit.<br>
+<text> Please fill in all fields and click submit.</text><br>
 </div>
 
 

@@ -26,7 +26,9 @@
 }
 
 .menu li {
-  padding: 8px;
+  padding: 15px;
+  margin:15px;
+  align-content:center;
   margin-bottom: 7px;
   background: -webkit-linear-gradient(right, #04aa6d, #87a805);
   color: #ffffff;
@@ -106,6 +108,7 @@
     }
 
 </script>
+
 <div class ="row">
     <div class="col-3 col-s-3 menu">
         <ul>
@@ -227,7 +230,11 @@
     <div class="col-3 col-s-12">
         <div class="aside"></div>
     </div>
+<<<<<<< HEAD
     </div>
+=======
+</div>
+>>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5
 
 <script>
 document.getElementById("Student").addEventListener("submit", myFunction);
@@ -267,4 +274,8 @@ document.getElementById("TA").addEventListener("submit", myFunction);
 function myFunction() {
   alert("The TA was added");
 }
+<<<<<<< HEAD
 </script>
+=======
+</script>
+>>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5
