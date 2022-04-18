@@ -32,9 +32,10 @@
   <a class = "select" id="AddTAToCourse" href="Administration.php?Page=AddTAToCourse&Userid=STANDIN"> Add TA to course </a>
   <a class = "select" id="RemoveTAFromCourse" href="Administration.php?Page=RemoveTAFromCourse&Userid=STANDIN"> Remove TA from course </a>
   <a class = "select" id="ImportOldTAStatistics" href="Administration.php?Page=ImportOldTAStatistics&Userid=STANDIN"> Import old TA statistics </a>
-  <br>
-  <br>
-  <br>
+  </br>
+  </br>
+  </br>
+  </br>
 
 </div>
 
