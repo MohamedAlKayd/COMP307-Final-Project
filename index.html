@@ -1,6 +1,31 @@
 <!-- This is the landing and login page of the TA management website-->
 
 <!DOCTYPE html>
+
+<style>
+.buttontrial{
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  width: 300px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 16px;
+  margin: 25px 15px;
+  cursor: pointer;
+}
+.buttontrial:hover{
+    background-color: lightgreen;
+    color: black;
+}
+</style>
+
+
 <html>
 
 <head>
@@ -13,14 +38,19 @@
 
 <body>
     <div class="wrapper">
+
         <div class="title-text">
+            
             <div class="title login">
                 Login Form
             </div>
+
             <div id="SignupForm" class="title signup">
                 Signup Form
             </div>
+
         </div>
+
         <div class="form-container">
             <div class="slide-controls">
                 <input type="radio" name="slide" id="login" checked>
@@ -57,27 +87,31 @@
                         Not a member? <a href="">  Signup now</a>
                     </div>
                 </form>
+
                 <div id="TypeOptions">
-                    <div class="container">
 
-                        <button class="btn1" style="display: flex; padding: 15px; width: 340px; align-content: center;" name="login" onclick="displayForm('TA')" type="button">TA</button>
-                    </div>
                     <div class="container">
-                        <button class="btn2" name="login" onclick="displayForm('Student')" type="button">Student</button>
+                        <button class="buttontrial" name="login" onclick="displayForm('TA')" type="button">TA</button>
                     </div>
-                    <div class="container">
 
-                        <button class="btn3" name="login" onclick="displayForm('Admin')" type="button">Admin</button>
-                    </div>
                     <div class="container">
-
-                        <button class="btn4" name="login" onclick="displayForm('Sysop')" type="button">Sysop</button>
+                        <button class="buttontrial" name="login" onclick="displayForm('Student')" type="button">Student</button>
                     </div>
+
                     <div class="container">
-
-                        <button class="btn5" name="login" onclick="displayForm('Prof')" type="button">Proffesor</button>
+                        <button class="buttontrial" name="login" onclick="displayForm('Admin')" type="button">Admin</button>
                     </div>
+
+                    <div class="container">
+                        <button class="buttontrial" name="login" onclick="displayForm('Sysop')" type="button">Sysop</button>
+                    </div>
+
+                    <div class="container">
+                        <button class="buttontrial" name="login" onclick="displayForm('Prof')" type="button">Professor</button>
+                    </div>
+                
                 </div>
+
                 <form id="Student" action="Controller/register.php?UserType=Student" method="post" class="hidden">
                     <div class="field">
                         <input type="text" placeholder="First Name" name="fname" required>
@@ -154,31 +188,6 @@
         </div>
     </div>
 
-
-    <form style="display: none;" action="Controller/register.php" method="post" class="hidden">
-        <div class="field">
-            <input type="text" placeholder="First Name" name="fname" required>
-        </div>
-        <div class="field">
-            <input type="text" placeholder="Last Name" name="lname" required>
-        </div>
-        <div class="field">
-            <input type="text" placeholder="User Name" name="uname" required>
-        </div>
-        <div class="field">
-            <input type="text" placeholder="Email Address" name="email" required>
-        </div>
-        <div class="field">
-            <input type="password" placeholder="Password" name="passwd" required>
-        </div>
-        <div class="field">
-            <input type="text" placeholder="Student ID" name="stdid" required>
-        </div>
-        <div class="field btn">
-            <div class="btn-layer"></div>
-            <input id="info" name="signup" type="submit" value="SIGNUP">
-        </div>
-    </form>
     <script>
         const loginText = document.querySelector(".title-text .login");
         const loginForm = document.querySelector("form.login");
@@ -211,6 +220,9 @@
             hideAll();
             console.log(usertype);
             document.getElementById(usertype).className = "";
+            if(usertype=="Prof"){
+                usertype = "The Professor's";
+            }
             document.getElementById("SignupForm").innerText = usertype + " Signup Form";
         }
     </script>
