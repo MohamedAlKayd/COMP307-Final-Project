@@ -70,7 +70,7 @@
     	text-align: right; 
   	}
      .Button{
-      width: 200px;
+      width: 150px;
       float: center;
       margin-right: 50px;
     }
@@ -91,7 +91,9 @@
 
 .Button{
   float: left;
-  margin: 1px;
+  margin-top: 20px;
+  margin-right: 1px;
+  margin bottom: 20px;
   background-color: #e5e4e2;
   border: none;
   color: black;
@@ -100,11 +102,11 @@
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
-  height: 75px;
+  height: 60px;
 }
 #Logout{
   float: left;
-  margin: 1px;
+  margin-top: 20px;
   background-color: #e5e4e2;
   border: none;
   color: black;
