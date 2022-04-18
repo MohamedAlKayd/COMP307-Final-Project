@@ -71,8 +71,9 @@ else if ($_GET["Page"]=="rateTA") {
 else if ($_GET["Page"]=="reviewSubmit") {
 	$courseid = $_GET['Course'];
 	$TAid = $_GET['TA'];
-	$rating = $_POST['rating'];
+	$rating = $_POST['radio'];
 	$review =$_POST['comment']; 
+	
 	if(addTAreview($courseid,$TAid,$rating,$review)){
 		echo "<text> SUBMITTED </text>";
 	}

@@ -71,23 +71,23 @@
 <h2>Rating</h2>
 <text> How would you rate the TA on a scale of 1 to 5?</text><br>
 <label class="container">1
-  <input type="radio" checked="checked" name="radio">
+  <input type="radio" checked="checked" name="radio" value = "1" >
   <span class="checkmark"></span>
 </label>
 <label class="container">2
-  <input type="radio" name="radio">
+  <input type="radio" name="radio" value = "2">
   <span class="checkmark"></span>
 </label>
 <label class="container">3
-  <input type="radio" name="radio">
+  <input type="radio" name="radio" value = "3">
   <span class="checkmark"></span>
 </label>
 <label class="container">4
-  <input type="radio" name="radio">
+  <input type="radio" name="radio" value = "4">
   <span class="checkmark"></span>
 </label>
 <label class="container">5
-  <input type="radio" name="radio">
+  <input type="radio" name="radio" value = "5">
   <span class="checkmark"></span>
 </label>
 <br><br>

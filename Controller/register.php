@@ -74,7 +74,7 @@ function EdditUserpsw($username,$usertype,$password){
 }
 
 function getStudentId($userid){
-	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$pdo = new PDO("sqlite:" . "../DB/Main.db");
 
 	$query = $pdo->prepare("SELECT studentid 
 	FROM Student

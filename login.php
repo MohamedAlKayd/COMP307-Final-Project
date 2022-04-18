@@ -15,7 +15,7 @@ else{
   exit();
 }
 
-echo "DONE";
+
 
 function display($path) {
   $file = fopen($path,"r");
