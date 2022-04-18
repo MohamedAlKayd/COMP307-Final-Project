@@ -1,6 +1,6 @@
 <script>
-    function Loadfile(){
-        var file = document.getElementById('file').files[0];
+    function LoadfileQuota(){
+        var file = document.getElementById('fileq').files[0];
         const reader = new FileReader();
         reader.onload = function(evt) {
           console.log(reader.result);
@@ -20,6 +20,6 @@
 
 <b>Following this format: (term_year,course_num,course_type,course_name,instructor_name,course_enrollment_num,TA_quota)</b><br>
 
-<input type="file" id="file" accept=".csv">
+<input type="file" id="fileq" accept=".csv">
 <br>
-<input type="button" value = "Add file" onclick="Loadfile()">
+<input type="button" value = "Add file" onclick="LoadfileQuota()">
