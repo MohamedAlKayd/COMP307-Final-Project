@@ -15,8 +15,11 @@ display("matter/RateReviewaTAbyCourseTOP.txt");
 if (sizeof($_GET)==1 || $_GET["Page"] == "getCourse") {
 	echo "<form method=\"post\" action=\"Rate.php?Page=getTA&Userid=".$userid."&Student=".$studentid."\">";
 
-	echo "<h2 style=\"margin:15px; padding:8px\">Course</h2>";
+	echo "<h2>Course</h2>";
 	echo "<text style=\"margin:15px; padding:8px\">For Which Course do you want to rate a TA?</text><br>";
+	
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";
 	echo "<select name=\"course\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
     	
@@ -25,8 +28,9 @@ if (sizeof($_GET)==1 || $_GET["Page"] == "getCourse") {
 		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
 	}
 
-    	echo "</select><br><br>";
-	
+		echo "</select><br><br>";
+		echo "</div>";
+		echo "</div>";	
 
 }
 else if ($_GET["Page"]=="getTA") {
@@ -34,9 +38,12 @@ else if ($_GET["Page"]=="getTA") {
 	$course = getCourse($courseid);
 
 	echo "<form method=\"post\" action=\"Rate.php?Page=rateTA&Userid=".$userid."&Student=".$studentid."&Course=".$courseid."\">";
-	echo"<h2>TA</h2>";
-	echo "TA's for ".$course['term_year']."-".$course['course_num']."-".$course['course_name'].";<br>";
-	echo "Choose the TA you are rating?<br>";
+	echo "<h2>TA</h2>";
+	echo "<text> TA's for ".$course['term_year']."-".$course['course_num']."-".$course['course_name'].";</text><br>";
+	echo "<text> Choose the TA you are rating? <text> <br>";
+
+	echo "<div class=\"search_categories\">";
+	echo "<div class=\"select-menu\">";	
 	echo "<select name=\"TA\">";
 	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
 	
@@ -47,13 +54,16 @@ else if ($_GET["Page"]=="getTA") {
 
 	
 	echo "</select><br><br>";
+	echo "</div>";
+	echo "</div>";
 
 }
 
 else if ($_GET["Page"]=="rateTA") {
 	$taid = $_POST['TA'];
 	$ta = getTA($taid);
-	echo "Rate and Review "."TA-".$ta['taid']." ".$ta['firstname']." ".$ta[2].":";
+	echo "<text> Rate and Review "."TA-".$ta['taid']." ".$ta['firstname']." ".$ta[2].":";
+	echo "</text>";
 	echo "<form method=\"post\" action=\"Rate.php?Page=reviewSubmit&Userid=".$userid."&Student=".$studentid."&Course=".$_GET["Course"]."&TA=".$taid."\">";
 
 	display("matter/RateReviewaTA.txt");
@@ -64,10 +74,10 @@ else if ($_GET["Page"]=="reviewSubmit") {
 	$rating = $_POST['rating'];
 	$review =$_POST['comment']; 
 	if(addTAreview($courseid,$TAid,$rating,$review)){
-		echo "SUBMITTED";
+		echo "<text> SUBMITTED </text>";
 	}
 	else{
-		echo "FAILLED";
+		echo "<text>FAILLED </text>";
 	}
 }
 

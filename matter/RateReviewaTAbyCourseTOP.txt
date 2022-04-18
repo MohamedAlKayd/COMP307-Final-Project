@@ -15,6 +15,37 @@ text{
   margin:22px; 
   padding:8px; 
 }
+textarea{
+  margin:22px; 
+  padding:8px; 
+}
+.search_categories{
+  font-size: 13px;
+  padding: 20px 18px 12px 14px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.search_categories .select-menu{
+  width: 120%;
+  background-position:80% center;
+}
+
+.search_categories .select-menu select{
+  margin:15px;
+  background: transparent;
+  line-height: 10px;
+  border: 1;
+  padding: 5px;
+  border-radius: 10px;
+  width: 30%;
+  position: relative;
+  z-index: 10;
+  font-size: 1em;
+}
 </style>
 
 <div class="RateReview">

@@ -2,7 +2,7 @@
 <form method="post" action="rateTA.php?Page=submitRating">
 
 <h2>Rating</h2>
-How would you rate the TA on a scale of 1 to 5?<br>
+<text> How would you rate the TA on a scale of 1 to 5?</text><br>
 <input type="radio" NAME="rating" VALUE="1"> 1
 <input type="radio" NAME="rating" VALUE="2"> 2
 <input type="radio" NAME="rating" VALUE="3"> 3
