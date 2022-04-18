@@ -89,7 +89,7 @@
 }
 
 .Button{
-  float: right;
+  float: center;
   margin: 10px;
   background-color: #e5e4e2;
   border: none;
@@ -99,9 +99,10 @@
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+  height: 75px;
 }
 #Logout{
-  float: left;
+  float: center;
   margin: 35px;
   background-color: #e5e4e2;
   border: none;
