@@ -110,6 +110,18 @@ display("matter/footer.txt");
 echo "<body>";
 echo "</html>";
 
+function getTaCohortInfo($taid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT student_ID,legal_name,email,grad_ugrad,supervisor_name,priority,hours,date_applied,location,phone,degree,courses_applied_for,open_to_other_courses, notes
+	FROM TACohortInfo WHERE taid == ?");
+
+    $query->execute(array($taid));
+
+	$pdo = null;
+    return $query->fetch();
+}
+
 function displayTAhistory($taid){
 	$ta = getTA($taid);
 	$taname = $ta['firstname']." ".$ta[2];
@@ -121,8 +133,46 @@ function displayTAhistory($taid){
 
 	$wishlist = getWishList($taid);
 
+	$tacohortinfo = getTaCohortInfo($taid);
+
 	echo "<h2>TA History for ".$taname."</h2>";
 	echo "Average Rating: ".$avrRating;
+
+	echo "<h4>TA Info: </h4>";
+	if(!empty($tacohortinfo)){
+		$student_ID = $tacohortinfo[0];
+        $legal_name = $tacohortinfo[1];
+        $email = $tacohortinfo[2];
+        $grad_ugrad = $tacohortinfo[3];
+        $supervisor_name = $tacohortinfo[4];
+        $priority = $tacohortinfo[5];
+        $hours = $tacohortinfo[6];
+        $date_applied = $tacohortinfo[7];
+        $location = $tacohortinfo[8];
+        $phone = $tacohortinfo[9];
+        $degree = $tacohortinfo[10];
+        $courses_applied_for = $tacohortinfo[11];
+        $open_to_other_courses = $tacohortinfo[12];
+        $notes = $tacohortinfo[13];
+		echo "Student ID :".$student_ID."<br>";
+		echo "Legal Name :".$legal_name."<br>";
+		echo "Email :".$email."<br>";
+		echo "Grad Ugrad:".$grad_ugrad."<br>";
+		echo "Supervisor :".$supervisor_name."<br>";
+		echo "Priority :".$priority."<br>";
+		echo "Hours :".$hours."<br>";
+		echo "Date Applied :".$date_applied."<br>";
+		echo "Location :".$location."<br>";
+		echo "Phone Number :".$phone."<br>";
+		echo "Degree :".$degree."<br>";
+		echo "Course Applied :".$courses_applied_for."<br>";
+		echo "Open to other Courses :".$open_to_other_courses."<br>";
+		echo "Notes :".$notes."<br>";
+		
+	}
+	else{
+		echo "This TA Lacks TA Cohort Info <br>";
+	}
 
 	echo "<h4>Student Comments: </h4>";
 	displayComments($studentComments);
