@@ -230,11 +230,7 @@
     <div class="col-3 col-s-12">
         <div class="aside"></div>
     </div>
-<<<<<<< HEAD
     </div>
-=======
-</div>
->>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5
 
 <script>
 document.getElementById("Student").addEventListener("submit", myFunction);
@@ -274,8 +270,4 @@ document.getElementById("TA").addEventListener("submit", myFunction);
 function myFunction() {
   alert("The TA was added");
 }
-<<<<<<< HEAD
 </script>
-=======
-</script>
->>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5

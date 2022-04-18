@@ -40,19 +40,10 @@
 
     </form>
 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5
 <script>
 document.getElementById("Sysop").addEventListener("submit", myFunction);
 
 function myFunction() {
   alert("The course was added");
 }
-<<<<<<< HEAD
 </script>
-=======
-</script>
-
->>>>>>> db65d180df009396b0654ab9fd76d92c6b3f48b5
