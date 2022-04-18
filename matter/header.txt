@@ -10,7 +10,7 @@
 
 .topnav {
   top: 0;
-  overflow: hidden;
+  overflow: auto;
   display:box;
   display-content: space-evenly;
   background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url(./CSS/images/Nature_.jpg);
@@ -49,6 +49,11 @@
       float: right ;
   		display: block;
   	}
+    .Button{
+      width: 150px;
+      float: right;
+    }
+   
   }
 
   @media screen and (max-width: 920px) {
@@ -64,6 +69,11 @@
     	display: block;
     	text-align: right; 
   	}
+     .Button{
+      width: 150px;
+      float: right;
+    }
+  
   }
 
 .hidden {
@@ -80,8 +90,7 @@
 
 .Button{
   float: right;
-  margin-right: 5px;
-  margin-top: 1%;
+  margin: 10px;
   background-color: #e5e4e2;
   border: none;
   color: black;
@@ -93,8 +102,7 @@
 }
 #Logout{
   float: left;
-  margin-left: 5px;
-  margin-top: 1%;
+  margin: 35px;
   background-color: #e5e4e2;
   border: none;
   color: black;
@@ -124,8 +132,7 @@ a:active { text-decoration: none; color: black;}
 .Left-Button{
   float: left;
   position:fixed:
-  margin-left: 5px;
-  margin-top: 1%;
+ margin: 10px;
   background-color: #e5e4e2;
   border: none;
   color: black;
@@ -176,7 +183,7 @@ h3{
          
   function showContent(menuElement, theContent) {
   // Hide everything
-    //document.getElementById("content0").style.display="none";
+    document.getElementById("content0").style.display="none";
     document.getElementById("content1").style.display="none";
     document.getElementById("content2").style.display="none";
     document.getElementById("content3").style.display="none";
@@ -196,16 +203,11 @@ h3{
 <head>
 
 <div class = "topnav" id="myTopnav">
-<a class = "Button empty" id="Logout" href="main.php?Page=Logout" onclick="showContent('Logout', 'content0')"> Logout </a>
-
+<a class = "Button none" id="Logout" href="main.php?Page=Logout" onclick="showContent('Logout', 'content0')"> Logout </a>
 <a class = "Button none" id="SysopTasks" href="main.php?Page=Sysop" onclick="showContent('SysopTasks', 'content1')"> Sysop Tasks </a>
-
 <a class = "Button none" id="RateaTA" href="main.php?Page=Rate" onclick="showContent('RateaTA', 'content2')"> Rate a TA </a>
-
 <a class = "Button none" id="TAManagement" href="main.php?Page=Management" onclick="showContent('TAManagement', 'content3')"> TA Management </a>
-
 <a class = "Button none" id="TAAdministration" href="main.php?Page=Administration" onclick="showContent('TAAdministration', 'content4')"> TA Administration </a>
-
 
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 	<i class="fa fa-bars"></i>
