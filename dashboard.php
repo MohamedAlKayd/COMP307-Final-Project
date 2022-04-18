@@ -11,10 +11,88 @@ echo "<body>";
 displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
 // --------- ROUTING WEBPAGE BODY -----------
 echo "WELCOME ".$USERTYPE."<br>";
+if($USERTYPE == "Student"){
+	if($_GET["Page"] == "SelectCourse"){
+		displayCourses($userid);
+	}
+	else if($_GET["Page"] == "CourseSelected"){
+		$courseid = $_POST['course'];
+		$studentid = getStudentid($userid);
+		addCourseForStudent($studentid,$courseid);
+	}
+	else{
+		displayCourseButton("matter/ta_management.txt",$userid);
+	}
+}
 // --------- COMMON WEBPAGE BOTTOM ----------
 display("matter/footer.txt");
 echo "<body>";
 echo "</html>";
+
+function addCourseForStudent($studentid,$courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	
+	$query = $pdo->prepare("INSERT INTO TakingCourse (studentid,courseid) VALUES (?,?)");
+	$err1 = $query->execute(array($studentid,$courseid));
+	
+	return $err1 == 1;
+}
+
+function getStudentid($userid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT s.studentid FROM Student s WHERE s.userid == ?");
+	
+	$query->execute(array($userid));
+	
+	return $query->fetch()[0];
+}
+
+function displayCourses($userid){
+	echo "<form method=\"post\" action=\"dashboard.php?Page=CourseSelected&Userid=".$userid."\">";
+
+	echo "<h2>Add Courses You are Taking</h2>";
+	echo "Select A Course<br>";
+	echo "<select name=\"course\">";
+    	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
+    	
+	$courseArray = getCourses();
+	foreach($courseArray as $row){
+		echo "<option value=\"" . $row['courseid'] . "\" >".$row['term_year']."-".$row['course_num']."-".$row['course_name']."</option>";
+	}
+
+    echo "</select><br><br>";
+	echo "<input type=\"submit\" name=\"submit\" value=\"Add\"><br><br><br><br>";
+	echo "</form>";
+}
+
+function displayCourseButton($path,$userid) {
+	$file = fopen($path,"r");
+	while(!feof($file)) {
+	  $line = fgets($file);
+	  if (strstr($line,"STANDIN")){
+		$line=str_replace("STANDIN",$userid,$line);
+		$line=str_replace("Management","dashboard",$line);
+	}
+	  echo $line;
+	}
+	fclose($file);
+  }
+
+//returtns all Courses
+//returns an array of rows
+//each row is a TA
+//each row is an array of this form $row = ['courseid', 'term_year', 'course_num', 'course_name', 'instructor_assigned_name']
+function getCourses(){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+    $query = $pdo->prepare("SELECT courseid, term_year, course_num, course_name, instructor_assigned_name FROM Course");
+
+    $query->execute();
+
+	$pdo = null;
+    return $query->fetchAll();
+}
 
 function display($path) {
   $file = fopen($path,"r");
