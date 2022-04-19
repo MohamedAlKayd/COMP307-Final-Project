@@ -5,6 +5,7 @@ $userid = $_GET["Userid"];
 $usertype = getUserType($userid);
 $page = $_GET["Page"];
 
+
 echo "<html>";
 echo "<head>";
 echo "</head>";
@@ -51,21 +52,23 @@ else if($page == "AddTAToCourse"){
 		$taid = $_GET["TAid"];
 		$assigned_hours = $_POST["hours"];
 		$courseid = $_POST["courseid"];
-		echo $assigned_hours."<br>";
-		echo $courseid."<br>";
-		echo $taid."<br>";
-		addTatoCourse($taid,$courseid,$assigned_hours);
-		header("Location: main.php?Page=Administration");
+		if(addTatoCourse($taid,$courseid,$assigned_hours)){
+			echo "<script>alert(\"TA was Added to Course\")</script>";
+		}
+		else{
+			echo "<script>alert(\"Error TA was not Added to Course\")</script>";
+		}
 	}
 	else if(isset($_POST["submitTACourse"])){
 		$courseid = $_GET["Courseid"];
 		$assigned_hours = $_POST["hours"];
 		$taid = $_POST["taid"];
-		echo $assigned_hours."<br>";
-		echo $courseid."<br>";
-		echo $taid."<br>";
-		addTatoCourse($taid,$courseid,$assigned_hours);
-		header("Location: main.php?Page=Administration");
+		if(addTatoCourse($taid,$courseid,$assigned_hours)){
+			echo "<script>alert(\"TA was Added to Course\")</script>";
+		}
+		else{
+			echo "<script>alert(\"Error TA was not Added to Course\")</script>";
+		}
 	}
 	else{
 		//displaySub("matter/AddTAToCourse.txt", $userid);
@@ -109,6 +112,8 @@ display("matter/footer.txt");
 
 echo "<body>";
 echo "</html>";
+
+
 
 function getTaCohortInfo($taid){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");

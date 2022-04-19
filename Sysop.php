@@ -21,10 +21,12 @@ if($page == "ManageUsers"){
 	else if(isset($_POST["Remove"])){
 		$OtherUserid = $_POST["User"];
 		$Otherusertype = getUserType($OtherUserid);
-		echo "<text> ID:".$OtherUserid."</text><br>";
-		echo "<text> TYPE:".$Otherusertype."</text><br>";
-		removeUser($OtherUserid, $Otherusertype);
-		echo "<text> REMOVED</text>";
+		if(removeUser($OtherUserid, $Otherusertype)){
+			echo "<script>alert(\"the ".$Otherusertype." was removed\")</script>";
+		}
+		else{
+			echo "<script>alert(\"REMOVE USER FAILED\")</script>";
+		}
 		header("Location: Sysop.php?Page=ManageUsers&Userid=".$userid);
 	}
 	else{

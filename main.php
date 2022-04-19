@@ -7,12 +7,10 @@ if(sizeof($_GET)==0|| $_GET["Page"] == "Logout"){
 }
 else{
 	$page = $_GET["Page"];
-	if($page == "Logout"){
-		display(matter/logout.txt);
+	if(isset($_GET["Alert"])){
+		echo "<script>alert(\"".$_GET["Alert"]."\")</script>";
 	}
-	else{
-		displayPage("verifyUserAndRedirect.txt", $page);
-	}
+	displayPage("verifyUserAndRedirect.txt", $page);
 }
 
 function display($path) {

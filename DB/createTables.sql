@@ -1,7 +1,7 @@
 CREATE TABLE User (
     userid INTEGER PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
-    password TEXT UNIQUE NOT NULL,
+    password TEXT UNIQUE,
     ticket INTEGER,
     ticketexpires TEXT
 );
@@ -118,6 +118,7 @@ CREATE TABLE TAWishlist(
 
 CREATE TABLE TACohortInfo(
     taid INTEGER PRIMARY KEY NOT NULL,
+    term_year TEXT,
     TA_name TEXT, 
     student_ID INTEGER,
     legal_name TEXT, 

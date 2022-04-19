@@ -6,8 +6,12 @@ $course_num = $_POST["course_num"];
 $course_name = $_POST["course_name"];
 $instructor = $_POST["instructor"];
 
-addCourse($year,$term, $course_num, $course_name, $instructor);
-header("Location: main.php?Page=Sysop");
+if(addCourse($year,$term, $course_num, $course_name, $instructor)){
+    header("Location: main.php?Page=Sysop&Alert=".$course_name." was added to courses");
+}
+else{
+    header("Location: main.php?Page=Sysop&Alert=Course could not be added");
+}
 
 function addCourse($year,$term, $course_num, $course_name, $instructor){
         

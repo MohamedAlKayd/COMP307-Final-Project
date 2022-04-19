@@ -73,12 +73,15 @@ else if ($_GET["Page"]=="reviewSubmit") {
 	$TAid = $_GET['TA'];
 	$rating = $_POST['radio'];
 	$review =$_POST['comment']; 
-	
-	if(addTAreview($courseid,$TAid,$rating,$review)){
-		echo "<text> SUBMITTED </text>";
+
+	if(strlen($courseid) > 15 || strlen($TAid) > 15){
+		echo "<script>alert(\"TA Review Could Not be added\")</script>";
+	}
+	else if(addTAreview($courseid,$TAid,$rating,$review)){
+		echo "<script>alert(\"TA Review was Submitted\")</script>";
 	}
 	else{
-		echo "<text>FAILLED </text>";
+		echo "<script>alert(\"TA Review Could Not be added\")</script>";
 	}
 }
 

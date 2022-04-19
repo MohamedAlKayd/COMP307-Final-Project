@@ -1,5 +1,4 @@
 <?php
-    echo "<text> QUOTA </text>";
     $content = $_POST['con'];
 
     $ar = explode("\n",$content); 
@@ -14,10 +13,12 @@
         $course_enrollment_num = $ar2[5];
         $TA_quota = $ar2[6];
     
-        addToCourseQuotaInfo($term_year,$course_num,$course_type,$course_name,$instructor,$course_enrollment_num,$TA_quota);
+        if(!addToCourseQuotaInfo($term_year,$course_num,$course_type,$course_name,$instructor,$course_enrollment_num,$TA_quota)){
+            echo "error";
+        }
     }
 
-    echo "<text> END </text>";
+    echo "Added";
 
     function addToCourseQuotaInfo($term_year,$course_num,$course_type,$course_name,$instructor_name,$course_enrollment_num,$TA_quota){
         $pdo = new PDO("sqlite:" . "DB/Main.db");

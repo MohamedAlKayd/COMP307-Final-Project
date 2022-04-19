@@ -21,6 +21,8 @@ if(!empty($_POST['email'])){
     $email = $_POST['email'];
 }
 
+$worked = true;
+
 
 if($usertype == "Student"){
     if(!empty($_POST['studentid'])){
@@ -29,13 +31,19 @@ if($usertype == "Student"){
     else{
         $studentid = getStudentId($userid);
     }
-    EdditStudent($userid,$studentid,$fname,$lname,$username,$email);
+    $worked = $worked && EdditStudent($userid,$studentid,$fname,$lname,$username,$email);
 }
 else{
-    EdditUser($userid,$fname,$lname,$username,$email, $usertype);
+    $worked = $worked && EdditUser($userid,$fname,$lname,$username,$email, $usertype);
 }
 
-header("Location: main.php?Page=Sysop");
+if($worked){
+    header("Location: main.php?Page=Sysop&Alert=the ".$usertype." was Edited");
+}
+else{
+    header("Location: main.php?Page=Sysop&Alert=EDIT USER FAILED");
+}
+
 
 function EdditUser($userid,$fname,$lname,$username,$email, $usertype){
     $pdo = new PDO("sqlite:" . "DB/Main.db");

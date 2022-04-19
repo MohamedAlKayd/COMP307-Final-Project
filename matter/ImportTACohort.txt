@@ -3,10 +3,11 @@
         var file = document.getElementById('filec').files[0];
         const reader = new FileReader();
         reader.onload = function(evt) {
-          console.log(reader.result);
           const xhttp = new XMLHttpRequest();
           xhttp.onload = function(){
-            console.log(this.responseText);
+            if(this.responseText == "Added"){
+              AlertFunction()
+            }
           }
           xhttp.open("POST", "ImportTACohort.php", true);
           xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -14,6 +15,10 @@
         };
         reader.readAsText(file);
 
+    }
+
+    function AlertFunction() {
+      alert("TACohort was added");
     }
 </script>
 <h3>Upload TA Cohort CSV file</h3>

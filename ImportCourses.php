@@ -1,5 +1,4 @@
 <?php
-    echo "<text> start </text>";
     $content = $_POST['con'];
 
     $ar = explode("\n",$content); 
@@ -10,10 +9,12 @@
         $course_num = $ar2[1];
         $course_name = $ar2[2];
         $instructor = $ar2[3];
-        addCourse($term_year, $course_num, $course_name, $instructor);
+        if(!addCourse($term_year, $course_num, $course_name, $instructor)){
+            echo "error";
+        }
     }
 
-    echo "<text> END </text>";
+    echo "Added";
 
     function addCourse($term_year, $course_num, $course_name, $instructor){
         

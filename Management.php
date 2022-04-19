@@ -5,6 +5,33 @@ $userid = $_GET["Userid"];
 $usertype = getUserType($userid);
 $page = $_GET["Page"];
 
+if($page == "AddProfsTAPerformanceLog"){
+	$courseid = $_GET["Courseid"];
+	$profid = getProfid($userid);
+	$taid = $_POST['taid'];
+	$note = $_POST['note'];
+	
+	if(addToTAPerformanceLog($taid,$courseid,$profid,$note)){
+		header("Location: main.php?Page=Management&Alert=Performance Log was Added");
+	}
+	else{
+		header("Location: main.php?Page=Management&Alert=Error Performance Log was Not Added");
+	}
+	
+}
+else if($page == "AddTAWishList"){
+	$courseid = $_GET["Courseid"];
+	$profid = getProfid($userid);
+	$taid = $_POST['taid'];
+
+	if(addToTAWishlist($taid,$courseid,$profid)){
+		header("Location: main.php?Page=Management&Alert=TA was Added to Wist List");
+	}
+	else{
+		header("Location: main.php?Page=Management&Alert=Error TA was not Added to Wist List");
+	}
+}
+
 echo "<html>";
 echo "<head>";
 echo "</head>";
@@ -72,15 +99,6 @@ else if($page == "ProfsTAPerformanceLog"){
 	echo "<input id=\"info\" type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
 	echo "</form>";
 }
-else if($page == "AddProfsTAPerformanceLog"){
-	$courseid = $_GET["Courseid"];
-	$profid = getProfid($userid);
-	$taid = $_POST['taid'];
-	$note = $_POST['note'];
-	
-	addToTAPerformanceLog($taid,$courseid,$profid,$note);
-	header("Location: main.php?Page=Management");
-}
 else if($page == "TAWishList"){
 	$courseid = $_GET["Courseid"];
 	echo "<form method=\"post\" action=\"Management.php?Page=AddTAWishList&Userid=".$userid."&Courseid=".$courseid."\">";
@@ -101,14 +119,6 @@ else if($page == "TAWishList"){
 	echo "</div>";
 	echo "<input id=\"info\" type=\"submit\" name=\"submit\" value=\"submit\"><br><br><br><br>";
 	echo "</form>";
-}
-else if($page == "AddTAWishList"){
-	$courseid = $_GET["Courseid"];
-	$profid = getProfid($userid);
-	$taid = $_POST['taid'];
-
-	addToTAWishlist($taid,$courseid,$profid);
-	header("Location: main.php?Page=Management");
 }
 else{
 	displaySub("matter/ta_management.txt", $userid);

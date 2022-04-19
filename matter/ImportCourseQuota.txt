@@ -3,10 +3,11 @@
         var file = document.getElementById('fileq').files[0];
         const reader = new FileReader();
         reader.onload = function(evt) {
-          console.log(reader.result);
           const xhttp = new XMLHttpRequest();
           xhttp.onload = function(){
-            console.log(this.responseText);
+            if(this.responseText == "Added"){
+              AlertFunctionq()
+            }
           }
           xhttp.open("POST", "ImportCourseQuota.php", true);
           xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -14,6 +15,10 @@
         };
         reader.readAsText(file);
 
+    }
+
+    function AlertFunctionq() {
+      alert("Course Quota was added");
     }
 </script>
 <h3>Upload Course Quota CSV file</h3>

@@ -13,12 +13,43 @@ displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
 echo "WELCOME ".$USERTYPE."<br>";
 if($USERTYPE == "Student"){
 	if($_GET["Page"] == "SelectCourse"){
-		displayCourses($userid);
+		displayCourses($userid,"Taking");
 	}
 	else if($_GET["Page"] == "CourseSelected"){
 		$courseid = $_POST['course'];
 		$studentid = getStudentid($userid);
-		addCourseForStudent($studentid,$courseid);
+		if(strlen($courseid) > 15){
+			echo "<script>alert(\"Error Course Not Added\")</script>";
+		}
+		else if(addCourseForStudent($studentid,$courseid)){
+			echo "<script>alert(\"Course was Added\")</script>";
+		}
+		else{
+			echo "<script>alert(\"Error Course Not Added\")</script>";
+		}
+		displayCourseButton("matter/ta_management.txt",$userid);
+	}
+	else{
+		displayCourseButton("matter/ta_management.txt",$userid);
+	}
+}
+else if($USERTYPE == "Prof"){
+	if($_GET["Page"] == "SelectCourse"){
+		displayCourses($userid,"Teaching");
+	}
+	else if($_GET["Page"] == "CourseSelected"){
+		$courseid = $_POST['course'];
+		$teacherid = getTeacherid($userid);
+		if(strlen($courseid) > 15){
+			echo "<script>alert(\"Error Course Not Added\")</script>";
+		}
+		else if(addCourseForTeacher($teacherid,$courseid)){
+			echo "<script>alert(\"Course was Added\")</script>";
+		}
+		else{
+			echo "<script>alert(\"Error Course Not Added\")</script>";
+		}
+		displayCourseButton("matter/ta_management.txt",$userid);
 	}
 	else{
 		displayCourseButton("matter/ta_management.txt",$userid);
@@ -31,9 +62,16 @@ echo "</html>";
 
 function addCourseForStudent($studentid,$courseid){
 	$pdo = new PDO("sqlite:" . "DB/Main.db");
-	
 	$query = $pdo->prepare("INSERT INTO TakingCourse (studentid,courseid) VALUES (?,?)");
 	$err1 = $query->execute(array($studentid,$courseid));
+	
+	return $err1 == 1;
+}
+
+function addCourseForTeacher($teacherid,$courseid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+	$query = $pdo->prepare("INSERT INTO TeachingCourse (proffesorid,courseid) VALUES (?,?)");
+	$err1 = $query->execute(array($teacherid,$courseid));
 	
 	return $err1 == 1;
 }
@@ -48,11 +86,21 @@ function getStudentid($userid){
 	return $query->fetch()[0];
 }
 
-function displayCourses($userid){
+function getTeacherid($userid){
+	$pdo = new PDO("sqlite:" . "DB/Main.db");
+
+	$query = $pdo->prepare("SELECT proffesorid FROM Prof WHERE userid == ?");
+	
+	$query->execute(array($userid));
+	
+	return $query->fetch()[0];
+}
+
+function displayCourses($userid,$standin){
 	echo "<form method=\"post\" action=\"dashboard.php?Page=CourseSelected&Userid=".$userid."\">";
     echo "<div class=\"search_categories\">";
 	echo "<div class=\"select-menu\">";
-	echo "<h2>Add Courses You are Taking</h2>";
+	echo "<h2>Add Courses You are ".$standin."</h2>";
 	echo "<text> Select A Course </text><br>";
 	echo "<select name=\"course\">";
     	echo "<option value=\"----------------------------------------------------------\" >----------------------------------------------------------</option>";
