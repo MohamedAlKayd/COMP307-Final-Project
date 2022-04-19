@@ -8,12 +8,21 @@
     $EMAIL = $_POST["email"];
     if($usertype == "Student"){
         $STID = $_POST["stdid"];
-        addStudent($STID,$FNAME,$LNAME,$USERNAME,$EMAIL);
+        if(addStudent($STID,$FNAME,$LNAME,$USERNAME,$EMAIL)){
+            header("Location: main.php?Page=Sysop&Alert=The ".$usertype." was added");
+        }
+        else{
+            header("Location: main.php?Page=Sysop&Alert=Error the ".$usertype." was not added");
+        }
     }
     else{
-        addUser($usertype,$FNAME,$LNAME,$USERNAME,$EMAIL);
+        if(addUser($usertype,$FNAME,$LNAME,$USERNAME,$EMAIL)){
+            header("Location: main.php?Page=Sysop&Alert=The ".$usertype." was added");
+        }
+        else {
+            header("Location: main.php?Page=Sysop&Alert=Error the ".$usertype." was not added");
+        }
     }
-    header("Location: main.php?Page=Sysop");
 
     function addStudent($studentid,$firstname, $lastname, $username, $email){
         
