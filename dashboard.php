@@ -10,7 +10,7 @@ echo "</head>";
 echo "<body>";
 displayActive("matter/header.txt",$_GET["Page"],$USERTYPE);
 // --------- ROUTING WEBPAGE BODY -----------
-echo "WELCOME ".$USERTYPE."<br>";
+echo "<text>WELCOME ".$USERTYPE."</text><br>";
 if($USERTYPE == "Student"){
 	if($_GET["Page"] == "SelectCourse"){
 		displayCourses($userid,"Taking");
